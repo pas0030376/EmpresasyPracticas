@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EmpresasYPracticas</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_full_actions">FullActionsActivity</string>
+    <string name="title_activity_alumnado">AlumnadoActivity</string>
+    <string name="title_activity_empresas">EmpresasActivity</string>
+    <string name="title_activity_formularios">FormulariosActivity</string>
+    <string name="title_activity_add_estudiantes">addEstudiantesActivity</string>
+    <string name="nombre_empresa">Nombre Empresa</string>
+    <string name="buscar">Buscar</string>
+    <string name="title_activity_add_empresa">addEmpresaActivity</string>
+    <string name="title_activity_detail_estudent">DetailEstudentActivity</string>
+    <string name="title_activity_detail_estudent2">DetailEstudent2Activity</string>
+</resources>

@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "699325239796",
+    "firebase_url": "https://empresasypracticas.firebaseio.com",
+    "project_id": "empresasypracticas",
+    "storage_bucket": "empresasypracticas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699325239796:android:4d5f3c18919789ce",
+        "android_client_info": {
+          "package_name": "com.example.empresasypracticas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699325239796-hc3iv78ibgo8lqurm6vt41m3k6b3m89h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empresasypracticas",
+            "certificate_hash": "cf6a5ca57aafbdcb88f47c294e9d3ff77a87b032"
+          }
+        },
+        {
+          "client_id": "699325239796-9rkcvepj0pisuksep08leri6tkp9omcq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empresasypracticas",
+            "certificate_hash": "39cb3aa6753b12284ecec3b6e6fdf6efceef771c"
+          }
+        },
+        {
+          "client_id": "699325239796-7j2lcar97saeodh9776l36td9j6dcbgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk3ca1bJZBqtlSD0O9jEq49Ic4qSePT6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699325239796-7j2lcar97saeodh9776l36td9j6dcbgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

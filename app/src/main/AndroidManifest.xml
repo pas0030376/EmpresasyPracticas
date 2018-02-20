@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.empresasypracticas">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".AlumnadoActivity"
+            android:label="@string/title_activity_alumnado"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EmpresasActivity"
+            android:label="@string/title_activity_empresas"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FormulariosActivity"
+            android:label="@string/title_activity_formularios"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.MainActivity" />
+        </activity>
+        <activity
+            android:name=".addEstudiantesActivity"
+            android:label="@string/title_activity_add_estudiantes"
+            android:parentActivityName=".AlumnadoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.AlumnadoActivity" />
+        </activity>
+        <activity
+            android:name=".addEmpresaActivity"
+            android:label="@string/title_activity_add_empresa"
+            android:parentActivityName=".EmpresasActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.EmpresasActivity" />
+        </activity>
+        <activity
+            android:name=".DetailEstudentActivity"
+            android:label="@string/title_activity_detail_estudent"
+            android:parentActivityName=".AlumnadoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.AlumnadoActivity" />
+        </activity>
+        <activity
+            android:name=".DetailEstudent2Activity"
+            android:label="@string/title_activity_detail_estudent2"
+            android:parentActivityName=".AlumnadoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.AlumnadoActivity" />
+        </activity>
+    </application>
+
+</manifest>
