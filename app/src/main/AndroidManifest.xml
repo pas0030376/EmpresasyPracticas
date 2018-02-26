@@ -89,6 +89,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.AlumnadoActivity" />
         </activity>
+        <activity android:name=".SendEmailActivity"></activity>
     </application>
 
 </manifest>

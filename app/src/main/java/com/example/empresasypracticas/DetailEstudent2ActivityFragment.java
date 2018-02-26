@@ -7,9 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class DetailEstudent2ActivityFragment extends Fragment {
     ArrayList<String> items;
@@ -19,6 +28,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     TextView inicio;
     TextView motivo;
     TextView comentarios;
+    Button sendEmail;
 
     public DetailEstudent2ActivityFragment() {
     }
@@ -32,16 +42,69 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         inicio = view.findViewById(R.id.tvfechasEF);
         motivo = view.findViewById(R.id.tvmotivos);
         comentarios = view.findViewById(R.id.tvcomments);
+        sendEmail = view.findViewById(R.id.btnSendEmail);
 
 
         Intent i = getActivity().getIntent();
         if (i != null) {
-            Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
+            final Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
             if (estudiante != null) {
                 MostrarEstudiante(estudiante);
+                sendEmail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendEmailToStudent(estudiante);
+                    }
+                });
             }
         }
+
         return view;
+    }
+
+    private void sendEmailToStudent(Estudiante estudiante) {
+        // Recipient's email ID needs to be mentioned.
+        String email = estudiante.getCorreo();
+
+        // Sender's email ID needs to be mentioned
+        String from = "jhazape@yahoo.com";
+
+        // Assuming you are sending email from localhost
+        String host = "localhost";
+
+        // Get system properties
+        Properties properties = System.getProperties();
+
+        // Setup mail server
+        properties.setProperty("mail.smtp.host", host);
+
+        // Get the default Session object.
+        Session session = Session.getDefaultInstance(properties);
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+
+            // Set Subject: header field
+            message.setSubject("This is the Subject Line!");
+
+            // Now set the actual message
+            String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
+            message.setText("Formulario link: "+"<a href=\"" + link + "\">" + link+ "</a>");
+
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+
     }
 
     private void MostrarEstudiante(Estudiante estudiante) {
