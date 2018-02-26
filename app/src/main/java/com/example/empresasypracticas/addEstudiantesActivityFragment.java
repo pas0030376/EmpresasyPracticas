@@ -117,16 +117,22 @@ public class addEstudiantesActivityFragment extends Fragment {
             EditText etTareas = view.findViewById(R.id.etTareas);
             String tareas = etTareas.getText().toString();
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
+            EditText etNie = view.findViewById(R.id.etnie);
+            String nie = etNie.getText().toString();
 
 
 
 
             if (error==0){
-                Estudiante estudiante = new Estudiante(fname,flastname,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas);
+                Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas);
 
                 mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
-                String mId = mRef.push().getKey();
+                String mId = nie;
                 mDatabase = mRef.child("Estudiantes").child(mId).setValue(estudiante);
+                CharSequence text = "Estudiante añadido correctamente";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
                 Intent Studiante = new Intent(view.getContext(), AlumnadoActivity.class);
                 startActivityForResult(Studiante, 0);
             }

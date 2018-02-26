@@ -32,6 +32,13 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/etnie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="NIE" />
+
+    <EditText
         android:id="@+id/etempresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,20 +47,22 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etinicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Inicio de Practicas dd-MM-yyyy"
-        android:inputType="textPersonName" />
-
-    <EditText
         android:id="@+id/etfin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Fin de Practicas dd-MM-yyyy"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart" />
+
+    <EditText
+        android:id="@+id/etinicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Inicio de Practicas"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart" />
 
     <EditText
         android:id="@+id/ettipopracticas"

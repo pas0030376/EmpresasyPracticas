@@ -17,13 +17,14 @@ public class Estudiante implements Serializable {
     private String motivosFinalizacion;
     private String comentarios;
     private String valoracion;
+    private String NIE;
 
     public Estudiante(){
 
     }
 
-    public Estudiante(String nom, String cognom, String tipo_practicas, String inicio_practicas, String fin_practicas, String correo, String curso, int telefono, String empresa, List<String> tareas,
-                      String motivosFinalizacion, String comentarios, String valoracion) {
+    public Estudiante(String nom, String cognom, String tipo_practicas, String inicio_practicas, String fin_practicas, String correo, String curso, int telefono, String empresa,
+                      List<String> tareas, String motivosFinalizacion, String comentarios, String valoracion, String NIE) {
         this.nom = nom;
         this.cognom = cognom;
         this.tipo_practicas = tipo_practicas;
@@ -37,9 +38,11 @@ public class Estudiante implements Serializable {
         this.motivosFinalizacion = motivosFinalizacion;
         this.comentarios = comentarios;
         this.valoracion = valoracion;
+        this.NIE = NIE;
     }
 
-    public Estudiante(String nom, String cognom, String tipo_practicas, String inicio_practicas, String fin_practicas, String correo, String curso, int telefono, String empresa, List<String> tareas) {
+    public Estudiante(String nom, String cognom, String NIE, String tipo_practicas, String inicio_practicas, String fin_practicas, String correo, String curso, int telefono, String empresa,
+                      List<String> tareas) {
         this.nom = nom;
         this.cognom = cognom;
         this.tipo_practicas = tipo_practicas;
@@ -50,7 +53,9 @@ public class Estudiante implements Serializable {
         this.telefono = telefono;
         this.empresa = empresa;
         this.tareas = tareas;
+        this.NIE = NIE;
     }
+
 
     public String getNom() {
         return nom;
@@ -154,5 +159,13 @@ public class Estudiante implements Serializable {
 
     public void setValoracion(String valoracion) {
         this.valoracion = valoracion;
+    }
+
+    public String getNIE() {
+        return NIE;
+    }
+
+    public void setNIE(String NIE) {
+        this.NIE = NIE;
     }
 }

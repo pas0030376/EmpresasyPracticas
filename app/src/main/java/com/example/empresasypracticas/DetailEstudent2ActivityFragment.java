@@ -112,6 +112,8 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         getActivity().setTitle(fullname);
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
+        String nie = estudiante.getNIE();
+
         nom.setText(fullname);
         empresa.setText(estudiante.getEmpresa());
         inicio.setText(fechas);
