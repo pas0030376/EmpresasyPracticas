@@ -1,14 +1,18 @@
 package com.example.empresasypracticas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -62,49 +66,27 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("LongLogTag")
     private void sendEmailToStudent(Estudiante estudiante) {
-        // Recipient's email ID needs to be mentioned.
-        String email = estudiante.getCorreo();
+        Log.i("Send email", "");
+        String[] TO = {""};
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
-        // Sender's email ID needs to be mentioned
-        String from = "jhazape@yahoo.com";
-
-        // Assuming you are sending email from localhost
-        String host = "localhost";
-
-        // Get system properties
-        Properties properties = System.getProperties();
-
-        // Setup mail server
-        properties.setProperty("mail.smtp.host", host);
-
-        // Get the default Session object.
-        Session session = Session.getDefaultInstance(properties);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
 
         try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-
-            // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
-
-            // Now set the actual message
-            String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
-            message.setText("Formulario link: "+"<a href=\"" + link + "\">" + link+ "</a>");
-
-            // Send message
-            Transport.send(message);
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
+            Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void MostrarEstudiante(Estudiante estudiante) {

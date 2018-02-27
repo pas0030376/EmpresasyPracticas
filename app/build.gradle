@@ -35,8 +35,8 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.firebaseui:firebase-ui:0.3.0'
     implementation files('activation.jar')
-    implementation files('mail.jar')
     implementation files('additionnal.jar')
+    implementation files('javax.mail.jar')
 }
 
 
