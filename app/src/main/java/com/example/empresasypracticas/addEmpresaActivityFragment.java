@@ -1,7 +1,7 @@
 package com.example.empresasypracticas;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +54,13 @@ public class addEmpresaActivityFragment extends Fragment{
         String fteleono = telefono.getText().toString();
         EditText webpage = view.findViewById(R.id.etWebpage);
         String fwebpage = webpage.getText().toString();
+        EditText personaDeContacto = view.findViewById(R.id.etPersonaDeContacto);
+        String fpersonacontacto = personaDeContacto.getText().toString();
 
 
-        Empresa empresa = new Empresa(fname,ftipo,fteleono,fcorreo,fwebpage);
+        //Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
         String mId = fname;
-        mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
+       // mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
     }
 }

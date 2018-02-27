@@ -11,4 +11,19 @@
     <string name="title_activity_add_empresa">addEmpresaActivity</string>
     <string name="title_activity_detail_estudent">DetailEstudentActivity</string>
     <string name="title_activity_detail_estudent2">DetailEstudent2Activity</string>
+    <string name="title_activity_detail_empresa">DetailEmpresaActivity</string>
+    <string name="title_activity_detalles_empresa_bottom_navigation">
+        DetallesEmpresaBottomNavigation
+    </string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_llamar_empresa">llamarEmpresa</string>
+    <string name="title_activity_modificar_empresa">modificarEmpresa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Editar" />
+    <string name="navigation_editar" />
 </resources>
+
