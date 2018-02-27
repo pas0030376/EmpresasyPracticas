@@ -69,8 +69,9 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     @SuppressLint("LongLogTag")
     private void sendEmailToStudent(Estudiante estudiante) {
         Log.i("Send email", "");
-        String[] TO = {""};
-        String[] CC = {""};
+        String[] TO = {estudiante.getCorreo()};
+        String[] CC = {"zapejustine@gmail.com"};
+        String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         emailIntent.setData(Uri.parse("mailto:"));
@@ -78,14 +79,14 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Formulario link: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 
             Log.i("Finished sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
