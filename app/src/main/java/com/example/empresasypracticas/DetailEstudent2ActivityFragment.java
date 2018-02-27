@@ -114,6 +114,8 @@ public class DetailEstudent2ActivityFragment extends Fragment {
 
         String nie = estudiante.getNIE();
 
+        CommentsShow(nie);
+
         nom.setText(fullname);
         empresa.setText(estudiante.getEmpresa());
         inicio.setText(fechas);
@@ -127,5 +129,10 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                 R.id.tvtareaname,
                 items
         );
+    }
+
+    private String CommentsShow(String nie){
+
+        return "hola";
     }
 }
