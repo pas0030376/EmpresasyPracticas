@@ -51,6 +51,13 @@
         android:ems="10"
         android:hint="Webpage"
         android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etPersonaDeContacto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Persona de contacto:"
+        android:inputType="textPersonName" />
 
     <Space
         android:layout_width="match_parent"

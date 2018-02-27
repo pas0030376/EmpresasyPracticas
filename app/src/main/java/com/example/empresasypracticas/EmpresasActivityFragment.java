@@ -1,12 +1,12 @@
 package com.example.empresasypracticas;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,9 +17,6 @@ import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -28,10 +25,10 @@ public class EmpresasActivityFragment extends Fragment {
     Button newEmpresa;
     Button buscar;
     EditText etbuscar;
+    public static Empresa empresa;
 
     public EmpresasActivityFragment() {
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -50,11 +47,13 @@ public class EmpresasActivityFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_empresas, container, false);
         getActivity().setTitle("Empresas");
 
-        ListView lvempresas = (ListView) view.findViewById(R.id.lvempresas);
+        ListView lvempreses = (ListView) view.findViewById(R.id.lvempresas);
 
         DatabaseReference query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Empresas");
+
+
 
         FirebaseListOptions<Empresa> options = new FirebaseListOptions.Builder<Empresa>()
                 .setQuery(query,Empresa.class)
@@ -66,9 +65,28 @@ public class EmpresasActivityFragment extends Fragment {
             protected void populateView(View view, Empresa model, int position) {
                 TextView tvName = view.findViewById(R.id.tvempresas);
                 tvName.setText(model.getNombre());
+                TextView tvTipo = view.findViewById(R.id.tvTipo);
+                tvTipo.setText(model.getTipo());
+
+                //empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage(),model.getLlamadas());
+                empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage());
             }
         };
-        lvempresas.setAdapter(adapter);
+        lvempreses.setAdapter(adapter);
+
+
+        lvempreses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?>adapterView, View view, int position, long id) {
+                Empresa empresa=(Empresa)adapterView.getItemAtPosition(position);
+
+                Intent intent=new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
+                intent.putExtra("empresa",empresa);
+                startActivity(intent);
+
+            }
+        });
+
 
         newEmpresa = view.findViewById(R.id.newEmpresa);
         buscar = view.findViewById(R.id.bttbuscar);
