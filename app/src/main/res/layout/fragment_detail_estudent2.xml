@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bluewaal"
     tools:context="com.example.empresasypracticas.DetailEstudent2ActivityFragment"
     tools:showIn="@layout/activity_detail_estudent2"
     xmlns:app="http://schemas.android.com/apk/res-auto">

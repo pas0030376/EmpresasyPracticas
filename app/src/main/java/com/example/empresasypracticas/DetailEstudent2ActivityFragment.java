@@ -78,8 +78,8 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Formulario link: "+link);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Hola. Good job for finishing FCT under "+estudiante.getEmpresa()+". Please rellenar this enquesta. Formulario link: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));

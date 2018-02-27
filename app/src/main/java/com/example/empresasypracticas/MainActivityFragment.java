@@ -67,10 +67,6 @@ public class MainActivityFragment extends Fragment {
                     Intent empresas = new Intent(view.getContext(), EmpresasActivity.class);
                     startActivityForResult(empresas, 0);
                     break;
-                case R.id.formulario:
-                    Intent formularios = new Intent(view.getContext(), FormulariosActivity.class);
-                    startActivityForResult(formularios, 0);
-                    break;
                /* case R.id.lvout:
                     FirebaseAuth.getInstance().signOut();
                     Intent restart = new Intent(view.getContext(),MainActivity.class);
