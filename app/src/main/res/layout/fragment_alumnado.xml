@@ -53,23 +53,11 @@
         app:layout_constraintStart_toEndOf="@+id/btall"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/lvalumnos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/newStudent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btall" />
-
     <Button
         android:id="@+id/newStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="135dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="4dp"
         android:background="@drawable/buttonshape"
         android:fontFamily="@font/montserrat"
         android:text="Afegir Alumne"

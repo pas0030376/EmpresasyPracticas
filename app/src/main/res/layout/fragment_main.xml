@@ -11,10 +11,12 @@
     <Button
         android:id="@+id/alumnado"
         style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="143dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="174dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/button2"
         android:text="ALUMNADO"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,40 +24,27 @@
     <Button
         android:id="@+id/empresas"
         style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="143dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="174dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button2"
         android:text="EMPRESAS"
-        app:layout_constraintEnd_toEndOf="@+id/formulario"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/formulario"
-        app:layout_constraintTop_toBottomOf="@+id/alumnado" />
-
-    <Button
-        android:id="@+id/formulario"
-        style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="FORMULARIOS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empresas" />
+        app:layout_constraintTop_toBottomOf="@+id/alumnado" />
 
     <Button
         android:id="@+id/lvout"
         style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Cerrar Sesion"
+        android:layout_width="187dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button2"
+        android:text="CERRAR SESION"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/formulario" />
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
