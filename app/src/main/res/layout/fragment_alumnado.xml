@@ -64,4 +64,15 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ListView
+        android:id="@+id/lvalumnos"
+        android:layout_width="0dp"
+        android:layout_height="347dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/newStudent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btall" />
 </android.support.constraint.ConstraintLayout>
