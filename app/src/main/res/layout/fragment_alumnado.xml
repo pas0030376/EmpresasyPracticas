@@ -64,13 +64,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btall" />
 
-    <ImageButton
+    <Button
         android:id="@+id/newStudent"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
-        android:src="@android:drawable/ic_input_add"
+        android:background="@drawable/buttonshape"
+        android:fontFamily="@font/montserrat"
+        android:text="Afegir Alumne"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>
