@@ -70,16 +70,16 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     private void sendEmailToStudent(Estudiante estudiante) {
         Log.i("Send email", "");
         String[] TO = {estudiante.getCorreo()};
-        String[] CC = {"zapejustine@gmail.com"};
+        //String[] CC = {"zapejustine@gmail.com"};
         String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Hola. Good job for finishing FCT under "+estudiante.getEmpresa()+". Please rellenar this enquesta. Formulario link: "+link);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Bon dia. Good job for finishing FCT under "+estudiante.getEmpresa()+". Please rellenar this enquesta. Formulario link: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
