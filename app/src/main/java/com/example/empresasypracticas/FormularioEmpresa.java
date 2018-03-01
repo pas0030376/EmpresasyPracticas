@@ -8,10 +8,11 @@ package com.example.empresasypracticas;
 public class FormularioEmpresa {
     private String snom;
     private String scognom;
-    private String email;
+    private String emailStudent;
     private String telefono;
     private String TipoPracticas;
     private String Empresadepracticas;
+    private String cicle;
     private String curso;
     private String relacioncompañeros; //Como calificarias la relacion con los compañeros de trabajo
     private String relaciontutorE; //Como calificarias la relacion con el tutor de trabajo
@@ -19,4 +20,116 @@ public class FormularioEmpresa {
     private String Repetir; // Trabajarias con esta empresa
     private String ValoracionGlobal;
     private String Comentarios;
+
+    public String getCicle() {
+        return cicle;
+    }
+
+    public void setCicle(String cicle) {
+        this.cicle = cicle;
+    }
+
+    public String getSnom() {
+        return snom;
+    }
+
+    public void setSnom(String snom) {
+        this.snom = snom;
+    }
+
+    public String getScognom() {
+        return scognom;
+    }
+
+    public void setScognom(String scognom) {
+        this.scognom = scognom;
+    }
+
+    public String getEmailStudent() {
+        return emailStudent;
+    }
+
+    public void setEmailStudent(String emailStudent) {
+        this.emailStudent = emailStudent;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getTipoPracticas() {
+        return TipoPracticas;
+    }
+
+    public void setTipoPracticas(String tipoPracticas) {
+        TipoPracticas = tipoPracticas;
+    }
+
+    public String getEmpresadepracticas() {
+        return Empresadepracticas;
+    }
+
+    public void setEmpresadepracticas(String empresadepracticas) {
+        Empresadepracticas = empresadepracticas;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getRelacioncompañeros() {
+        return relacioncompañeros;
+    }
+
+    public void setRelacioncompañeros(String relacioncompañeros) {
+        this.relacioncompañeros = relacioncompañeros;
+    }
+
+    public String getRelaciontutorE() {
+        return relaciontutorE;
+    }
+
+    public void setRelaciontutorE(String relaciontutorE) {
+        this.relaciontutorE = relaciontutorE;
+    }
+
+    public String getAprendizaje() {
+        return aprendizaje;
+    }
+
+    public void setAprendizaje(String aprendizaje) {
+        this.aprendizaje = aprendizaje;
+    }
+
+    public String getRepetir() {
+        return Repetir;
+    }
+
+    public void setRepetir(String repetir) {
+        Repetir = repetir;
+    }
+
+    public String getValoracionGlobal() {
+        return ValoracionGlobal;
+    }
+
+    public void setValoracionGlobal(String valoracionGlobal) {
+        ValoracionGlobal = valoracionGlobal;
+    }
+
+    public String getComentarios() {
+        return Comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        Comentarios = comentarios;
+    }
 }
