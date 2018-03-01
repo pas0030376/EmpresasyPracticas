@@ -37,8 +37,8 @@ public class verLlamadas extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    Empresa empresa;
     Llamada llamada;
+    Empresa empresa;
 
     FirebaseListAdapter<Llamada> adapter;
     DatabaseReference query;
@@ -89,9 +89,15 @@ public class verLlamadas extends Fragment {
         Intent i = getActivity().getIntent();
         empresa = (Empresa) i.getSerializableExtra("empresa");
 
+        /*query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Empresas").child(empresa.getNombre()).child("Llamadas");*/
         query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Empresas").child(empresa.getNombre()).child("Llamadas");
+                .child("Llamadas/Accenture");
+       /* query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Llamaditas").child(empresa.getNombre());*/
 
 
         options = new FirebaseListOptions.Builder<Llamada>()

@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -104,6 +103,8 @@ public class DetailEstudent2ActivityFragment extends Fragment {
 
             Log.i("Finished sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
+           // Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+
             Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
