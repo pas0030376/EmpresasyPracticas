@@ -18,8 +18,8 @@ public class FormularioEmpresa {
     private String relaciontutorE; //Como calificarias la relacion con el tutor de trabajo
     private String aprendizaje; //Valoracion del aprendizaje en la empresa
     private String Repetir; // Trabajarias con esta empresa
-    private String ValoracionGlobal;
-    private String Comentarios;
+    private String ValoracionGlobalS;
+    private String Scomentarios;
 
     public String getCicle() {
         return cicle;
@@ -117,19 +117,20 @@ public class FormularioEmpresa {
         Repetir = repetir;
     }
 
-    public String getValoracionGlobal() {
-        return ValoracionGlobal;
+    public String getValoracionGlobalS() {
+        return ValoracionGlobalS;
     }
 
-    public void setValoracionGlobal(String valoracionGlobal) {
-        ValoracionGlobal = valoracionGlobal;
+    public void setValoracionGlobalS(String valoracionGlobalS) {
+        ValoracionGlobalS = valoracionGlobalS;
     }
 
-    public String getComentarios() {
-        return Comentarios;
+    public String getScomentarios() {
+        return Scomentarios;
     }
 
-    public void setComentarios(String comentarios) {
-        Comentarios = comentarios;
+    public void setScomentarios(String scomentarios) {
+        Scomentarios = scomentarios;
     }
+}
 }
