@@ -33,12 +33,12 @@ public class MainActivityFragment extends Fragment {
         //out = view.findViewById(R.id.lvout);
         Button alumnado = view.findViewById(R.id.alumnado);
         Button empresas = view.findViewById(R.id.empresas);
-        Button formularios = view.findViewById(R.id.formulario);
+
 
         //out.setOnClickListener(listener);
         alumnado.setOnClickListener(listener);
         empresas.setOnClickListener(listener);
-        formularios.setOnClickListener(listener);
+
 
         return view;
     }

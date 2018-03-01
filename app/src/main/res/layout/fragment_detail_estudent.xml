@@ -13,16 +13,18 @@
         android:id="@+id/tvnombreEF"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/comfortaa"
         android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:gravity="start" />
 
     <TextView
         android:id="@+id/tvinicio"
@@ -31,6 +33,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/comfortaa"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -41,15 +44,20 @@
 
     <TextView
         android:id="@+id/tvempresaEF"
-        android:layout_width="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Empresa"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black"
         android:textSize="30sp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
+        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF"
+        android:layout_marginLeft="8dp"
+        android:gravity="start" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

@@ -92,7 +92,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
 
     private void MostrarEstudiante(Estudiante estudiante) {
         String fullname = estudiante.getNom().concat(" "+estudiante.getCognom());
-        getActivity().setTitle(fullname);
+        getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
         String nie = estudiante.getNIE();

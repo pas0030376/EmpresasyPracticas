@@ -48,10 +48,11 @@
 
     <Button
         android:id="@+id/newEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="224dp"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="252dp"
         android:layout_marginLeft="16dp"
+        android:background="@drawable/buttonshape"
         android:text="Añadir empresa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

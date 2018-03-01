@@ -34,6 +34,7 @@ public class addEstudiantesActivityFragment extends Fragment {
     View view;
     private DatabaseReference mRef;
     private Task<Void> mDatabase;
+    Button cancel;
     Button addStudent;
     public addEstudiantesActivityFragment() {
     }
@@ -47,6 +48,14 @@ public class addEstudiantesActivityFragment extends Fragment {
 
 
         addStudent = view.findViewById(R.id.addstudent);
+        cancel = view.findViewById(R.id.btncancelar);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Studiante = new Intent(view.getContext(), AlumnadoActivity.class);
+                startActivityForResult(Studiante, 0);
+            }
+        });
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +81,6 @@ public class addEstudiantesActivityFragment extends Fragment {
             EditText empresa = view.findViewById(R.id.etempresa);
             String fempresa = empresa.getText().toString();
             Context context = getContext();
-
                             EditText inicio_practicas = view.findViewById(R.id.etinicio);
                             Date date = new Date();
                             String finicio = inicio_practicas.getText().toString();
@@ -107,7 +115,6 @@ public class addEstudiantesActivityFragment extends Fragment {
                         toast.show();
                         error++;
                     }
-
             EditText tipo_practicas = view.findViewById(R.id.ettipopracticas);
             String ftipo = tipo_practicas.getText().toString();
             EditText email = view.findViewById(R.id.etemail);
@@ -119,9 +126,6 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
-
-
-
 
             if (error==0){
                 Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas);
