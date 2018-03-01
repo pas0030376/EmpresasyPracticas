@@ -79,7 +79,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         //emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Bon dia. Good job for finishing FCT under "+estudiante.getEmpresa()+". Please rellenar this enquesta. Formulario link: "+link);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions, Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques. Link: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
