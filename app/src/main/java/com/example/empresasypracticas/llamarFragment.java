@@ -39,7 +39,7 @@ public class llamarFragment extends Fragment {
     ImageButton imageButtonLlamar;
     EditText tvFecha,tvHora,tvMotivo,tvPersonaContactada;
     boolean llamadaEfectuada=false;
-    Empresa empresa;
+    Empresa empresa=new Empresa();
     Llamada llamada;
     private DatabaseReference mRef;
     private Task<Void> mDatabase;
@@ -161,18 +161,31 @@ public class llamarFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
     private void guardarLlamada(){ //guardamos los datos de la llamada en la empresa correpondiente.
-        String fechaLlamada="",horaLlamada="",motivoLlamada="",personaContactadaLlamada="";
+        String nombreEmpresa="",fechaLlamada="",horaLlamada="",motivoLlamada="",personaContactadaLlamada="";
+        nombreEmpresa=empresa.getNombre();
         fechaLlamada=tvFecha.getText().toString().trim();
         horaLlamada=tvHora.getText().toString().trim();
         motivoLlamada=tvMotivo.getText().toString().trim();
         personaContactadaLlamada=tvPersonaContactada.getText().toString().trim();
-        llamada=new Llamada(fechaLlamada,horaLlamada,motivoLlamada,personaContactadaLlamada);
+        llamada=new Llamada(nombreEmpresa,fechaLlamada,horaLlamada,motivoLlamada,personaContactadaLlamada);
 
-        mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
+        /*mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
         String mId = mRef.push().getKey();
         mDatabase = mRef.child("Empresas").child(empresa.getNombre()).child("Llamadas").child(mId).setValue(llamada);
         Intent intent = new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
+        startActivityForResult(intent, 0);*/
+
+        mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
+        String mId = mRef.push().getKey();
+        mDatabase = mRef.child("Llamadas").child(empresa.getNombre()).child(mId).setValue(llamada);
+        //mDatabase = mRef.child("Llamaditas").child(mId).setValue(llamada);
+        //mDatabase = mRef.child("Llamadas_"+empresa.getNombre()).child(mId).setValue(llamada);
+
+
+        Intent intent = new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
         startActivityForResult(intent, 0);
+
+
     }
 
 }
