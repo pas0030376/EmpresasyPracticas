@@ -2,6 +2,7 @@ package com.example.empresasypracticas;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,17 +15,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Properties;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class DetailEstudent2ActivityFragment extends Fragment {
+    FirebaseListAdapter adapterForm;
+    FirebaseListOptions options;
+    DatabaseReference query;
     ArrayList<String> items;
     ArrayAdapter<String> adapter;
     TextView nom;
@@ -36,6 +40,20 @@ public class DetailEstudent2ActivityFragment extends Fragment {
 
     public DetailEstudent2ActivityFragment() {
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterForm.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterForm.stopListening();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,10 +113,6 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
-        String nie = estudiante.getNIE();
-
-        CommentsShow(nie);
-
         nom.setText(fullname);
         empresa.setText(estudiante.getEmpresa());
         inicio.setText(fechas);
@@ -114,8 +128,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         );
     }
 
-    private String CommentsShow(String nie){
+    private void CommentsShow(String nie){
 
-        return "hola";
     }
 }
