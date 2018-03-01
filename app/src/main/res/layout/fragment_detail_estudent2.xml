@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bluewaal"
     tools:context="com.example.empresasypracticas.DetailEstudent2ActivityFragment"
     tools:showIn="@layout/activity_detail_estudent2"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -15,9 +14,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="start"
         android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Fecha Inicio"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -40,124 +42,64 @@
 
     <TextView
         android:id="@+id/tvempresaEF"
-        android:layout_width="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Empresa"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
+        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF"
+        android:gravity="start"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:id="@+id/tvmotivos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Motivos:"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        app:layout_constraintBottom_toTopOf="@+id/tvmotivos"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginRight="8dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        app:layout_constraintBottom_toTopOf="@+id/tvmotivos"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginRight="8dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        app:layout_constraintBottom_toTopOf="@+id/tvmotivos"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginRight="8dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        app:layout_constraintBottom_toTopOf="@+id/tvmotivos"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
-        app:layout_constraintVertical_bias="0.125"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginRight="8dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="176dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
-        app:srcCompat="@android:drawable/btn_star_big_off" />
+        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF" />
 
     <TextView
         android:id="@+id/tvcomments"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Comentarios"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvmotivos" />
 
     <Button
         android:id="@+id/btnSendEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="SEND FORMULARIO LINK"
+        android:background="@drawable/buttonshape"
+        android:text="Enviar formulari"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvcomments" />
+        app:layout_constraintTop_toBottomOf="@+id/tvcomments"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.empresasypracticas;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,17 +15,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Properties;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.firebase.database.DatabaseReference;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class DetailEstudent2ActivityFragment extends Fragment {
+    FirebaseListAdapter adapterForm;
+    FirebaseListOptions options;
+    DatabaseReference query;
     ArrayList<String> items;
     ArrayAdapter<String> adapter;
     TextView nom;
@@ -36,6 +39,20 @@ public class DetailEstudent2ActivityFragment extends Fragment {
 
     public DetailEstudent2ActivityFragment() {
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterForm.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterForm.stopListening();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,16 +86,17 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     @SuppressLint("LongLogTag")
     private void sendEmailToStudent(Estudiante estudiante) {
         Log.i("Send email", "");
-        String[] TO = {""};
-        String[] CC = {""};
+        String[] TO = {estudiante.getCorreo()};
+        //String[] CC = {"zapejustine@gmail.com"};
+        String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions, Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques. Link: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
@@ -86,15 +104,15 @@ public class DetailEstudent2ActivityFragment extends Fragment {
             Log.i("Finished sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
            // Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void MostrarEstudiante(Estudiante estudiante) {
         String fullname = estudiante.getNom().concat(" "+estudiante.getCognom());
-        getActivity().setTitle(fullname);
+        getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
-
-        String nie = estudiante.getNIE();
 
         nom.setText(fullname);
         empresa.setText(estudiante.getEmpresa());
@@ -109,5 +127,9 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                 R.id.tvtareaname,
                 items
         );
+    }
+
+    private void CommentsShow(String nie){
+
     }
 }

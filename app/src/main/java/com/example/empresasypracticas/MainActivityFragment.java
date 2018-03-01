@@ -33,12 +33,12 @@ public class MainActivityFragment extends Fragment {
         //out = view.findViewById(R.id.lvout);
         Button alumnado = view.findViewById(R.id.alumnado);
         Button empresas = view.findViewById(R.id.empresas);
-        Button formularios = view.findViewById(R.id.formulario);
+
 
         //out.setOnClickListener(listener);
         alumnado.setOnClickListener(listener);
         empresas.setOnClickListener(listener);
-        formularios.setOnClickListener(listener);
+
 
         return view;
     }
@@ -66,10 +66,6 @@ public class MainActivityFragment extends Fragment {
                 case R.id.empresas:
                     Intent empresas = new Intent(view.getContext(), EmpresasActivity.class);
                     startActivityForResult(empresas, 0);
-                    break;
-                case R.id.formulario:
-                    Intent formularios = new Intent(view.getContext(), FormulariosActivity.class);
-                    startActivityForResult(formularios, 0);
                     break;
                /* case R.id.lvout:
                     FirebaseAuth.getInstance().signOut();

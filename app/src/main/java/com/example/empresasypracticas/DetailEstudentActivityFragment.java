@@ -45,7 +45,7 @@ public class DetailEstudentActivityFragment extends Fragment {
 
     private void MostrarEstudiante(Estudiante estudiante,ListView lvTareas) {
         String fullname = estudiante.getNom().concat(" "+estudiante.getCognom());
-        getActivity().setTitle(fullname);
+        getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
         nom.setText(fullname);
