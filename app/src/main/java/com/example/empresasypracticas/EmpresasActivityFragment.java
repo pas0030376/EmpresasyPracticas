@@ -105,6 +105,7 @@ public class EmpresasActivityFragment extends Fragment {
             switch(view.getId())
             {
                 case R.id.newEmpresa:
+
                     Intent addEmpresa = new Intent(view.getContext(), addEmpresaActivity.class);
                     startActivityForResult(addEmpresa, 0);
                     break;

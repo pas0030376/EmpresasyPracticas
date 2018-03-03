@@ -16,6 +16,7 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 /**
@@ -38,15 +39,26 @@ public class verLlamadas extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     Llamada llamada;
-    Empresa empresa;
+    Empresa empresa=new Empresa();
 
     FirebaseListAdapter<Llamada> adapter;
-    DatabaseReference query;
+    Query query;
     FirebaseListOptions<Llamada> options;
 
 
     public verLlamadas() {
         // Required empty public constructor
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     /**
@@ -79,29 +91,22 @@ public class verLlamadas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ver_llamadas, container, false);
-        getActivity().setTitle("Historial llamadas");
-
-        ListView lvllamadas = (ListView) view.findViewById(R.id.lvllamadas);
-
         //recogemos el objecto empresa desde la actividad anterior
         Intent i = getActivity().getIntent();
         empresa = (Empresa) i.getSerializableExtra("empresa");
 
-        /*query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("Empresas").child(empresa.getNombre()).child("Llamadas");*/
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_ver_llamadas, container, false);
+        getActivity().setTitle("Historial llamadas "+empresa.getNombre());
+
+        ListView lvllamadas = (ListView) view.findViewById(R.id.lvllamadas);
+
         query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Llamadas/Accenture");
-       /* query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("Llamaditas").child(empresa.getNombre());*/
-
+                .child("Llamadas").orderByChild("nombreEmpresa").equalTo(empresa.getNombre());
 
         options = new FirebaseListOptions.Builder<Llamada>()
-                .setQuery(query, Llamada.class)
+                .setQuery(query,Llamada.class)
                 .setLayout(R.layout.lv_llamadas)
                 .build();
 
@@ -109,23 +114,22 @@ public class verLlamadas extends Fragment {
             @Override
             protected void populateView(View v, Llamada model, int position) {
                 TextView tvDia = v.findViewById(R.id.tvDia);
-                tvDia.setText("hola");
+                tvDia.setText(model.getFechaLlamada());
                 TextView tvHora = v.findViewById(R.id.tvHora);
                 tvHora.setText(model.getHoraLLamada());
-
-               // llamada = new Llamada(model.getFechaLlamada(), model.getHoraLLamada(), model.getMotivoLlamada(), model.getPersonaContactada());
-
+                llamada=new Llamada(model.getNombreEmpresa(),model.getFechaLlamada(),model.getHoraLLamada(),model.getMotivoLlamada(),model.getPersonaContactada());
             }
         };
+
+
         lvllamadas.setAdapter(adapter);
         lvllamadas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Llamada llamada = (Llamada) parent.getItemAtPosition(position);
-
-                Intent intent = new Intent(getContext(), DetallesEmpresaBottomNavigation.class);
-                /*putExtra("empresa",empresa);
-                startActivity(intent);*/
+            Llamada llamada = (Llamada) parent.getItemAtPosition(position);
+            Intent intent = new Intent(getContext(),DetallesLlamada.class);
+            intent.putExtra("llamada",llamada);
+            startActivity(intent);
             }
         });
 

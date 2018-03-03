@@ -1,6 +1,8 @@
 package com.example.empresasypracticas;
 
-public class Llamada {
+import java.io.Serializable;
+
+public class Llamada implements Serializable {
     //private int id;
     private String nombreEmpresa;//new
     private String fechaLlamada;
@@ -23,7 +25,8 @@ public class Llamada {
         this.personaContactada = personaContactada;
     }
 
-    /*public int getId() {
+    public Llamada() {}
+/*public int getId() {
         return id;
     }
 

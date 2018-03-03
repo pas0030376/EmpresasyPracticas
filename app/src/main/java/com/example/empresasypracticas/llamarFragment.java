@@ -1,6 +1,8 @@
 package com.example.empresasypracticas;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,10 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -36,11 +43,11 @@ public class llamarFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    ImageButton imageButtonLlamar;
+    Button btnLlamar;
     EditText tvFecha,tvHora,tvMotivo,tvPersonaContactada;
-    boolean llamadaEfectuada=false;
     Empresa empresa=new Empresa();
     Llamada llamada;
+    String fechaActual,horaActual;
     private DatabaseReference mRef;
     private Task<Void> mDatabase;
 
@@ -82,13 +89,20 @@ public class llamarFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_llamar, container, false);
         Button btnGuardar=view.findViewById(R.id.btnGuardar);
-        imageButtonLlamar=view.findViewById(R.id.imageButtonLlamar);
+        btnLlamar=view.findViewById(R.id.btnLlamar);
         tvFecha=view.findViewById(R.id.etFecha);
         tvHora=view.findViewById(R.id.etHora);
         tvMotivo=view.findViewById(R.id.etMotivo);
         tvPersonaContactada=view.findViewById(R.id.etPersonaContactada);
 
+        //recogemos la fecha actual del sistema dándole formato
+        Date date =new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        fechaActual=dateFormat.format(date);
 
+        //recogemos la hora actual del sistema dándole formato
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        horaActual=hourFormat.format(date);
 
         //recogemos el objecto empresa desde la actividad anterior
         Intent i = getActivity().getIntent();
@@ -99,14 +113,10 @@ public class llamarFragment extends Fragment {
             }
         }
 
-
-        imageButtonLlamar.setOnClickListener(new View.OnClickListener() {
+        btnLlamar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:"+empresa.getTelefono()));
-                startActivity(intent);
-                llamadaEfectuada=true;
+                dialogoConfirmar(); //mostramos un cuadro de diálogo con las opciones llamar o cancelar
             }
         });
 
@@ -119,6 +129,35 @@ public class llamarFragment extends Fragment {
 
         return view;
     }
+    private void dialogoConfirmar() {
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext());
+        dialogo1.setTitle("Atención:");
+        dialogo1.setMessage("¿Desea realizar una llamada a "+empresa.getNombre()+" ?");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Llamar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                aceptar();
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+
+            }
+        });
+        dialogo1.show();
+    }
+
+    public void aceptar() {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:"+empresa.getTelefono()));
+        startActivity(intent);
+
+        //mostramos en el tvFecha la fecha actual
+        tvFecha.setText(fechaActual);
+        //mostramos en el tvHora la hora actual
+        tvHora.setText(horaActual);
+    }
+
     private void MostrarEmpresa(Empresa empresa) {
         String nomEmpresa=empresa.getNombre();
         getActivity().setTitle(nomEmpresa);
@@ -169,18 +208,9 @@ public class llamarFragment extends Fragment {
         personaContactadaLlamada=tvPersonaContactada.getText().toString().trim();
         llamada=new Llamada(nombreEmpresa,fechaLlamada,horaLlamada,motivoLlamada,personaContactadaLlamada);
 
-        /*mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
-        String mId = mRef.push().getKey();
-        mDatabase = mRef.child("Empresas").child(empresa.getNombre()).child("Llamadas").child(mId).setValue(llamada);
-        Intent intent = new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
-        startActivityForResult(intent, 0);*/
-
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
         String mId = mRef.push().getKey();
-        mDatabase = mRef.child("Llamadas").child(empresa.getNombre()).child(mId).setValue(llamada);
-        //mDatabase = mRef.child("Llamaditas").child(mId).setValue(llamada);
-        //mDatabase = mRef.child("Llamadas_"+empresa.getNombre()).child(mId).setValue(llamada);
-
+        mDatabase = mRef.child("Llamadas").child(mId).setValue(llamada);
 
         Intent intent = new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
         startActivityForResult(intent, 0);

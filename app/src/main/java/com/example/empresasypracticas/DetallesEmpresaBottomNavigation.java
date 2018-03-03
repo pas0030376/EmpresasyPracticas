@@ -35,7 +35,6 @@ public class DetallesEmpresaBottomNavigation extends AppCompatActivity {
                     return true;
                 case R.id.navigation_verAlumnos:
                     transaction.replace(R.id.container, new verLlamadas()).commit();
-
                     return true;
             }
             return false;
@@ -49,7 +48,9 @@ public class DetallesEmpresaBottomNavigation extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.container, new editarFragment()).commit();
 
         //recogemos el objecto empresa desde la actividad anterior
         Intent i = getIntent();
