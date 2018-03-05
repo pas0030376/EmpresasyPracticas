@@ -88,7 +88,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     private void sendEmailToStudent(Estudiante estudiante) {
         Log.i("Send email", "");
         String[] TO = {estudiante.getCorreo()};
-        //String[] CC = {"zapejustine@gmail.com"};
+        //String[] CC = {"proyectopoblenou@gmail.com"};
         String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
@@ -96,17 +96,18 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         //emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions, Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques. Link: "+link);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            Toast.makeText(getContext(), "Email enviat.", Toast.LENGTH_SHORT).show();
 
             Log.i("Finished sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
            // Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Email no enviat.", Toast.LENGTH_SHORT).show();
         }
     }
 
