@@ -16,15 +16,14 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.Query;
 
 
 public class DetailEstudent2ActivityFragment extends Fragment {
-    FirebaseListAdapter<FormularioEstudiante> adapterForm;
+    FirebaseListAdapter<FormularioEstudiante> adapter;
     FirebaseListOptions<FormularioEstudiante> options;
-    DatabaseReference query;
+    Query query;
     TextView nom;
     TextView empresa;
     TextView inicio;
@@ -37,14 +36,12 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapterForm.startListening();
-    }
+        adapter.startListening();}
 
     @Override
     public void onStop() {
         super.onStop();
-        adapterForm.stopListening();
-    }
+        adapter.stopListening();}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,37 +55,42 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         ListView lvcomments = view.findViewById(R.id.lvcomments);
 
         Intent i = getActivity().getIntent();
-        final Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
+
         if (i != null) {
+            final Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
             if (estudiante != null) {
                 MostrarEstudiante(estudiante);
                 lvcomments.findViewById(R.id.lvcomments);
-                String nie = estudiante.getNIE();
+                String email = estudiante.getCorreo();
 
                 query = FirebaseDatabase.getInstance()
                         .getReference()
-                        .child("FormularioEstudiante");
+                        .child("FormularioEstudiante").orderByChild("EstudenEmail").equalTo(email);
 
                 options = new FirebaseListOptions.Builder<FormularioEstudiante>()
                         .setQuery(query,FormularioEstudiante.class)
                         .setLayout(R.layout.lv_comentariosstudents)
                         .build();
 
-                adapterForm = new FirebaseListAdapter<FormularioEstudiante>(options){
+                adapter = new FirebaseListAdapter<FormularioEstudiante>(options){
                     @Override
                     protected void populateView(View v, FormularioEstudiante model, int position) {
-                        if (model == null){
-                            TextView formacionInicial = view.findViewById(R.id.f1);
-                            formacionInicial.setText(model.getFormacionInicial());
-                        }
-                        else {
-                            Toast.makeText(getContext(), "Aun no se ha respondido este cuestionario",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                            TextView formacionInicial = v.findViewById(R.id.f1);
+                            formacionInicial.setText("Valoració de la formació inicial de l'estudiant: "+model.getFormacionInicial());
+                            TextView valoracionGlobal = v.findViewById(R.id.vg);
+                            valoracionGlobal.setText("Valoració global de les pràctiques: "+model.getValoracionGlobal());
+                            TextView valoracionestudiante = v.findViewById(R.id.ve);
+                            valoracionestudiante.setText("Valoració general de l'estudiant: "+model.getValoracionEstudiante());
+                            TextView repetirColab = v.findViewById(R.id.rc);
+                            repetirColab.setText("¿Es repetiria una col·laboració amb "+model.getEstudentFullname()+"? "+model.getRepitirColaboracion());
+                            TextView comentarios = v.findViewById(R.id.comments);
+                            comentarios.setText("Comentaris: "+model.getComentarios());
+                            TextView motivo = v.findViewById(R.id.motivo);
+                            motivo.setText("Motiu de la finalització: "+model.getMotivoFin());
                     }
                 };
 
-                lvcomments.setAdapter(adapterForm);
+                lvcomments.setAdapter(adapter);
 
                 sendEmail.setOnClickListener(new View.OnClickListener() {
                     @Override
