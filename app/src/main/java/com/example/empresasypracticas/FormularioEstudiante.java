@@ -13,7 +13,6 @@ public class FormularioEstudiante implements Serializable {
     private String EmpresaA; //empresa answering
     private String TutorEmail;
     private String Tutornumero;
-    private String EstudentNIE;
     private String EstudenEmail;
     private String EstudentFullname;
     private String FormacionInicial; //Satisfaccion con la formacion inicial del alumno
@@ -23,6 +22,14 @@ public class FormularioEstudiante implements Serializable {
     private String Comentarios; //Comentarios extras;
     private String MotivoFin; //¿Porque terminaron las practicas?  Despido, fin convenio, otros;
 
+
+    public String getTutornumero() {
+        return Tutornumero;
+    }
+
+    public void setTutornumero(String tutornumero) {
+        Tutornumero = tutornumero;
+    }
 
     public String getMotivoFin() {
         return MotivoFin;
@@ -62,14 +69,6 @@ public class FormularioEstudiante implements Serializable {
 
     public void setTutorEmail(String tutorEmail) {
         TutorEmail = tutorEmail;
-    }
-
-    public String getEstudentNIE() {
-        return EstudentNIE;
-    }
-
-    public void setEstudentNIE(String estudentNIE) {
-        EstudentNIE = estudentNIE;
     }
 
     public String getEstudenEmail() {

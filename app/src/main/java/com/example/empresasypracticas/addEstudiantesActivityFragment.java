@@ -44,7 +44,7 @@ public class addEstudiantesActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_add_estudiantes, container, false);
 
-        getActivity().setTitle("Añadir Estudiante");
+        getActivity().setTitle("Afegir Alumne");
 
 
         addStudent = view.findViewById(R.id.addstudent);
