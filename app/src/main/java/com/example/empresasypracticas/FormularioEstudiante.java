@@ -1,11 +1,13 @@
 package com.example.empresasypracticas;
 
+import java.io.Serializable;
+
 /**
  * Created by Vicky on 01/03/2018.
  * Preguntas a hacer a las empresas sobre los estudiantes
  */
 
-public class FormularioEstudiante {
+public class FormularioEstudiante implements Serializable {
     private String Tutornom;
     private String Tutorcognom;
     private String EmpresaA; //empresa answering

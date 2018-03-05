@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,21 +27,20 @@ import java.util.Date;
 
 
 public class DetailEstudent2ActivityFragment extends Fragment {
-    FirebaseListAdapter adapterForm;
-    FirebaseListOptions options;
+    FirebaseListAdapter<FormularioEstudiante> adapterForm;
+    FirebaseListOptions<FormularioEstudiante> options;
     DatabaseReference query;
     ArrayList<String> items;
     ArrayAdapter<String> adapter;
     TextView nom;
     TextView empresa;
     TextView inicio;
-    TextView motivo;
-    TextView comentarios;
     Button sendEmail;
+    ListView lv_comments;
+    View view;
 
     public DetailEstudent2ActivityFragment() {
     }
-
 
     @Override
     public void onStart() {
@@ -54,16 +54,13 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         adapterForm.stopListening();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_estudent2, container, false);
+        view = inflater.inflate(R.layout.fragment_detail_estudent2, container, false);
         nom = view.findViewById(R.id.tvnombreEF);
         empresa = view.findViewById(R.id.tvempresaEF);
         inicio = view.findViewById(R.id.tvfechasEF);
-        motivo = view.findViewById(R.id.tvmotivos);
-        comentarios = view.findViewById(R.id.tvcomments);
         sendEmail = view.findViewById(R.id.btnSendEmail);
 
 
@@ -116,22 +113,53 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
+        String nie = estudiante.getNIE();
+        CommentsShow(nie);
         nom.setText(fullname);
+
         empresa.setText(estudiante.getEmpresa());
         inicio.setText(fechas);
-        motivo.setText("Motivo: Finalizacion del convenio");
-        comentarios.setText("Buen estudiante, Trabajador, Resposable, Trabajo en equipo, lo mejor de lo mejor in the world");
 
-        items = new ArrayList<>(estudiante.getTareas());
-        adapter = new ArrayAdapter<>(
-                getContext(),
-                R.layout.lv_tareas,
-                R.id.tvtareaname,
-                items
-        );
+        lv_comments.findViewById(R.id.lvcomments);
+        query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("FormularioEstudiante");
+
+        options = new FirebaseListOptions.Builder<FormularioEstudiante>()
+                .setQuery(query.equalTo(nie),FormularioEstudiante.class)
+                .setLayout(R.layout.lv_comentariosstudents)
+                .build();
+
+        adapterForm = new FirebaseListAdapter<FormularioEstudiante>(options){
+            @Override
+            protected void populateView(View v, FormularioEstudiante model, int position) {
+                TextView formacionInicial = view.findViewById(R.id.f1);
+                formacionInicial.setText(model.getFormacionInicial());
+            }
+        };
+
+        lv_comments.setAdapter(adapterForm);
     }
 
     private void CommentsShow(String nie){
+      /*  lv_comments.findViewById(R.id.lvcomments);
+        query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("FormularioEstudiante");
 
+        options = new FirebaseListOptions.Builder<FormularioEstudiante>()
+                .setQuery(query.equalTo(nie),FormularioEstudiante.class)
+                .setLayout(R.layout.lv_comentariosstudents)
+                .build();
+
+        adapterForm = new FirebaseListAdapter<FormularioEstudiante>(options){
+            @Override
+            protected void populateView(View v, FormularioEstudiante model, int position) {
+                TextView formacionInicial = view.findViewById(R.id.f1);
+                formacionInicial.setText(model.getFormacionInicial());
+            }
+        };
+
+        lv_comments.setAdapter(adapterForm);*/
     }
 }
