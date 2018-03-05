@@ -1,16 +1,45 @@
 package com.example.empresasypracticas;
 
-public class Llamada {
+import java.io.Serializable;
+
+public class Llamada implements Serializable {
+    //private int id;
+    private String nombreEmpresa;//new
     private String fechaLlamada;
     private String horaLLamada;
     private String motivoLlamada;
     private String personaContactada;
 
-    public Llamada(String fechaLlamada, String horaLLamada, String motivoLlamada, String personaContactada) {
+    /*public Llamada(String fechaLlamada, String horaLLamada, String motivoLlamada, String personaContactada) {
         this.fechaLlamada = fechaLlamada;
         this.horaLLamada = horaLLamada;
         this.motivoLlamada = motivoLlamada;
         this.personaContactada = personaContactada;
+    }*/
+
+    public Llamada(String nombreEmpresa, String fechaLlamada, String horaLLamada, String motivoLlamada, String personaContactada) {
+        this.nombreEmpresa = nombreEmpresa;
+        this.fechaLlamada = fechaLlamada;
+        this.horaLLamada = horaLLamada;
+        this.motivoLlamada = motivoLlamada;
+        this.personaContactada = personaContactada;
+    }
+
+    public Llamada() {}
+/*public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }*/
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
     }
 
     public String getFechaLlamada() {

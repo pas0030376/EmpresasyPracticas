@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class Empresa implements Serializable {
+    //private int idEmpresa;
     private String nombre;
     private String tipo;
     private String telefono;

@@ -4,13 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#62C7FA"
     tools:context="com.example.empresasypracticas.addEmpresaActivityFragment"
     tools:showIn="@layout/activity_add_empresa"
     android:orientation="vertical">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="44dp" />
 
     <EditText
         android:id="@+id/etnomempresa"
@@ -59,22 +56,20 @@
         android:hint="Persona de contacto:"
         android:inputType="textPersonName" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="83dp" />
-
     <Button
         android:id="@+id/addempresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/buttonshape"
         android:text="Añadir nueva empresa" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttonshape"
         android:text="Cancelar" />
 
 </LinearLayout>

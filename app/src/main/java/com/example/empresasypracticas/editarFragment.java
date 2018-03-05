@@ -76,7 +76,7 @@ public class editarFragment extends Fragment {
         telfEmpresa=view.findViewById(R.id.tvTelefono);
         personaDeContacto=view.findViewById(R.id.tvPersonaDeContacto);
         correoEmpresa=view.findViewById(R.id.tvCorreo);
-        webEmpresa=view.findViewById(R.id.tvWeb);
+
 
         //recogemos el objecto empresa desde la actividad anterior
         Intent i = getActivity().getIntent();
@@ -90,7 +90,7 @@ public class editarFragment extends Fragment {
                 telfEmpresa.setText(empresa.getTelefono());
                 personaDeContacto.setText(empresa.getPersonaDeContacto());
                 correoEmpresa.setText(empresa.getCorreoElectronico());
-                webEmpresa.setText(empresa.getWebpage());
+
 
             }
         }

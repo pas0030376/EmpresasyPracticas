@@ -4,32 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#62C7FA"
     tools:context="com.example.empresasypracticas.llamarFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="#62C7FA"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButtonLlamar"
+        <Button
+            android:id="@+id/btnLlamar"
             android:layout_width="wrap_content"
-            android:layout_height="62dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_green_light"
-            android:elevation="0dp"
-            android:src="@android:drawable/stat_sys_phone_call" />
-
+            android:background="@drawable/buttonshape"
+            android:text="Llamar" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -58,9 +60,9 @@
                 android:id="@+id/etHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:layout_marginLeft="20dp"
 
                 android:hint="Hora de la llamada"
                 android:inputType="textPersonName" />
@@ -94,9 +96,9 @@
                 android:id="@+id/etPersonaContactada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:layout_marginLeft="20dp"
 
                 android:hint="Persona contactada:"
                 android:inputType="textPersonName" />
@@ -105,16 +107,38 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="1dp"
+            android:background="#62C7FA"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnGuardar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/buttonshape"
                 android:layout_weight="1"
                 android:text="Guardar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="3dp"
+            android:background="#62C7FA"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/buttonshape"
+                android:layout_weight="1"
+                android:text="Cancelar" />
         </LinearLayout>
 
     </LinearLayout>

@@ -10,8 +10,9 @@ import java.io.Serializable;
 public class FormularioEstudiante implements Serializable {
     private String Tutornom;
     private String Tutorcognom;
-    private String EmpresaA;
+    private String EmpresaA; //empresa answering
     private String TutorEmail;
+    private String Tutornumero;
     private String EstudentNIE;
     private String EstudenEmail;
     private String EstudentFullname;
@@ -21,6 +22,7 @@ public class FormularioEstudiante implements Serializable {
     private String RepitirColaboracion; //¿Repitiria la colaboracion con este estudiante;
     private String Comentarios; //Comentarios extras;
     private String MotivoFin; //¿Porque terminaron las practicas?  Despido, fin convenio, otros;
+
 
     public String getMotivoFin() {
         return MotivoFin;
