@@ -11,10 +11,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/comfortaa"
-        android:text="Valoracion del Estudiante"
+        android:text="Encara no s'ha respòs aquest qüestionari"
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
         android:textSize="30sp"
@@ -24,8 +23,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="368dp"
-        android:layout_height="370dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
@@ -44,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Valoracion Inicial"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -53,7 +51,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Valoracion Global"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -62,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Valoracion Estudiante"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -71,7 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Repetir Colaboracion"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -80,7 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Comentarios"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -89,7 +83,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:text="Motivos"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
     </LinearLayout>
