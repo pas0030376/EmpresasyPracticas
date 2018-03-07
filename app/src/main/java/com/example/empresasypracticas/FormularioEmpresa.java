@@ -132,5 +132,5 @@ public class FormularioEmpresa {
     public void setScomentarios(String scomentarios) {
         Scomentarios = scomentarios;
     }
-}
+
 }

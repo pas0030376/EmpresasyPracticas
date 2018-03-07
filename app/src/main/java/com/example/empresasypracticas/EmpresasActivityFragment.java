@@ -47,7 +47,7 @@ public class EmpresasActivityFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_empresas, container, false);
         getActivity().setTitle("Empresas");
 
-        ListView lvempreses = (ListView) view.findViewById(R.id.lvempresas);
+        ListView lvempreses = view.findViewById(R.id.lvempresas);
 
         DatabaseReference query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -105,7 +105,6 @@ public class EmpresasActivityFragment extends Fragment {
             switch(view.getId())
             {
                 case R.id.newEmpresa:
-
                     Intent addEmpresa = new Intent(view.getContext(), addEmpresaActivity.class);
                     startActivityForResult(addEmpresa, 0);
                     break;

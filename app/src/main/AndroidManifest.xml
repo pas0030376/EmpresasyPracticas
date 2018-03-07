@@ -45,15 +45,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.MainActivity" />
         </activity>
-        <activity
-            android:name=".FormulariosActivity"
-            android:label="@string/title_activity_formularios"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.empresasypracticas.MainActivity" />
-        </activity>
+
         <activity
             android:name=".addEstudiantesActivity"
             android:label="@string/title_activity_add_estudiantes"
