@@ -1,17 +1,18 @@
 package com.example.empresasypracticas;
 
+import java.io.Serializable;
+
 /**
  * Created by Vicky on 01/03/2018.
  * Preguntas a hacer a las empresas sobre los estudiantes
  */
 
-public class FormularioEstudiante {
+public class FormularioEstudiante implements Serializable {
     private String Tutornom;
     private String Tutorcognom;
     private String EmpresaA; //empresa answering
     private String TutorEmail;
     private String Tutornumero;
-    private String EstudentNIE;
     private String EstudenEmail;
     private String EstudentFullname;
     private String FormacionInicial; //Satisfaccion con la formacion inicial del alumno
@@ -21,6 +22,14 @@ public class FormularioEstudiante {
     private String Comentarios; //Comentarios extras;
     private String MotivoFin; //¿Porque terminaron las practicas?  Despido, fin convenio, otros;
 
+
+    public String getTutornumero() {
+        return Tutornumero;
+    }
+
+    public void setTutornumero(String tutornumero) {
+        Tutornumero = tutornumero;
+    }
 
     public String getMotivoFin() {
         return MotivoFin;
@@ -60,14 +69,6 @@ public class FormularioEstudiante {
 
     public void setTutorEmail(String tutorEmail) {
         TutorEmail = tutorEmail;
-    }
-
-    public String getEstudentNIE() {
-        return EstudentNIE;
-    }
-
-    public void setEstudentNIE(String estudentNIE) {
-        EstudentNIE = estudentNIE;
     }
 
     public String getEstudenEmail() {

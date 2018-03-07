@@ -2,7 +2,6 @@ package com.example.empresasypracticas;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,68 +9,89 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
+import com.google.firebase.database.Query;
 
 
 public class DetailEstudent2ActivityFragment extends Fragment {
-    FirebaseListAdapter adapterForm;
-    FirebaseListOptions options;
-    DatabaseReference query;
-    ArrayList<String> items;
-    ArrayAdapter<String> adapter;
+    FirebaseListAdapter<FormularioEstudiante> adapter;
+    FirebaseListOptions<FormularioEstudiante> options;
+    Query query;
     TextView nom;
     TextView empresa;
     TextView inicio;
-    TextView motivo;
-    TextView comentarios;
     Button sendEmail;
+    View view;
 
     public DetailEstudent2ActivityFragment() {
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
-        adapterForm.startListening();
-    }
+        adapter.startListening();}
 
     @Override
     public void onStop() {
         super.onStop();
-        adapterForm.stopListening();
-    }
-
+        adapter.stopListening();}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_estudent2, container, false);
+        view = inflater.inflate(R.layout.fragment_detail_estudent2, container, false);
         nom = view.findViewById(R.id.tvnombreEF);
         empresa = view.findViewById(R.id.tvempresaEF);
         inicio = view.findViewById(R.id.tvfechasEF);
-        motivo = view.findViewById(R.id.tvmotivos);
-        comentarios = view.findViewById(R.id.tvcomments);
         sendEmail = view.findViewById(R.id.btnSendEmail);
 
+        ListView lvcomments = view.findViewById(R.id.lvcomments);
 
         Intent i = getActivity().getIntent();
+
         if (i != null) {
             final Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
             if (estudiante != null) {
                 MostrarEstudiante(estudiante);
+                lvcomments.findViewById(R.id.lvcomments);
+                String email = estudiante.getCorreo();
+
+                query = FirebaseDatabase.getInstance()
+                        .getReference()
+                        .child("FormularioEstudiante").orderByChild("EstudenEmail").equalTo(email);
+
+                options = new FirebaseListOptions.Builder<FormularioEstudiante>()
+                        .setQuery(query,FormularioEstudiante.class)
+                        .setLayout(R.layout.lv_comentariosstudents)
+                        .build();
+
+                adapter = new FirebaseListAdapter<FormularioEstudiante>(options){
+                    @Override
+                    protected void populateView(View v, FormularioEstudiante model, int position) {
+                            TextView formacionInicial = v.findViewById(R.id.f1);
+                            formacionInicial.setText("Valoració de la formació inicial de l'estudiant: "+model.getFormacionInicial());
+                            TextView valoracionGlobal = v.findViewById(R.id.vg);
+                            valoracionGlobal.setText("Valoració global de les pràctiques: "+model.getValoracionGlobal());
+                            TextView valoracionestudiante = v.findViewById(R.id.ve);
+                            valoracionestudiante.setText("Valoració general de l'estudiant: "+model.getValoracionEstudiante());
+                            TextView repetirColab = v.findViewById(R.id.rc);
+                            repetirColab.setText("¿Es repetiria una col·laboració amb "+model.getEstudentFullname()+"? "+model.getRepitirColaboracion());
+                            TextView comentarios = v.findViewById(R.id.comments);
+                            comentarios.setText("Comentaris: "+model.getComentarios());
+                            TextView motivo = v.findViewById(R.id.motivo);
+                            motivo.setText("Motiu de la finalització: "+model.getMotivoFin());
+                    }
+                };
+
+                lvcomments.setAdapter(adapter);
+
                 sendEmail.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -81,6 +101,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
             }
         }
 
+
         return view;
     }
 
@@ -88,7 +109,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     private void sendEmailToStudent(Estudiante estudiante) {
         Log.i("Send email", "");
         String[] TO = {estudiante.getCorreo()};
-        //String[] CC = {"zapejustine@gmail.com"};
+        //String[] CC = {"proyectopoblenou@gmail.com"};
         String link="https://empresasypracticas.firebaseapp.com/formularioEstudiante.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
@@ -96,8 +117,9 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         //emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions, Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques. Link: "+link);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link+"\n\n"
+        +"Moltes gràcies.");
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
@@ -106,7 +128,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         } catch (android.content.ActivityNotFoundException ex) {
            // Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Email no enviat.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -116,21 +138,9 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
 
         nom.setText(fullname);
+
         empresa.setText(estudiante.getEmpresa());
         inicio.setText(fechas);
-        motivo.setText("Motivo: Finalizacion del convenio");
-        comentarios.setText("Buen estudiante, Trabajador, Resposable, Trabajo en equipo, lo mejor de lo mejor in the world");
-
-        items = new ArrayList<>(estudiante.getTareas());
-        adapter = new ArrayAdapter<>(
-                getContext(),
-                R.layout.lv_tareas,
-                R.id.tvtareaname,
-                items
-        );
     }
 
-    private void CommentsShow(String nie){
-
-    }
 }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.empresasypracticas.DetailEstudent2ActivityFragment"
-    tools:showIn="@layout/activity_detail_estudent2"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="137dp"
+    tools:showIn="@layout/activity_detail_estudent2">
 
     <TextView
         android:id="@+id/tvnombreEF"
@@ -42,55 +44,25 @@
 
     <TextView
         android:id="@+id/tvempresaEF"
-        android:layout_marginStart="16dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/comfortaa"
+        android:gravity="start"
         android:text="Empresa"
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF"
-        android:gravity="start"
-        android:layout_marginLeft="16dp" />
-
-    <TextView
-        android:id="@+id/tvmotivos"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Motivos:"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF" />
-
-    <TextView
-        android:id="@+id/tvcomments"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Comentarios"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvmotivos" />
+        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
 
     <Button
         android:id="@+id/btnSendEmail"
-        android:layout_width="210dp"
-        android:layout_height="59dp"
+        android:layout_width="197dp"
+        android:layout_height="35dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/buttonshape"
         android:text="Enviar formulari"
         android:textStyle="bold"
@@ -98,8 +70,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvcomments"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/lvcomments"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
