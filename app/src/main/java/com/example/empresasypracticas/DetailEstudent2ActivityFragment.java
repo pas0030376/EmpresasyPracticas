@@ -87,6 +87,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                             comentarios.setText("Comentaris: "+model.getComentarios());
                             TextView motivo = v.findViewById(R.id.motivo);
                             motivo.setText("Motiu de la finalització: "+model.getMotivoFin());
+                            sendEmail.setVisibility(View.GONE);
                     }
                 };
 
@@ -100,8 +101,6 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                 });
             }
         }
-
-
         return view;
     }
 
