@@ -11,12 +11,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import net.bohush.geometricprogressview.GeometricProgressView;
+import net.bohush.geometricprogressview.TYPE;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,6 +39,7 @@ public class AlumnadoActivityFragment extends Fragment {
     DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Date currentTime = Calendar.getInstance().getTime();
     ListView lvalumnes;
+    net.bohush.geometricprogressview.GeometricProgressView progressBar;
 
     public AlumnadoActivityFragment() {
     }
@@ -58,7 +63,7 @@ public class AlumnadoActivityFragment extends Fragment {
         getActivity().setTitle("Alumnado");
 
         lvalumnes = (ListView) view.findViewById(R.id.lvalumnos);
-
+        progressBar = view.findViewById(R.id.progressView);
 
        query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -89,6 +94,8 @@ public class AlumnadoActivityFragment extends Fragment {
                 } catch (ParseException e1) {
                     e1.printStackTrace();
                 }
+
+                progressBar.setVisibility(View.GONE);
             }
         };
         lvalumnes.setAdapter(adapter);

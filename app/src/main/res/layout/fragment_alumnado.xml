@@ -38,6 +38,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/btfinish"
         style="@android:style/Widget.DeviceDefault.Button.Borderless"
@@ -52,6 +53,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btall"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <net.bohush.geometricprogressview.GeometricProgressView
+        android:id="@+id/progressView"
+        android:layout_width="147dp"
+        android:layout_height="118dp"
+        app:gp_color="#62C7FA"
+        app:gp_duration="800"
+        app:gp_figure_padding="3dp"
+        app:gp_number_of_angles="7"
+        app:gp_type="triangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <Button
         android:id="@+id/newStudent"
@@ -68,9 +84,9 @@
     <ListView
         android:id="@+id/lvalumnos"
         android:layout_width="0dp"
-        android:layout_height="347dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/newStudent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
