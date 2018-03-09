@@ -26,6 +26,7 @@ public class EmpresasActivityFragment extends Fragment {
     Button buscar;
     EditText etbuscar;
     public static Empresa empresa;
+    net.bohush.geometricprogressview.GeometricProgressView progressBar;
 
     public EmpresasActivityFragment() {
     }
@@ -70,6 +71,7 @@ public class EmpresasActivityFragment extends Fragment {
 
                 //empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage(),model.getLlamadas());
                 empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage());
+                progressBar.setVisibility(View.GONE);
             }
         };
         lvempreses.setAdapter(adapter);
