@@ -45,10 +45,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.MainActivity" />
         </activity>
-<<<<<<< HEAD
-=======
 
->>>>>>> 40414d7142778e6944048ee588e01c5aabf530e7
         <activity
             android:name=".addEstudiantesActivity"
             android:label="@string/title_activity_add_estudiantes"
