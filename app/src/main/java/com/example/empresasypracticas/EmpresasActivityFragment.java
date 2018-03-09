@@ -49,6 +49,7 @@ public class EmpresasActivityFragment extends Fragment {
         getActivity().setTitle("Empresas");
 
         ListView lvempreses = view.findViewById(R.id.lvempresas);
+        progressBar = view.findViewById(R.id.progressView);
 
         DatabaseReference query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -68,10 +69,9 @@ public class EmpresasActivityFragment extends Fragment {
                 tvName.setText(model.getNombre());
                 TextView tvTipo = view.findViewById(R.id.tvTipo);
                 tvTipo.setText(model.getTipo());
-
-                //empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage(),model.getLlamadas());
-                empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage());
                 progressBar.setVisibility(View.GONE);
+                empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage());
+              //
             }
         };
         lvempreses.setAdapter(adapter);
@@ -113,7 +113,6 @@ public class EmpresasActivityFragment extends Fragment {
                 case R.id.bttbuscar:
                     String empresab = String.valueOf(etbuscar.getText());
                     DatabaseReference empresa = FirebaseDatabase.getInstance().getReference().child("Empresas");
-
                     break;
             }
         }
