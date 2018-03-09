@@ -26,6 +26,7 @@ public class EmpresasActivityFragment extends Fragment {
     Button buscar;
     EditText etbuscar;
     public static Empresa empresa;
+    net.bohush.geometricprogressview.GeometricProgressView progressBar;
 
     public EmpresasActivityFragment() {
     }
@@ -47,7 +48,7 @@ public class EmpresasActivityFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_empresas, container, false);
         getActivity().setTitle("Empresas");
 
-        ListView lvempreses = (ListView) view.findViewById(R.id.lvempresas);
+        ListView lvempreses = view.findViewById(R.id.lvempresas);
 
         DatabaseReference query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -70,6 +71,7 @@ public class EmpresasActivityFragment extends Fragment {
 
                 //empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage(),model.getLlamadas());
                 empresa=new Empresa(model.getNombre(),model.getTipo(),model.getTelefono(),model.getPersonaDeContacto(),model.getCorreoElectronico(),model.getWebpage());
+                progressBar.setVisibility(View.GONE);
             }
         };
         lvempreses.setAdapter(adapter);
@@ -105,7 +107,6 @@ public class EmpresasActivityFragment extends Fragment {
             switch(view.getId())
             {
                 case R.id.newEmpresa:
-
                     Intent addEmpresa = new Intent(view.getContext(), addEmpresaActivity.class);
                     startActivityForResult(addEmpresa, 0);
                     break;

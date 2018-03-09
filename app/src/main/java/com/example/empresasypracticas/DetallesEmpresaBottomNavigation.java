@@ -28,7 +28,7 @@ public class DetallesEmpresaBottomNavigation extends AppCompatActivity {
                     transaction.replace(R.id.container, new editarFragment()).commit();
                     return true;
                 case R.id.navigation_llamar:
-                   transaction.replace(R.id.container, new llamarFragment()).commit();
+                    transaction.replace(R.id.container, new llamarFragment()).commit();
                     return true;
                 case R.id.navigation_verLlamadas:
                     transaction.replace(R.id.container, new verLlamadas()).commit();
