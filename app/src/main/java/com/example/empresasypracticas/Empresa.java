@@ -16,7 +16,7 @@ public class Empresa implements Serializable {
     private String personaDeContacto;
     private String correoElectronico;
     private String webpage;
-    private List<Llamada>Llamadas=new ArrayList<Llamada>();
+   // private List<Llamada>Llamadas=new ArrayList<Llamada>();
 
 
     /*public Empresa(String nombre, String tipo, String telefono, String personaDeContacto, String correoElectronico, String webpage,List<Llamada>llamadas) {

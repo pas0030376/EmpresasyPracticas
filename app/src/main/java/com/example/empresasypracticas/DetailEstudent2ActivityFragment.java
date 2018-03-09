@@ -118,11 +118,11 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         //emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link+"\n\n"
+        +"Moltes gràcies.");
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            Toast.makeText(getContext(), "Email enviat.", Toast.LENGTH_SHORT).show();
 
             Log.i("Finished sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
