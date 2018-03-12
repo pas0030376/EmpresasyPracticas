@@ -27,6 +27,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.EnumMap;
 
 public class AlumnadoActivityFragment extends Fragment {
     FirebaseListAdapter<Estudiante> adapter;
@@ -74,31 +75,7 @@ public class AlumnadoActivityFragment extends Fragment {
                 .setLayout(R.layout.lv_alumnos)
                 .build();
 
-        adapter = new FirebaseListAdapter<Estudiante>(options){
-            @Override
-            protected void populateView(View view, Estudiante model, int position) {
-                TextView tvName = view.findViewById(R.id.tvname);
-                tvName.setText(model.getNom()+" "+model.getCognom());
-                TextView empresa = view.findViewById(R.id.tvEmpresa);
-                empresa.setText(model.getEmpresa());
-                TextView practica = view.findViewById(R.id.tvpracticas);
-                try {
-                        Date fechafin = sdf.parse(model.getFin_practicas());
-                        if (currentTime.after(fechafin)){
-                            practica.setText("Practicas terminadas");
-                        }
-                        else if (fechafin.after(currentTime)){
-                           practica.setText("Practicas en curso");
-                           practica.setTextColor(Color.parseColor("#0eae20"));
-                        }
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
-
-                progressBar.setVisibility(View.GONE);
-            }
-        };
-        lvalumnes.setAdapter(adapter);
+        AdapterALL();
 
         lvalumnes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
@@ -142,9 +119,11 @@ public class AlumnadoActivityFragment extends Fragment {
             switch(view.getId())
             {
                 case R.id.btencurso:
+                    progressBar.setVisibility(View.VISIBLE);
                     adapter = new FirebaseListAdapter<Estudiante>(options){
                         @Override
                         protected void populateView(View view, Estudiante model, int position) {
+                            progressBar.setVisibility(View.GONE);
                             try {
                                Date fechafin = sdf.parse(model.getFin_practicas());
                                if (fechafin.after(currentTime)){
@@ -157,7 +136,12 @@ public class AlumnadoActivityFragment extends Fragment {
                                    practica.setTextColor(Color.parseColor("#0eae20"));
                                 }
                                 else{
-
+                                   TextView tvName = view.findViewById(R.id.tvname);
+                                   tvName.setVisibility(View.GONE);
+                                   TextView empresa = view.findViewById(R.id.tvEmpresa);
+                                   empresa.setVisibility(View.GONE);
+                                   TextView practica = view.findViewById(R.id.tvpracticas);
+                                   practica.setVisibility(View.GONE);
                                }
                             } catch (ParseException e1) {
                                 e1.printStackTrace();
@@ -167,9 +151,11 @@ public class AlumnadoActivityFragment extends Fragment {
                     lvalumnes.setAdapter(adapter);
                     break;
                 case R.id.btfinish:
+                    progressBar.setVisibility(View.VISIBLE);
                     adapter = new FirebaseListAdapter<Estudiante>(options){
                         @Override
                         protected void populateView(View view, Estudiante model, int position) {
+                            progressBar.setVisibility(View.GONE);
                             try {
                                 Date fechafin = sdf.parse(model.getFin_practicas());
                                 if (fechafin.before(currentTime)){
@@ -178,9 +164,14 @@ public class AlumnadoActivityFragment extends Fragment {
                                     TextView empresa = view.findViewById(R.id.tvEmpresa);
                                     empresa.setText(model.getEmpresa());
                                     TextView practica = view.findViewById(R.id.tvpracticas);
-                                    practica.setText("Practicas Terminadas");
-                                }
+                                    practica.setText("Practicas Terminadas");}
                                 else{
+                                    TextView tvName = view.findViewById(R.id.tvname);
+                                    tvName.setVisibility(View.GONE);
+                                    TextView empresa = view.findViewById(R.id.tvEmpresa);
+                                    empresa.setVisibility(View.GONE);
+                                    TextView practica = view.findViewById(R.id.tvpracticas);
+                                    practica.setVisibility(View.GONE);
 
                                 }
                             } catch (ParseException e1) {
@@ -194,7 +185,38 @@ public class AlumnadoActivityFragment extends Fragment {
                     Intent addStudiante = new Intent(view.getContext(), addEstudiantesActivity.class);
                     startActivityForResult(addStudiante, 0);
                     break;
+                case R.id.btall:
+                    progressBar.setVisibility(View.VISIBLE);
+                    AdapterALL();
+                    break;
             }
         }
     };
+
+    public void AdapterALL(){
+        adapter = new FirebaseListAdapter<Estudiante>(options){
+            @Override
+            protected void populateView(View view, Estudiante model, int position) {
+                TextView tvName = view.findViewById(R.id.tvname);
+                tvName.setText(model.getNom()+" "+model.getCognom());
+                TextView empresa = view.findViewById(R.id.tvEmpresa);
+                empresa.setText(model.getEmpresa());
+                TextView practica = view.findViewById(R.id.tvpracticas);
+                try {
+                    Date fechafin = sdf.parse(model.getFin_practicas());
+                    if (currentTime.after(fechafin)){
+                        practica.setText("Practicas terminadas");
+                    }
+                    else if (fechafin.after(currentTime)){
+                        practica.setText("Practicas en curso");
+                        practica.setTextColor(Color.parseColor("#0eae20"));
+                    }
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+        };
+        lvalumnes.setAdapter(adapter);
+    }
 }
