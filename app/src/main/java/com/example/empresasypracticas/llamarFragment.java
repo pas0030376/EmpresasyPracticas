@@ -1,11 +1,16 @@
 package com.example.empresasypracticas;
 
+import android.*;
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 
 /**
@@ -44,12 +52,13 @@ public class llamarFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     Button btnLlamar;
-    EditText tvFecha,tvHora,tvMotivo,tvPersonaContactada;
-    Empresa empresa=new Empresa();
+    EditText tvFecha, tvHora, tvMotivo, tvPersonaContactada;
+    Empresa empresa = new Empresa();
     Llamada llamada;
-    String fechaActual,horaActual;
+    String fechaActual, horaActual;
     private DatabaseReference mRef;
     private Task<Void> mDatabase;
+    private final int CALL_REQUEST = 100;
 
     public llamarFragment() {
         // Required empty public constructor
@@ -87,22 +96,22 @@ public class llamarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_llamar, container, false);
-        Button btnGuardar=view.findViewById(R.id.btnGuardar);
-        btnLlamar=view.findViewById(R.id.btnLlamar);
-        tvFecha=view.findViewById(R.id.etFecha);
-        tvHora=view.findViewById(R.id.etHora);
-        tvMotivo=view.findViewById(R.id.etMotivo);
-        tvPersonaContactada=view.findViewById(R.id.etPersonaContactada);
+        View view = inflater.inflate(R.layout.fragment_llamar, container, false);
+        Button btnGuardar = view.findViewById(R.id.btnGuardar);
+        btnLlamar = view.findViewById(R.id.btnLlamar);
+        tvFecha = view.findViewById(R.id.etFecha);
+        tvHora = view.findViewById(R.id.etHora);
+        tvMotivo = view.findViewById(R.id.etMotivo);
+        tvPersonaContactada = view.findViewById(R.id.etPersonaContactada);
 
         //recogemos la fecha actual del sistema dándole formato
-        Date date =new Date();
+        Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        fechaActual=dateFormat.format(date);
+        fechaActual = dateFormat.format(date);
 
         //recogemos la hora actual del sistema dándole formato
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        horaActual=hourFormat.format(date);
+        horaActual = hourFormat.format(date);
 
         //recogemos el objecto empresa desde la actividad anterior
         Intent i = getActivity().getIntent();
@@ -117,6 +126,7 @@ public class llamarFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialogoConfirmar(); //mostramos un cuadro de diálogo con las opciones llamar o cancelar
+
             }
         });
 
@@ -129,38 +139,89 @@ public class llamarFragment extends Fragment {
 
         return view;
     }
-    private void dialogoConfirmar() {
-        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext());
-        dialogo1.setTitle("Atención:");
-        dialogo1.setMessage("¿Desea realizar una llamada a "+empresa.getNombre()+" ?");
-        dialogo1.setCancelable(false);
-        dialogo1.setPositiveButton("Llamar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-                aceptar();
-            }
-        });
-        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
 
-            }
-        });
-        dialogo1.show();
+    private void dialogoConfirmar() {
+
+        final PrettyDialog dialog = new PrettyDialog(getContext());
+        dialog.setTitle("Atención")
+                .setMessage("¿Desea realizar una llamada a " + empresa.getNombre() + " ?")
+                .addButton(
+                        "Llamar",     // button text
+                        R.color.pdlg_color_white,  // button text color
+                        R.color.pdlg_color_green,  // button background color
+                        new PrettyDialogCallback() {  // button OnClick listener
+                            @Override
+                            public void onClick() {
+                                aceptar();
+                            }
+                        }
+                )
+                .addButton(
+                        "Cancelar",
+                        R.color.pdlg_color_white,
+                        R.color.pdlg_color_red,
+                        new PrettyDialogCallback() {
+                            @Override
+                            public void onClick() {
+                                dialog.dismiss();
+                            }
+                        }
+                );
+        dialog.show();
     }
 
     public void aceptar() {
-        
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:"+empresa.getTelefono()));
-        startActivity(intent);
-
         //mostramos en el tvFecha la fecha actual
         tvFecha.setText(fechaActual);
         //mostramos en el tvHora la hora actual
         tvHora.setText(horaActual);
+
+
+        try
+        {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            {
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, CALL_REQUEST);
+
+                    return;
+                }
+            }
+
+            Intent intent = new Intent(Intent.ACTION_CALL);
+
+            intent.setData(Uri.parse("tel:" + empresa.getTelefono()));
+            startActivity(intent);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults)
+    {
+        if(requestCode == CALL_REQUEST)
+        {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                aceptar();
+            }
+            else
+            {
+                Toast.makeText(getContext(), "Permiso denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void MostrarEmpresa(Empresa empresa) {
-        String nomEmpresa=empresa.getNombre();
+        String nomEmpresa = empresa.getNombre();
         getActivity().setTitle(nomEmpresa);
     }
 
@@ -200,20 +261,21 @@ public class llamarFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    private void guardarLlamada(){ //guardamos los datos de la llamada en la empresa correpondiente.
-        String nombreEmpresa="",fechaLlamada="",horaLlamada="",motivoLlamada="",personaContactadaLlamada="";
-        nombreEmpresa=empresa.getNombre();
-        fechaLlamada=tvFecha.getText().toString().trim();
-        horaLlamada=tvHora.getText().toString().trim();
-        motivoLlamada=tvMotivo.getText().toString().trim();
-        personaContactadaLlamada=tvPersonaContactada.getText().toString().trim();
-        llamada=new Llamada(nombreEmpresa,fechaLlamada,horaLlamada,motivoLlamada,personaContactadaLlamada);
 
-        mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
+    private void guardarLlamada() { //guardamos los datos de la llamada en la empresa correpondiente.
+        String nombreEmpresa = "", fechaLlamada = "", horaLlamada = "", motivoLlamada = "", personaContactadaLlamada = "";
+        nombreEmpresa = empresa.getNombre();
+        fechaLlamada = tvFecha.getText().toString().trim();
+        horaLlamada = tvHora.getText().toString().trim();
+        motivoLlamada = tvMotivo.getText().toString().trim();
+        personaContactadaLlamada = tvPersonaContactada.getText().toString().trim();
+        llamada = new Llamada(nombreEmpresa, fechaLlamada, horaLlamada, motivoLlamada, personaContactadaLlamada);
+
+        mRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
         String mId = mRef.push().getKey();
         mDatabase = mRef.child("Llamadas").child(mId).setValue(llamada);
 
-        Intent intent = new Intent(getContext(),DetallesEmpresaBottomNavigation.class);
+        Intent intent = new Intent(getContext(), DetallesEmpresaBottomNavigation.class);
         startActivityForResult(intent, 0);
 
 
