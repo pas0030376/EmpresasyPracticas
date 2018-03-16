@@ -28,6 +28,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     TextView empresa;
     TextView inicio;
     Button sendEmail;
+    TextView questionari;
     View view;
 
     public DetailEstudent2ActivityFragment() {
@@ -51,6 +52,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         empresa = view.findViewById(R.id.tvempresaEF);
         inicio = view.findViewById(R.id.tvfechasEF);
         sendEmail = view.findViewById(R.id.btnSendEmail);
+        questionari = view.findViewById(R.id.tvIsnot);
 
         ListView lvcomments = view.findViewById(R.id.lvcomments);
 
@@ -75,6 +77,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                 adapter = new FirebaseListAdapter<FormularioEstudiante>(options){
                     @Override
                     protected void populateView(View v, FormularioEstudiante model, int position) {
+                        questionari.setVisibility(View.GONE);
                             TextView formacionInicial = v.findViewById(R.id.f1);
                             formacionInicial.setText("Valoració de la formació inicial de l'estudiant: "+model.getFormacionInicial());
                             TextView valoracionGlobal = v.findViewById(R.id.vg);
@@ -87,6 +90,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                             comentarios.setText("Comentaris: "+model.getComentarios());
                             TextView motivo = v.findViewById(R.id.motivo);
                             motivo.setText("Motiu de la finalització: "+model.getMotivoFin());
+                            sendEmail.setVisibility(View.GONE);
                     }
                 };
 
@@ -100,8 +104,6 @@ public class DetailEstudent2ActivityFragment extends Fragment {
                 });
             }
         }
-
-
         return view;
     }
 

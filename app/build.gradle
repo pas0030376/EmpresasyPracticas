@@ -34,6 +34,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.firebaseui:firebase-ui:0.3.0'
+    compile 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
     implementation files('activation.jar')
     implementation files('additionnal.jar')
     implementation files('javax.mail.jar')
