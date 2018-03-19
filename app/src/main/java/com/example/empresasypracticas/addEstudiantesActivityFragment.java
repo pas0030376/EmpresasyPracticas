@@ -47,9 +47,9 @@ public class addEstudiantesActivityFragment extends Fragment {
         getActivity().setTitle("Afegir Alumne");
 
 
-        addStudent = view.findViewById(R.id.addstudent);
-        cancel = view.findViewById(R.id.btncancelar);
-        cancel.setOnClickListener(new View.OnClickListener() {
+       addStudent = view.findViewById(R.id.addstudent);
+       cancel = view.findViewById(R.id.btncancelar);
+       cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent Studiante = new Intent(view.getContext(), AlumnadoActivity.class);
@@ -126,9 +126,12 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
+            EditText etestado = view.findViewById(R.id.etestado);
+            String estado = etestado.getText().toString();
+
 
             if (error==0){
-                Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas);
+                Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas,estado);
 
                 mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
                 String mId = nie;

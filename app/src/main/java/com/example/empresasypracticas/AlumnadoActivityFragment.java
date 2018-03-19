@@ -1,137 +1,63 @@
 package com.example.empresasypracticas;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseListAdapter;
-import com.firebase.ui.database.FirebaseListOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+public class AlumnadoActivityFragment extends Fragment implements TabLayout.OnTabSelectedListener {
+    //This is our tablayout
+    private TabLayout tabs;
 
-import net.bohush.geometricprogressview.GeometricProgressView;
-import net.bohush.geometricprogressview.TYPE;
+    //This is our viewPager
+    private ViewPager viewPager;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-public class AlumnadoActivityFragment extends Fragment {
-    FirebaseListAdapter<Estudiante> adapter;
-    FirebaseListOptions<Estudiante> options;
     Button newStudent;
-    DatabaseReference query;
-    Button encurso;
-    Button todos;
-    Button Terminadas;
-    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    Date currentTime = Calendar.getInstance().getTime();
-    ListView lvalumnes;
     net.bohush.geometricprogressview.GeometricProgressView progressBar;
 
     public AlumnadoActivityFragment() {
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alumnado, container, false);
         getActivity().setTitle("Alumnado");
 
-        lvalumnes = (ListView) view.findViewById(R.id.lvalumnos);
-        progressBar = view.findViewById(R.id.progressView);
+        //Initializing the tablayout
+        tabs = view.findViewById(R.id.tabs);
 
-       query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("Estudiantes");
+        //Adding the tabs using addTab() method
+        tabs.addTab(tabs.newTab().setText("Todos"));
+        tabs.addTab(tabs.newTab().setText("En Curso"));
+        tabs.addTab(tabs.newTab().setText("Terminadas"));
+        tabs.setTabGravity(TabLayout.GRAVITY_FILL);
+c
 
-        options = new FirebaseListOptions.Builder<Estudiante>()
-                .setQuery(query,Estudiante.class)
-                .setLayout(R.layout.lv_alumnos)
-                .build();
+        //Initializing viewPager
+        viewPager = view.findViewById(R.id.pager);
 
-        adapter = new FirebaseListAdapter<Estudiante>(options){
-            @Override
-            protected void populateView(View view, Estudiante model, int position) {
-                TextView tvName = view.findViewById(R.id.tvname);
-                tvName.setText(model.getNom()+" "+model.getCognom());
-                TextView empresa = view.findViewById(R.id.tvEmpresa);
-                empresa.setText(model.getEmpresa());
-                TextView practica = view.findViewById(R.id.tvpracticas);
-                try {
-                        Date fechafin = sdf.parse(model.getFin_practicas());
-                        if (currentTime.after(fechafin)){
-                            practica.setText("Practicas terminadas");
-                        }
-                        else if (fechafin.after(currentTime)){
-                           practica.setText("Practicas en curso");
-                           practica.setTextColor(Color.parseColor("#0eae20"));
-                        }
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
+        //Creating our pager adapter
+        PagerAdapter adapter = new PagerAdapter(getFragmentManager(), tabs.getTabCount());
 
-                progressBar.setVisibility(View.GONE);
-            }
-        };
-        lvalumnes.setAdapter(adapter);
 
-        lvalumnes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-              Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
-              try {
-                  Date fechafin = sdf.parse(estudiante.getFin_practicas());
+        //Adding adapter to pager
+        viewPager.setAdapter(adapter);
 
-                  if (currentTime.after(fechafin)){
-                      Intent intent = new Intent(getContext(), DetailEstudent2Activity.class);
-                      intent.putExtra("estudiante", estudiante);
-                      startActivity(intent);}
-                  else if (fechafin.after(currentTime)){
-                      Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
-                      intent.putExtra("estudiante", estudiante);
-                      startActivity(intent);
-                    }
-                  } catch (ParseException e1) {
-                  e1.printStackTrace();
-              }
 
-           }
-    });
+        tabs = view.findViewById(R.id.tabs);
 
-        encurso = view.findViewById(R.id.btencurso);
-        todos = view.findViewById(R.id.btall);
-        Terminadas = view.findViewById(R.id.btfinish);
+
+        //to swipe views
+        tabs.setupWithViewPager(viewPager);
+
         newStudent = view.findViewById(R.id.newStudent);
 
         newStudent.setOnClickListener(listener);
-        encurso.setOnClickListener(listener);
-        Terminadas.setOnClickListener(listener);
-        todos.setOnClickListener(listener);
 
         return view;
     }
@@ -141,60 +67,42 @@ public class AlumnadoActivityFragment extends Fragment {
         public void onClick(View view) {
             switch(view.getId())
             {
-                case R.id.btencurso:
-                    adapter = new FirebaseListAdapter<Estudiante>(options){
-                        @Override
-                        protected void populateView(View view, Estudiante model, int position) {
-                            try {
-                               Date fechafin = sdf.parse(model.getFin_practicas());
-                               if (fechafin.after(currentTime)){
-                                   TextView tvName = view.findViewById(R.id.tvname);
-                                   tvName.setText(model.getNom()+" "+model.getCognom());
-                                   TextView empresa = view.findViewById(R.id.tvEmpresa);
-                                   empresa.setText(model.getEmpresa());
-                                   TextView practica = view.findViewById(R.id.tvpracticas);
-                                   practica.setText("Practicas en curso");
-                                   practica.setTextColor(Color.parseColor("#0eae20"));
-                                }
-                                else{
-
-                               }
-                            } catch (ParseException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                    };
-                    lvalumnes.setAdapter(adapter);
-                    break;
-                case R.id.btfinish:
-                    adapter = new FirebaseListAdapter<Estudiante>(options){
-                        @Override
-                        protected void populateView(View view, Estudiante model, int position) {
-                            try {
-                                Date fechafin = sdf.parse(model.getFin_practicas());
-                                if (fechafin.before(currentTime)){
-                                    TextView tvName = view.findViewById(R.id.tvname);
-                                    tvName.setText(model.getNom()+" "+model.getCognom());
-                                    TextView empresa = view.findViewById(R.id.tvEmpresa);
-                                    empresa.setText(model.getEmpresa());
-                                    TextView practica = view.findViewById(R.id.tvpracticas);
-                                    practica.setText("Practicas Terminadas");
-                                }
-                                else{
-
-                                }
-                            } catch (ParseException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                    };
-                    lvalumnes.setAdapter(adapter);
-                    break;
                 case R.id.newStudent:
                     Intent addStudiante = new Intent(view.getContext(), addEstudiantesActivity.class);
                     startActivityForResult(addStudiante, 0);
-                    break;
+                break;
             }
         }
     };
+
+    /**
+     * Called when a tab enters the selected state.
+     *
+     * @param tab The tab that was selected
+     */
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    /**
+     * Called when a tab exits the selected state.
+     *
+     * @param tab The tab that was unselected
+     */
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    /**
+     * Called when a tab that is already selected is chosen again by the user. Some applications
+     * may use this action to return to the top level of a category.
+     *
+     * @param tab The tab that was reselected.
+     */
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
 }

@@ -18,6 +18,7 @@ public class Estudiante implements Serializable {
     private String comentarios;
     private String valoracion;
     private String NIE;
+    private String EstadoPracticas;
 
     public Estudiante(){
 
@@ -42,7 +43,7 @@ public class Estudiante implements Serializable {
     }
 
     public Estudiante(String nom, String cognom, String NIE, String tipo_practicas, String inicio_practicas, String fin_practicas, String correo, String curso, int telefono, String empresa,
-                      List<String> tareas) {
+                      List<String> tareas, String EstadoPracticas) {
         this.nom = nom;
         this.cognom = cognom;
         this.tipo_practicas = tipo_practicas;
@@ -54,6 +55,7 @@ public class Estudiante implements Serializable {
         this.empresa = empresa;
         this.tareas = tareas;
         this.NIE = NIE;
+        this.EstadoPracticas = EstadoPracticas;
     }
 
 
@@ -168,4 +170,14 @@ public class Estudiante implements Serializable {
     public void setNIE(String NIE) {
         this.NIE = NIE;
     }
+
+    public String getEstadoPracticas() {
+        return EstadoPracticas;
+    }
+
+    public void setEstadoPracticas(String estadoPracticas) {
+        EstadoPracticas = estadoPracticas;
+    }
+
+
 }
