@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.concurrent.Executor;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivityFragment extends Fragment {
     private Button out;
@@ -39,47 +44,21 @@ public class MainActivityFragment extends Fragment {
             DoLogin();
         }
 
-        //out = view.findViewById(R.id.lvout);
         Button alumnado = view.findViewById(R.id.alumnado);
         Button empresas = view.findViewById(R.id.empresas);
+        out = view.findViewById(R.id.lvout);
 
-
-        //out.setOnClickListener(listener);
         alumnado.setOnClickListener(listener);
         empresas.setOnClickListener(listener);
+        out.setOnClickListener(listener);
 
 
         return view;
     }
 
-   /* private void revokeAccess() {
-        // Firebase sign out
-        auth.signOut();
-
-        // Google revoke access
-        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }*/
-
-    private void DoLogin() {
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(Arrays.asList(
-                                new AuthUI.IdpConfig.EmailBuilder().build(),
-                                new AuthUI.IdpConfig.GoogleBuilder().build()))
-                        .build(),
-                RC_SIGN_IN);
-    }
-
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
+        public void onClick(final View view) {
             switch(view.getId())
             {
                 case R.id.alumnado:
@@ -91,15 +70,39 @@ public class MainActivityFragment extends Fragment {
                     startActivityForResult(empresas, 0);
                     break;
                 case R.id.lvout:
-                    FirebaseAuth.getInstance().signOut();
-                    Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
-                   // Intent restart = new Intent(view.getContext(),MainActivity.class);
-                   // startActivityForResult(restart,0);
-
+                    signOut();
                     break;
             }
         }
     };
+
+   private void signOut() {
+
+       FirebaseAuth.getInstance().signOut();
+       Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
+       Log.d(TAG,"onAuthStateChanged:signed_out!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        // Google revoke access
+        mGoogleSignInClient.signOut().addOnCompleteListener((Executor) this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,"onAuthStateChanged:signed_out!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    }
+                });
+    }
+
+    private void DoLogin() {
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.EmailBuilder().build(),
+                                new AuthUI.IdpConfig.GoogleBuilder().build()))
+                        .build(),
+                RC_SIGN_IN);
+    }
 
 
 }
