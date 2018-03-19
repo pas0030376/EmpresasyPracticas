@@ -8,7 +8,7 @@
 
 
     <ListView
-        android:id="@+id/lv_alumnos2"
+        android:id="@+id/lv_alumnes2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"

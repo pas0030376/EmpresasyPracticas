@@ -41,6 +41,7 @@ dependencies {
     implementation files('javax.mail.jar')
     compile 'com.github.mjn1369:prettydialog:1.0.2'
     compile 'com.github.shaz-tech:EasyRuntimePermission:1.0'
+    compile 'me.spark:submitbutton:1.0.1'
 }
 
 

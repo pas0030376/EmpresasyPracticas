@@ -15,9 +15,9 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,7 +25,7 @@ import java.util.Date;
 public class ListAlumnos2 extends Fragment {
     FirebaseListAdapter<Estudiante> adapter;
     FirebaseListOptions<Estudiante> options;
-    DatabaseReference query;
+    Query query;
     ListView lvalumnes;
     net.bohush.geometricprogressview.GeometricProgressView progressBar;
     DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -45,12 +45,12 @@ public class ListAlumnos2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.lv_alumnos, container, false);
-        lvalumnes = (ListView) view.findViewById(R.id.lv_alumnos2);
+        View view = inflater.inflate(R.layout.lv_alumnos2, container, false);
+       lvalumnes = (ListView) view.findViewById(R.id.lv_alumnes2);
 
-        query = (DatabaseReference) FirebaseDatabase.getInstance()
+        query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Estudiantes").orderByChild("fin_practicas");
+                .child("Estudiantes").orderByChild("estadoPracticas").equalTo("En Curso");
 
         options = new FirebaseListOptions.Builder<Estudiante>()
                 .setQuery(query,Estudiante.class)
@@ -65,18 +65,8 @@ public class ListAlumnos2 extends Fragment {
                 TextView empresa = view.findViewById(R.id.tvEmpresa);
                 empresa.setText(model.getEmpresa());
                 TextView practica = view.findViewById(R.id.tvpracticas);
-                try {
-                    Date fechafin = sdf.parse(model.getFin_practicas());
-                    if (currentTime.after(fechafin)){
-                        practica.setText("Practicas terminadas");
-                    }
-                    else if (fechafin.after(currentTime)){
                         practica.setText("Practicas en curso");
                         practica.setTextColor(Color.parseColor("#0eae20"));
-                    }
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
                 // progressBar.setVisibility(View.GONE);
             }
         };
@@ -86,22 +76,9 @@ public class ListAlumnos2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
-                try {
-                    Date fechafin = sdf.parse(estudiante.getFin_practicas());
-
-                    if (currentTime.after(fechafin)){
-                        Intent intent = new Intent(getContext(), DetailEstudent2Activity.class);
-                        intent.putExtra("estudiante", estudiante);
-                        startActivity(intent);}
-                    else if (fechafin.after(currentTime)){
-                        Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
-                        intent.putExtra("estudiante", estudiante);
-                        startActivity(intent);
-                    }
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
-
+                Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
+                intent.putExtra("estudiante", estudiante);
+                startActivity(intent);
             }
         });
         return view;
