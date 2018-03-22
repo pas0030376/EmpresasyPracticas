@@ -126,11 +126,13 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
-            EditText etestado = view.findViewById(R.id.etestado);
+            EditText etestado = view.findViewById(R.id.etEstado);
             String estado = etestado.getText().toString();
 
 
-            if (error==0){
+            if (error==0&&fname.equals("")&&flastname.equals("")&&nie.equals("")
+                    &&fcurso.equals("")&&fempresa.equals("")&&finicio.equals("")&&ffin.equals("")
+                    &&ftipo.equals("")&&femail.equals("")){
                 Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas,estado);
 
                 mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
