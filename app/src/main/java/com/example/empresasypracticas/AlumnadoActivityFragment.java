@@ -48,9 +48,7 @@ public class AlumnadoActivityFragment extends Fragment implements TabLayout.OnTa
         //Adding adapter to pager
         viewPager.setAdapter(adapter);
 
-
         tabs = view.findViewById(R.id.tabs);
-
 
         //to swipe views
         tabs.setupWithViewPager(viewPager);

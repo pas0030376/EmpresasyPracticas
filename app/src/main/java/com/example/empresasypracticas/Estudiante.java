@@ -19,6 +19,7 @@ public class Estudiante implements Serializable {
     private String valoracion;
     private String NIE;
     private String EstadoPracticas;
+   // private String ciclo;
 
     public Estudiante(){
 
