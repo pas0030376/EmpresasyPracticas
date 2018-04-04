@@ -15,7 +15,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="128dp"
         android:background="@drawable/button2"
-        android:text="ALUMNADO"
+        android:text="ALUMNAT"
         app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="104dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button2"
-        android:text="EMPRESAS"
+        android:text="EMPRESES"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alumnado" />
@@ -39,11 +39,10 @@
         style="@android:style/Widget.Holo.Light.Button"
         android:layout_width="187dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/button2"
         android:text="CERRAR SESION"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -55,6 +54,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button2"
+        android:fontFamily="sans-serif"
         android:text="Centre"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
