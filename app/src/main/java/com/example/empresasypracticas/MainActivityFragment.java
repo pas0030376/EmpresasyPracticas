@@ -1,5 +1,6 @@
 package com.example.empresasypracticas;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,11 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,8 +33,8 @@ public class MainActivityFragment extends Fragment {
     private Button out;
     private static final int RC_SIGN_IN = 123;
     FirebaseAuth auth;
-    private GoogleSignInClient mGoogleSignInClient;
 
+    GoogleSignInClient mGoogleSignInClient;
     public MainActivityFragment() {
     }
 
@@ -58,7 +63,7 @@ public class MainActivityFragment extends Fragment {
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
-        public void onClick(final View view) {
+        public void onClick(View view) {
             switch(view.getId())
             {
                 case R.id.alumnado:
@@ -76,23 +81,6 @@ public class MainActivityFragment extends Fragment {
         }
     };
 
-   private void signOut() {
-
-       FirebaseAuth.getInstance().signOut();
-       Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
-       Log.d(TAG,"onAuthStateChanged:signed_out!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-        // Google revoke access
-        mGoogleSignInClient.signOut().addOnCompleteListener((Executor) this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getContext(), "Logged out.", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG,"onAuthStateChanged:signed_out!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    }
-                });
-    }
-
     private void DoLogin() {
         startActivityForResult(
                 AuthUI.getInstance()
@@ -103,6 +91,37 @@ public class MainActivityFragment extends Fragment {
                         .build(),
                 RC_SIGN_IN);
     }
+
+    //sign out user
+    void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener((Executor) this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        CharSequence text = "Already signed out.";
+                        int duration = Toast.LENGTH_SHORT;
+                        Context context = getContext();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                });
+    }
+
+    //disconnect Google account
+    private void revokeAccess() {
+        mGoogleSignInClient.revokeAccess()
+                .addOnCompleteListener((Executor) this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        CharSequence text = "Google account disconnected.";
+                        int duration = Toast.LENGTH_SHORT;
+                        Context context = getContext();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                });
+    }
+
 
 
 }
