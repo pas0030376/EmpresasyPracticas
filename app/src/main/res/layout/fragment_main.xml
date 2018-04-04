@@ -13,10 +13,10 @@
         style="@android:style/Widget.Holo.Light.Button"
         android:layout_width="174dp"
         android:layout_height="52dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="128dp"
         android:background="@drawable/button2"
         android:text="ALUMNADO"
-        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         style="@android:style/Widget.Holo.Light.Button"
         android:layout_width="174dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginEnd="104dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button2"
         android:text="EMPRESAS"
@@ -46,5 +46,20 @@
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btncentre"
+        android:layout_width="176dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button2"
+        android:text="Centre"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empresas" />
 
 </android.support.constraint.ConstraintLayout>
