@@ -130,9 +130,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             String estado = etestado.getText().toString();
 
 
-            if (error==0&&fname.equals("")&&flastname.equals("")&&nie.equals("")
-                    &&fcurso.equals("")&&fempresa.equals("")&&finicio.equals("")&&ffin.equals("")
-                    &&ftipo.equals("")&&femail.equals("")){
+            if (error==0){
                 Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas,estado);
 
                 mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
