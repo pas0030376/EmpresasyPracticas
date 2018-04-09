@@ -45,7 +45,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.MainActivity" />
         </activity>
-
         <activity
             android:name=".addEstudiantesActivity"
             android:label="@string/title_activity_add_estudiantes"
@@ -90,7 +89,16 @@
             android:name=".modificarEmpresa"
             android:label="@string/title_activity_modificar_empresa"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DetallesLlamada"></activity>
+        <activity android:name=".DetallesLlamada" />
+        <activity
+            android:name=".ModificarStudentActivity"
+            android:label="@string/title_activity_modificar_student"
+            android:parentActivityName=".AlumnadoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.AlumnadoActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,11 +1,7 @@
 package com.example.empresasypracticas;
 
-import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import java.util.List;
-
 /**
  * Created by Vicky on 15/03/2018.
  */
@@ -51,6 +47,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return tabCount;
     }
-    
+
 
 }

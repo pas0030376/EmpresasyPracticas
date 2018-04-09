@@ -19,7 +19,6 @@ public class DetailEstudentActivityFragment extends Fragment {
     TextView empresa;
     TextView inicio;
 
-
     public DetailEstudentActivityFragment() {
     }
 
