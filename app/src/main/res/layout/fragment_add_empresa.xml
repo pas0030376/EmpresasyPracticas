@@ -1,75 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#62C7FA"
-    tools:context="com.example.empresasypracticas.addEmpresaActivityFragment"
-    tools:showIn="@layout/activity_add_empresa"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/etnomempresa"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nombre Empresa"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etTipoempresa"
+        android:layout_height="match_parent"
+        android:background="#62C7FA"
+        android:orientation="vertical"
+        tools:context="com.example.empresasypracticas.addEmpresaActivityFragment"
+        tools:showIn="@layout/activity_add_empresa">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Tipo de empresa"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/etCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Correo electronico"
-        android:inputType="textPersonName" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etnomempresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom emprese"
+                android:text="Emprese" />
+        </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etTelefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Telefono"
-        android:inputType="textPersonName" />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            tools:layout_editor_absoluteY="94dp">
 
-    <EditText
-        android:id="@+id/etWebpage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Webpage"
-        android:inputType="textPersonName" />
-    <EditText
-        android:id="@+id/etPersonaDeContacto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Persona de contacto:"
-        android:inputType="textPersonName" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etTipoempresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tipus emprese"
+                android:text="Tipus" />
+        </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/addempresa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/buttonshape"
-        android:text="Añadir nueva empresa" />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:layout_editor_absoluteY="275dp">
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonshape"
-        android:text="Cancelar" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correu"
+                android:text="Correu" />
+        </android.support.design.widget.TextInputLayout>
 
-</LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:layout_editor_absoluteY="275dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telefon"
+                android:text="000000000" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:layout_editor_absoluteY="275dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etWebPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pàgina Web"
+                android:text=".com" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:layout_editor_absoluteY="275dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etPersonaDeContacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Persones de contacte"
+                android:text="Nom persones" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:layout_editor_absoluteY="275dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etSectorEscolar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Família escolar"
+                android:text="Comerç" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/addempresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/buttonshape"
+            android:text="Añadir nueva empresa" />
+
+        <Button
+            android:id="@+id/btnCancelEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonshape"
+            android:text="Cancelar" />
+    </LinearLayout>
+</ScrollView>
+    </LinearLayout>
+
+

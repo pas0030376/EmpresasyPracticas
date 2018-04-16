@@ -9,52 +9,40 @@ import java.util.List;
  */
 
 public class Empresa implements Serializable {
-    //private int idEmpresa;
     private String nombre;
     private String tipo;
     private String telefono;
     private String personaDeContacto;
     private String correoElectronico;
     private String webpage;
-   // private List<Llamada>Llamadas=new ArrayList<Llamada>();
+    private String SectorEscolar;
 
 
-    /*public Empresa(String nombre, String tipo, String telefono, String personaDeContacto, String correoElectronico, String webpage,List<Llamada>llamadas) {
+    public Empresa(String nombre, String tipo, String telefono, String personaDeContacto, String correoElectronico, String webpage,String SectorEscolar) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.telefono = telefono;
         this.personaDeContacto = personaDeContacto;
         this.correoElectronico = correoElectronico;
         this.webpage = webpage;
-        Llamadas = llamadas;
-    }*/
-
-    public Empresa(String nombre, String tipo, String telefono, String personaDeContacto, String correoElectronico, String webpage) {
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.telefono = telefono;
-        this.personaDeContacto = personaDeContacto;
-        this.correoElectronico = correoElectronico;
-        this.webpage = webpage;
+        this.SectorEscolar = SectorEscolar;
     }
 
     public Empresa(){
 
     }
 
-    /*public List<Llamada> getLlamadas() {
-        return Llamadas;
+    public String getSectorEscolar() {
+        return SectorEscolar;
     }
 
-    public void setLlamadas(List<Llamada> llamadas) {
-        Llamadas = llamadas;
-    }*/
+    public void setSectorEscolar(String sectorEscolar) {
+        SectorEscolar = sectorEscolar;
+    }
 
     public String getNombre() {
         return nombre;
     }
-
-
 
     public String getPersonaDeContacto() {
         return personaDeContacto;
