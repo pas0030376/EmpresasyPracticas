@@ -10,7 +10,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     //integer to count number of tabs
     int tabCount;
-    private String[] tabTitles = new String[]{"Todos","Practicas en curso", "Practicas terminadas"};
+    private String[] tabTitles = new String[]{"Tots","En Curs", "Acabades"};
 
     public PagerAdapter(android.support.v4.app.FragmentManager fm, int tabCount) {
         super(fm);

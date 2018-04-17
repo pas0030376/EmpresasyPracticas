@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +49,15 @@ public class addEstudiantesActivityFragment extends Fragment {
 
         getActivity().setTitle("Afegir Alumne");
 
+        final Spinner spinner = view.findViewById(R.id.estado_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),R.array.practica_estado, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+
 
        addStudent = view.findViewById(R.id.addstudent);
        cancel = view.findViewById(R.id.btncancelar);
@@ -60,7 +72,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    writeNewEstudent();
+                    writeNewEstudent(spinner);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +81,7 @@ public class addEstudiantesActivityFragment extends Fragment {
         return view;
     }
 
-    private void writeNewEstudent() throws ParseException {
+    private void writeNewEstudent(Spinner spinner) throws ParseException {
         int error = 0;
 
             EditText name =  view.findViewById(R.id.etname);
@@ -126,8 +138,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
-            EditText etestado = view.findViewById(R.id.etEstado);
-            String estado = etestado.getText().toString();
+            String estado = spinner.getSelectedItem().toString().trim();
 
 
             if (error==0){

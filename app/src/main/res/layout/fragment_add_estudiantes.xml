@@ -248,26 +248,17 @@
                 android:text="x,y,z" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginStart="0dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
+            android:text="Estado de practicas"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/etEstado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Estado de practicas"
-                android:singleLine="false"
-                android:text="En curso" />
-        </android.support.design.widget.TextInputLayout>
+        <Spinner
+            android:id="@+id/estado_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/addstudent"

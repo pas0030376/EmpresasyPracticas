@@ -28,5 +28,12 @@
     <string name="Editar" />
     <string name="navigation_editar" />
     <string name="title_activity_modificar_student">ModificarStudentActivity</string>
+
+    <string-array name="practica_estado">
+        <item>Acabades</item>
+        <item>En curs</item>
+        <item>Sense començar</item>
+        <item>Sense Acabar</item>
+    </string-array>
 </resources>
 
