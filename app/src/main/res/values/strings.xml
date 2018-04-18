@@ -35,5 +35,14 @@
         <item>Sense començar</item>
         <item>Sense Acabar</item>
     </string-array>
+
+    <string-array name="empresa_list">
+        <item>Accenture</item>
+        <item>Nintendo</item>
+        <item>Everis</item>
+        <item>Sigma</item>
+        <item>Apple</item>
+        <item>Google</item>
+    </string-array>
 </resources>
 

@@ -49,13 +49,15 @@ public class addEstudiantesActivityFragment extends Fragment {
 
         getActivity().setTitle("Afegir Alumne");
 
-        final Spinner spinner = view.findViewById(R.id.estado_spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
+        final Spinner spinnerEstado = view.findViewById(R.id.estado_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),R.array.practica_estado, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        spinnerEstado.setAdapter(adapter);
+
+        final Spinner spinnerEmpresas = view.findViewById(R.id.empresa_spinner);
+        ArrayAdapter<CharSequence> adapterEmp = ArrayAdapter.createFromResource(this.getContext(),R.array.empresa_list, android.R.layout.simple_spinner_item);
+        adapterEmp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEmpresas.setAdapter(adapterEmp);
 
 
 
@@ -72,7 +74,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    writeNewEstudent(spinner);
+                    writeNewEstudent(spinnerEstado, spinnerEmpresas);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -81,7 +83,7 @@ public class addEstudiantesActivityFragment extends Fragment {
         return view;
     }
 
-    private void writeNewEstudent(Spinner spinner) throws ParseException {
+    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas) throws ParseException {
         int error = 0;
 
             EditText name =  view.findViewById(R.id.etname);
@@ -90,8 +92,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             String flastname = lastname.getText().toString();
             EditText curso = view.findViewById(R.id.etcurso);
             String fcurso = curso.getText().toString();
-            EditText empresa = view.findViewById(R.id.etempresa);
-            String fempresa = empresa.getText().toString();
+            String fempresa = spinnerEmpresas.getSelectedItem().toString().trim();
             Context context = getContext();
                             EditText inicio_practicas = view.findViewById(R.id.etinicio);
                             Date date = new Date();
