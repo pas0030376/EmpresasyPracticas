@@ -59,9 +59,14 @@ public class addEstudiantesActivityFragment extends Fragment {
         adapterEmp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEmpresas.setAdapter(adapterEmp);
 
+        //tipopract_spinner
+        final Spinner spinnertp = view.findViewById(R.id.tipopract_spinner);
+        ArrayAdapter<CharSequence> adaptertp = ArrayAdapter.createFromResource(this.getContext(),R.array.tipo_practicas, android.R.layout.simple_spinner_item);
+        adaptertp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnertp.setAdapter(adaptertp);
 
 
-       addStudent = view.findViewById(R.id.addstudent);
+        addStudent = view.findViewById(R.id.addstudent);
        cancel = view.findViewById(R.id.btncancelar);
        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +79,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    writeNewEstudent(spinnerEstado, spinnerEmpresas);
+                    writeNewEstudent(spinnerEstado, spinnerEmpresas, spinnertp);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +88,7 @@ public class addEstudiantesActivityFragment extends Fragment {
         return view;
     }
 
-    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas) throws ParseException {
+    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas, Spinner spinnertp) throws ParseException {
         int error = 0;
 
             EditText name =  view.findViewById(R.id.etname);
@@ -121,15 +126,14 @@ public class addEstudiantesActivityFragment extends Fragment {
                                 toast.show();
                                 error++;
                                 }
-                    if (date.after(datefin)){
+                    if (date.after(datefin)) {
                         CharSequence text = "Fechas de inicio y fin incorrectas";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                         error++;
                     }
-            EditText tipo_practicas = view.findViewById(R.id.ettipopracticas);
-            String ftipo = tipo_practicas.getText().toString();
+            String ftipo = spinnertp.getSelectedItem().toString().trim();
             EditText email = view.findViewById(R.id.etemail);
             String femail = email.getText().toString();
             EditText telefono = view.findViewById(R.id.ettelefono);

@@ -43,8 +43,8 @@
                 android:id="@+id/etname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre"
-                android:text="Nombre" />
+                android:hint="Nom"
+                android:text="Nom" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -63,8 +63,8 @@
                 android:id="@+id/etapellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Apellido"
-                android:text="Apellido" />
+                android:hint="Cognom"
+                android:text="Cognom" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -104,7 +104,7 @@
                 android:id="@+id/ettelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Telefono"
+                android:hint="Telefon"
                 android:text="65216575" />
         </android.support.design.widget.TextInputLayout>
 
@@ -128,24 +128,21 @@
                 android:text="email@email.com" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:textColorHint="@color/black"
-            android:id="@+id/textInputLayout8"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-            tools:layout_editor_absoluteY="443dp">
+            android:layout_height="26dp"
+            android:text=" Tipus de pràctiques"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ettipopracticas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tipo de practicas"
-                android:text="DUAL" />
-        </android.support.design.widget.TextInputLayout>
+        <Spinner
+            android:id="@+id/tipopract_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <android.support.design.widget.TextInputLayout
             android:textColorHint="@color/black"
@@ -165,7 +162,7 @@
                 android:id="@+id/etinicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Fecha Inicio de Practicas"
+                android:hint="Data inici de practiques"
                 android:text="dd-mm-yyyy" />
         </android.support.design.widget.TextInputLayout>
 
@@ -184,14 +181,14 @@
                 android:id="@+id/etfin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Fecha fin de practicas"
+                android:hint="Data fi de practiques"
                 android:text="dd-mm-yyyy" />
         </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Empresa"
+            android:layout_height="26dp"
+            android:text=" Empresa"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -199,6 +196,11 @@
         android:id="@+id/empresa_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:textColor="@color/black" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout4"
@@ -215,8 +217,8 @@
                 android:id="@+id/etcurso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Curso"
-                android:text="Curso" />
+                android:hint="Curs"
+                android:text="Curs" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -233,14 +235,14 @@
                 android:id="@+id/etTareas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tareas"
+                android:hint="Tasques"
                 android:text="x,y,z" />
         </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estado de practicas"
+            android:layout_height="26dp"
+            android:text=" Estado de practicas"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -257,7 +259,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/okbuttonshape"
-            android:text="Aceptar"
+            android:text="Acceptar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
@@ -271,7 +273,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/cancelbuttonshape"
-            android:text="Cancelar"
+            android:text="Cancel·lar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.485"

@@ -44,5 +44,10 @@
         <item>Apple</item>
         <item>Google</item>
     </string-array>
+
+    <string-array name="tipo_practicas">
+        <item>DUAL</item>
+        <item>FCT</item>
+    </string-array>
 </resources>
 
