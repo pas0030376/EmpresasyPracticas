@@ -107,8 +107,6 @@ public class addEstudiantesActivityFragment extends Fragment {
                     Log.d("EMPRESA", String.valueOf(child.child("nombre").getValue()));
                     adapter.add(String.valueOf(child.child("nombre").getValue()));
                 }
-
-
             }
 
             @Override
@@ -123,11 +121,13 @@ public class addEstudiantesActivityFragment extends Fragment {
 
             EditText name =  view.findViewById(R.id.etname);
             String fname = name.getText().toString();
+
             EditText lastname = view.findViewById(R.id.etapellido);
             String flastname = lastname.getText().toString();
+
             EditText curso = view.findViewById(R.id.etcurso);
             String fcurso = curso.getText().toString();
-            String fempresa = spinnerEmpresas.getSelectedItem().toString().trim();
+
             Context context = getContext();
                             EditText inicio_practicas = view.findViewById(R.id.etinicio);
                             Date date = new Date();
@@ -163,7 +163,6 @@ public class addEstudiantesActivityFragment extends Fragment {
                         toast.show();
                         error++;
                     }
-            String ftipo = spinnertp.getSelectedItem().toString().trim();
             EditText email = view.findViewById(R.id.etemail);
             String femail = email.getText().toString();
             EditText telefono = view.findViewById(R.id.ettelefono);
@@ -173,6 +172,9 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
+
+            String ftipo = spinnertp.getSelectedItem().toString().trim();
+            String fempresa = spinnerEmpresas.getSelectedItem().toString();
             String estado = spinner.getSelectedItem().toString().trim();
 
 
