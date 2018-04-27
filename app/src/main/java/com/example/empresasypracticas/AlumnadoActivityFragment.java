@@ -32,9 +32,9 @@ public class AlumnadoActivityFragment extends Fragment implements TabLayout.OnTa
         tabs = view.findViewById(R.id.tabs);
 
         //Adding the tabs using addTab() method
-        tabs.addTab(tabs.newTab().setText("Todos"));
-        tabs.addTab(tabs.newTab().setText("En Curso"));
-        tabs.addTab(tabs.newTab().setText("Terminadas"));
+        tabs.addTab(tabs.newTab());
+        tabs.addTab(tabs.newTab());
+        tabs.addTab(tabs.newTab());
         tabs.setTabGravity(TabLayout.GRAVITY_FILL);
 
 

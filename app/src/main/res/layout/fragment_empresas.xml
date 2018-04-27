@@ -7,62 +7,27 @@
     tools:context="com.example.empresasypracticas.EmpresasActivityFragment"
     tools:showIn="@layout/activity_empresas">
 
-    <EditText
-        android:id="@+id/tvbuscar"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabsEmpresas"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="@string/nombre_empresa"
-        android:inputType="textPersonName"
-        android:background="@drawable/buttonshape"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <ListView
-        android:id="@+id/lvempresas"
+    <!-- View pager to swipe views -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagerEmpresas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/newEmpresa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvbuscar" />
-
-    <Button
-        android:id="@+id/bttbuscar"
-        android:background="@drawable/buttonshape"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/buscar"
-        app:layout_constraintBottom_toTopOf="@+id/lvempresas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvbuscar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <net.bohush.geometricprogressview.GeometricProgressView
-        android:id="@+id/progressView"
-        android:layout_width="147dp"
-        android:layout_height="118dp"
-        app:gp_color="#62C7FA"
-        app:gp_duration="800"
-        app:gp_figure_padding="3dp"
-        app:gp_number_of_angles="7"
-        app:gp_type="triangle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabsEmpresas" />
 
     <Button
         android:id="@+id/newEmpresa"
@@ -74,6 +39,7 @@
         android:text="Añadir empresa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="80dp" />
 
 </android.support.constraint.ConstraintLayout>

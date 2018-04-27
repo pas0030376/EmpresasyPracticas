@@ -48,6 +48,7 @@ public class ListAlumnos1 extends Fragment {
         View view = inflater.inflate(R.layout.lv_alumnos, container, false);
         lvalumnes = (ListView) view.findViewById(R.id.lvalumnos1);
 
+
         query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Estudiantes");

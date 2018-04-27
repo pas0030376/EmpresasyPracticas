@@ -13,41 +13,46 @@
         android:id="@+id/tvnombreEF"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/comfortaa"
+        android:gravity="start"
         android:text="TextView"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
-        android:gravity="start" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvinicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="11dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/comfortaa"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvempresaEF" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/tvempresaEF"
-        android:layout_marginStart="16dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/comfortaa"
+        android:gravity="start"
         android:text="Empresa"
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
@@ -55,9 +60,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF"
-        android:layout_marginLeft="8dp"
-        android:gravity="start" />
+        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -66,15 +69,66 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.42" />
 
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/buttonshape"
+        android:text="Edita informació "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnContact"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvtareas"
+        app:layout_constraintVertical_bias="0.818" />
+
     <ListView
         android:id="@+id/lvtareas"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="215dp"
+        android:layout_marginBottom="18dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/btnEdit"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvinicio" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/comfortaa"
+        android:text="DNI/NIE"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvinicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvempresaEF" />
+
+    <Button
+        android:id="@+id/btnContact"
+        android:layout_width="145dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/buttonshape"
+        android:text="Contacte"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnEdit"
+        app:layout_constraintTop_toTopOf="@+id/btnEdit"
+        app:layout_constraintVertical_bias="0.8" />
 
 </android.support.constraint.ConstraintLayout>

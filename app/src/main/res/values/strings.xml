@@ -8,8 +8,8 @@
     <string name="title_activity_add_estudiantes">addEstudiantesActivity</string>
     <string name="nombre_empresa">Nombre Empresa</string>
     <string name="buscar">Buscar</string>
-    <item name="visible" type="id"/>
-    <item name="masked" type="id"/>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
     <string name="title_activity_add_empresa">addEmpresaActivity</string>
     <string name="title_activity_detail_estudent">DetailEstudentActivity</string>
     <string name="title_activity_detail_estudent2">DetailEstudent2Activity</string>
@@ -27,5 +27,32 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Editar" />
     <string name="navigation_editar" />
+    <string name="title_activity_modificar_student">ModificarStudentActivity</string>
+
+    <string-array name="practica_estado">
+        <item>Acabades</item>
+        <item>En curs</item>
+        <item>Sense començar</item>
+        <item>Sense Acabar</item>
+    </string-array>
+
+    <string-array name="empresa_list">
+        <item>Accenture</item>
+        <item>Nintendo</item>
+        <item>Everis</item>
+        <item>Sigma</item>
+        <item>Apple</item>
+        <item>Google</item>
+    </string-array>
+
+    <string-array name="tipo_practicas">
+        <item>DUAL</item>
+        <item>FCT</item>
+    </string-array>
+    <string-array name="fam_empresas">
+        <item>Informàtica i comunicacions</item>
+        <item>Comerç i màrqueting</item>
+        <item>Hoteleria i turisme</item>
+    </string-array>
 </resources>
 

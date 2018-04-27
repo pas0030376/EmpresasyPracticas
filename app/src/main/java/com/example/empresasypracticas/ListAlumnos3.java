@@ -50,7 +50,7 @@ public class ListAlumnos3 extends Fragment {
 
         query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Estudiantes").orderByChild("estadoPracticas").equalTo("Terminadas");
+                .child("Estudiantes").orderByChild("estadoPracticas").equalTo("Acabades");
 
         options = new FirebaseListOptions.Builder<Estudiante>()
                 .setQuery(query,Estudiante.class)
@@ -75,7 +75,7 @@ public class ListAlumnos3 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
+                Intent intent = new Intent(getContext(), DetailEstudent2Activity.class);
                 intent.putExtra("estudiante", estudiante);
                 startActivity(intent);
             }

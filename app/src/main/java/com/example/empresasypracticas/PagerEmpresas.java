@@ -2,17 +2,18 @@ package com.example.empresasypracticas;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
 /**
- * Created by Vicky on 15/03/2018.
+ * Created by Vicky on 16/04/2018.
  */
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerEmpresas extends FragmentStatePagerAdapter {
 
     //integer to count number of tabs
     int tabCount;
-    private String[] tabTitles = new String[]{"Tots","En Curs", "Acabades"};
+    private String[] tabTitles = new String[]{"Informàtica i comunicacions","Comerç i màrqueting", "Hoteleria i turisme"};
 
-    public PagerAdapter(android.support.v4.app.FragmentManager fm, int tabCount) {
+    public PagerEmpresas(android.support.v4.app.FragmentManager fm, int tabCount) {
         super(fm);
         this.tabCount = tabCount;
     }
@@ -29,13 +30,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         //Returning the current tabs
         switch (position) {
             case 0:
-                ListAlumnos1 tab1 = new ListAlumnos1();
+                FamInformatica tab1 = new FamInformatica();
                 return tab1;
             case 1:
-                ListAlumnos2 tab2 = new ListAlumnos2();
+                FamComercio tab2 = new FamComercio();
                 return tab2;
             case 2:
-                ListAlumnos3 tab3 = new ListAlumnos3();
+                FamHosteleria tab3 = new FamHosteleria();
                 return tab3;
             default:
                 return null;

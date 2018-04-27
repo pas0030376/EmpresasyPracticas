@@ -50,7 +50,7 @@ public class ListAlumnos2 extends Fragment {
 
         query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Estudiantes").orderByChild("estadoPracticas").equalTo("En Curso");
+                .child("Estudiantes").orderByChild("estadoPracticas").equalTo(("En curs"));
 
         options = new FirebaseListOptions.Builder<Estudiante>()
                 .setQuery(query,Estudiante.class)

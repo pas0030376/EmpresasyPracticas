@@ -4,19 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,12 +30,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class addEstudiantesActivityFragment extends Fragment {
+    FirebaseListAdapter<Empresa> adpEmpresas;
+    FirebaseListOptions<Empresa> optempresas;
+    DatabaseReference empr;
     View view;
     private DatabaseReference mRef;
     private Task<Void> mDatabase;
@@ -46,8 +53,26 @@ public class addEstudiantesActivityFragment extends Fragment {
 
         getActivity().setTitle("Afegir Alumne");
 
+        final Spinner spinnerEstado = view.findViewById(R.id.estado_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),R.array.practica_estado, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstado.setAdapter(adapter);
 
-       addStudent = view.findViewById(R.id.addstudent);
+        final Spinner spinnerEmpresas = view.findViewById(R.id.empresa_spinner);
+       // ArrayAdapter<CharSequence> adapterEmp = new ArrayAdapter<CharSequence>();
+        ArrayList<String> adapterEmpr = new ArrayList<String>();
+        ConsultaEmpresas(adapterEmpr);
+        ArrayAdapter<String> adapterEmp = new ArrayAdapter<String>(this.getContext(),android.R.layout.simple_spinner_item, adapterEmpr);
+        adapterEmp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEmpresas.setAdapter(adapterEmp);
+
+        //tipopract_spinner
+        final Spinner spinnertp = view.findViewById(R.id.tipopract_spinner);
+        ArrayAdapter<CharSequence> adaptertp = ArrayAdapter.createFromResource(this.getContext(),R.array.tipo_practicas, android.R.layout.simple_spinner_item);
+        adaptertp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnertp.setAdapter(adaptertp);
+
+        addStudent = view.findViewById(R.id.addstudent);
        cancel = view.findViewById(R.id.btncancelar);
        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +85,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    writeNewEstudent();
+                    writeNewEstudent(spinnerEstado, spinnerEmpresas, spinnertp);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +94,31 @@ public class addEstudiantesActivityFragment extends Fragment {
         return view;
     }
 
-    private void writeNewEstudent() throws ParseException {
+    private void ConsultaEmpresas(final ArrayList<String> adapter) {
+
+        empr = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Empresas");
+
+        empr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("EMPRESA", String.valueOf(child.child("nombre").getValue()));
+                    adapter.add(String.valueOf(child.child("nombre").getValue()));
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas, Spinner spinnertp) throws ParseException {
         int error = 0;
 
             EditText name =  view.findViewById(R.id.etname);
@@ -78,8 +127,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             String flastname = lastname.getText().toString();
             EditText curso = view.findViewById(R.id.etcurso);
             String fcurso = curso.getText().toString();
-            EditText empresa = view.findViewById(R.id.etempresa);
-            String fempresa = empresa.getText().toString();
+            String fempresa = spinnerEmpresas.getSelectedItem().toString().trim();
             Context context = getContext();
                             EditText inicio_practicas = view.findViewById(R.id.etinicio);
                             Date date = new Date();
@@ -108,15 +156,14 @@ public class addEstudiantesActivityFragment extends Fragment {
                                 toast.show();
                                 error++;
                                 }
-                    if (date.after(datefin)){
+                    if (date.after(datefin)) {
                         CharSequence text = "Fechas de inicio y fin incorrectas";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                         error++;
                     }
-            EditText tipo_practicas = view.findViewById(R.id.ettipopracticas);
-            String ftipo = tipo_practicas.getText().toString();
+            String ftipo = spinnertp.getSelectedItem().toString().trim();
             EditText email = view.findViewById(R.id.etemail);
             String femail = email.getText().toString();
             EditText telefono = view.findViewById(R.id.ettelefono);
@@ -126,13 +173,10 @@ public class addEstudiantesActivityFragment extends Fragment {
             List<String> atareas = new ArrayList<String>(Arrays.asList(tareas.split(",")));
             EditText etNie = view.findViewById(R.id.etnie);
             String nie = etNie.getText().toString();
-            EditText etestado = view.findViewById(R.id.etEstado);
-            String estado = etestado.getText().toString();
+            String estado = spinner.getSelectedItem().toString().trim();
 
 
-            if (error==0&&fname.equals("")&&flastname.equals("")&&nie.equals("")
-                    &&fcurso.equals("")&&fempresa.equals("")&&finicio.equals("")&&ffin.equals("")
-                    &&ftipo.equals("")&&femail.equals("")){
+            if (error==0){
                 Estudiante estudiante = new Estudiante(fname,flastname,nie,ftipo,finicio,ffin,femail,fcurso,ftelefono,fempresa,atareas,estado);
 
                 mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
