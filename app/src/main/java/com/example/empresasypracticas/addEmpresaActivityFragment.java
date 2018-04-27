@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
@@ -35,6 +37,11 @@ public class addEmpresaActivityFragment extends Fragment{
 
         getActivity().setTitle("Afegir Empresa");
 
+        final Spinner spinner = view.findViewById(R.id.famempresa_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),R.array.fam_empresas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         cancelar = view.findViewById(R.id.btnCancelEmpresa);
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +55,14 @@ public class addEmpresaActivityFragment extends Fragment{
         addempresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeNewEmpresa();
+                writeNewEmpresa(spinner);
             }
         });
 
         return view;
     }
 
-    private void writeNewEmpresa() {
+    private void writeNewEmpresa(Spinner spinner) {
         Context context = getContext();
         EditText nom =  view.findViewById(R.id.etnomempresa);
         String fname = nom.getText().toString();
@@ -69,8 +76,7 @@ public class addEmpresaActivityFragment extends Fragment{
         String fwebpage = webpage.getText().toString();
         EditText personaDeContacto = view.findViewById(R.id.etPersonaDeContacto);
         String fpersonacontacto = personaDeContacto.getText().toString();
-        EditText sectorEscolar =view.findViewById(R.id.etSectorEscolar);
-        String fsectorEscolar = sectorEscolar.getText().toString();
+        String fsectorEscolar = spinner.getSelectedItem().toString().trim() ;
 
 
         Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
@@ -83,5 +89,6 @@ public class addEmpresaActivityFragment extends Fragment{
         toast.show();
         Intent Empresa = new Intent(view.getContext(), EmpresasActivity.class);
         startActivityForResult(Empresa, 0);
+
     }
 }

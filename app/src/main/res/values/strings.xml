@@ -49,5 +49,10 @@
         <item>DUAL</item>
         <item>FCT</item>
     </string-array>
+    <string-array name="fam_empresas">
+        <item>Informàtica i comunicacions</item>
+        <item>Comerç i màrqueting</item>
+        <item>Hoteleria i turisme</item>
+    </string-array>
 </resources>
 
