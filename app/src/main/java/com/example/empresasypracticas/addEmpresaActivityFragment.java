@@ -78,7 +78,7 @@ public class addEmpresaActivityFragment extends Fragment{
         EditText personaDeContacto = view.findViewById(R.id.etPersonaDeContacto);
         String fpersonacontacto = personaDeContacto.getText().toString();
         String fsectorEscolar = spinner.getSelectedItem().toString().trim() ;
-        
+
 
         Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
