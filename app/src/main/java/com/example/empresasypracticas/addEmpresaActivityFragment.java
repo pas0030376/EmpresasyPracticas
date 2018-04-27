@@ -81,12 +81,7 @@ public class addEmpresaActivityFragment extends Fragment{
 
 
 
-        Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage);
-        mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
-        String mId = fname;
-        mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
-        Toast toast = Toast.makeText(getContext(), "Empresa agregada correctamente", Toast.LENGTH_LONG);
-        toast.show();
+
 
         Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
@@ -99,6 +94,5 @@ public class addEmpresaActivityFragment extends Fragment{
         Intent Empresa = new Intent(view.getContext(), EmpresasActivity.class);
         startActivityForResult(Empresa, 0);
 
->>>>>>> e81cd6d06b37115c3b41f638d73614c2f327367b
     }
 }
