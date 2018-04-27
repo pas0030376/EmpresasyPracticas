@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -58,9 +61,11 @@ public class addEmpresaActivityFragment extends Fragment{
         String fpersonacontacto = personaDeContacto.getText().toString();
 
 
-        //Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage);
+        Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
         String mId = fname;
-       // mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
+        mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
+        Toast toast = Toast.makeText(getContext(), "Empresa agregada correctamente", Toast.LENGTH_LONG);
+        toast.show();
     }
 }
