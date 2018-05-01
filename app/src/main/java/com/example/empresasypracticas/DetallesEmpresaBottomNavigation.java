@@ -34,7 +34,7 @@ public class DetallesEmpresaBottomNavigation extends AppCompatActivity {
                     transaction.replace(R.id.container, new verLlamadas()).commit();
                     return true;
                 case R.id.navigation_verAlumnos:
-                    transaction.replace(R.id.container, new verLlamadas()).commit();
+                    transaction.replace(R.id.container, new verAlumnos()).commit();
                     return true;
                 case R.id.navigation_sendMail:
                     transaction.replace(R.id.container, new SendFormularioEmpresa()).commit();
