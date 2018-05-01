@@ -79,9 +79,23 @@ public class addEmpresaActivityFragment extends Fragment{
         String fpersonacontacto = personaDeContacto.getText().toString();
         String fsectorEscolar = spinner.getSelectedItem().toString().trim() ;
 
-        Empresa empresa = new Empresa(fname,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
+        //Controlo que el nombre de la empresa sea la primera letra mayúscula y las siguientes minúsculas
+        char c=' ';
+        String fnameModificado="";
+        for (int i=0;i<fname.length();i++){
+            if(i==0){
+                c=Character.toUpperCase(fname.charAt(i));
+            }else{
+                Character.toLowerCase(fname.charAt(i));
+                c=Character.toLowerCase(fname.charAt(i));
+            }
+
+            fnameModificado=fnameModificado+c;
+        }
+        System.out.println(fnameModificado);
+        Empresa empresa = new Empresa(fnameModificado,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
-        String mId = fname;
+        String mId = fnameModificado;
         mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
         CharSequence text = "Emprese Afegit";
         int duration = Toast.LENGTH_SHORT;
