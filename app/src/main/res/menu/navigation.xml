@@ -17,9 +17,6 @@
         android:id="@+id/navigation_verLlamadas"
         android:icon="@android:drawable/ic_menu_recent_history"
         android:title="Ver llamadas" />
-    <item
-        android:id="@+id/navigation_sendMail"
-        android:icon="@drawable/sendmail"
-        android:title="Envia formulari" />
+
 
 </menu>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.empresasypracticas.SendEmailActivity">
+    tools:context="com.example.empresasypracticas.DetailEmpresa2ActivityFragment"
+    tools:showIn="@layout/activity_detail_empresa2">
 
 </android.support.constraint.ConstraintLayout>
