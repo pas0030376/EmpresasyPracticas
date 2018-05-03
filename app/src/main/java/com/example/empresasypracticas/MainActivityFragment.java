@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.concurrent.Executor;
 
-import static android.content.ContentValues.TAG;
+
 
 public class MainActivityFragment extends Fragment {
     private Button out;
