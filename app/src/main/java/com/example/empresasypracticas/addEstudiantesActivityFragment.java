@@ -89,6 +89,12 @@ public class addEstudiantesActivityFragment extends Fragment {
         adapterEmp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEmpresas.setAdapter(adapterEmp);
 
+        //Curso
+        final Spinner spinnerCurso = view.findViewById(R.id.curs_spinner);
+        ArrayAdapter<CharSequence> adapterCurso = ArrayAdapter.createFromResource(this.getContext(),R.array.curs_list, android.R.layout.simple_spinner_item);
+        adapterCurso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCurso.setAdapter(adapterCurso);
+
         //tipopract_spinner
         final Spinner spinnertp = view.findViewById(R.id.tipopract_spinner);
         ArrayAdapter<CharSequence> adaptertp = ArrayAdapter.createFromResource(this.getContext(),R.array.tipo_practicas, android.R.layout.simple_spinner_item);
@@ -104,7 +110,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    writeNewEstudent(spinnerEstado, spinnerEmpresas, spinnertp);
+                    writeNewEstudent(spinnerEstado, spinnerEmpresas, spinnertp, spinnerCurso);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -155,7 +161,7 @@ public class addEstudiantesActivityFragment extends Fragment {
         });
     }
 
-    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas, Spinner spinnertp) throws ParseException {
+    private void writeNewEstudent(Spinner spinner, Spinner spinnerEmpresas, Spinner spinnertp, Spinner spinnerCurso) throws ParseException {
         int error = 0;
 
             EditText name =  view.findViewById(R.id.etname);
@@ -163,9 +169,6 @@ public class addEstudiantesActivityFragment extends Fragment {
 
             EditText lastname = view.findViewById(R.id.etapellido);
             String flastname = lastname.getText().toString();
-
-            EditText curso = view.findViewById(R.id.etcurso);
-            String fcurso = curso.getText().toString();
 
             Context context = getContext();
                             EditText inicio_practicas = view.findViewById(R.id.etinicio);
@@ -215,6 +218,7 @@ public class addEstudiantesActivityFragment extends Fragment {
             String ftipo = spinnertp.getSelectedItem().toString().trim();
             String fempresa = spinnerEmpresas.getSelectedItem().toString().trim();
             String estado = spinner.getSelectedItem().toString().trim();
+            String fcurso =spinnerCurso.getSelectedItem().toString().trim();
 
         if(filePath != null) {
             //pd.show();

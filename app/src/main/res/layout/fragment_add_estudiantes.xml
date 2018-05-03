@@ -203,24 +203,17 @@
                 android:layout_height="8dp"
                 android:textColor="@color/black" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputLayout4"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-                tools:layout_editor_absoluteY="206dp">
+                android:layout_height="26dp"
+                android:text="Curso"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etcurso"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Curs"
-                    android:text="Curs" />
-            </android.support.design.widget.TextInputLayout>
+            <Spinner
+                android:id="@+id/curs_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
             <android.support.design.widget.TextInputLayout
