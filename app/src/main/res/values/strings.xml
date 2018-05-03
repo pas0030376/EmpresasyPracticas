@@ -50,5 +50,6 @@
         <item>Comerç i màrqueting</item>
         <item>Hoteleria i turisme</item>
     </string-array>
+    <string name="title_activity_detail_empresa2">DetailEmpresa2Activity</string>
 </resources>
 
