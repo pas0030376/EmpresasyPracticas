@@ -16,14 +16,11 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-/**
- * Created by Vicky on 16/04/2018.
- */
-
+import com.google.firebase.database.Query;
 public class FamHosteleria extends Fragment{
     FirebaseListAdapter<Empresa> adapter;
     FirebaseListOptions<Empresa> options;
+    Query query;
 
     @Override
     public void onStart() {
@@ -47,9 +44,9 @@ public class FamHosteleria extends Fragment{
         ListView lvempreses = view.findViewById(R.id.lv_hosteleria);
 
 
-        DatabaseReference query = FirebaseDatabase.getInstance()
+        query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Empresas");
+                .child("Empresas").orderByChild("sectorEscolar").equalTo("Hoteleria i turisme");
 
 
         options = new FirebaseListOptions.Builder<Empresa>()

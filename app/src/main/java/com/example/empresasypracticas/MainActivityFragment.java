@@ -94,17 +94,6 @@ public class MainActivityFragment extends Fragment {
 
     //sign out user
     private void signOut() {
-       /* mGoogleSignInClient.signOut()
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        CharSequence text = "Already signed out.";
-                        int duration = Toast.LENGTH_SHORT;
-                        Context context = getContext();
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
-                    }
-                });*/
        auth.signOut();
         CharSequence text = "Already signed out.";
         int duration = Toast.LENGTH_SHORT;
@@ -125,10 +114,6 @@ public class MainActivityFragment extends Fragment {
                         Context context = getContext();
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-                    }
-                });
+                    }});
     }
-
-
-
 }

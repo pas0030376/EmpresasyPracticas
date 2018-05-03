@@ -2,8 +2,11 @@ package com.example.empresasypracticas;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +14,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jackandphantom.circularimageview.CircleImage;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -30,6 +39,9 @@ public class ListAlumnos1 extends Fragment {
     net.bohush.geometricprogressview.GeometricProgressView progressBar;
     DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Date currentTime = Calendar.getInstance().getTime();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    CircleImage photo;
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://empresasypracticas.appspot.com/");
 
     @Override
     public void onStart() {
@@ -78,7 +90,21 @@ public class ListAlumnos1 extends Fragment {
                 } catch (ParseException e1) {
                     e1.printStackTrace();
                 }
-               // progressBar.setVisibility(View.GONE);
+                // progressBar.setVisibility(View.GONE);
+                //SetImageforStudent
+                photo = view.findViewById(R.id.stdphoto);
+                storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.w("Storage", "uri: " + uri.toString());
+                        Glide.with(getContext()).load(uri).into(photo);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+
+                    }
+                });
             }
         };
         lvalumnes.setAdapter(adapter);

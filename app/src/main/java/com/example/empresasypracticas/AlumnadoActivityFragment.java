@@ -26,7 +26,7 @@ public class AlumnadoActivityFragment extends Fragment implements TabLayout.OnTa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alumnado, container, false);
-        getActivity().setTitle("Alumnado");
+        getActivity().setTitle("Alumnat");
 
         //Initializing the tablayout
         tabs = view.findViewById(R.id.tabs);
