@@ -1,12 +1,14 @@
 package com.example.empresasypracticas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -22,6 +24,10 @@ public class SendFormularioEmpresa extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    Empresa empresa;
+    Estudiante estudiante;
+    TextView student;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -64,7 +70,27 @@ public class SendFormularioEmpresa extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_send_formulario_empresa, container, false);
+        View view = inflater.inflate(R.layout.fragment_send_formulario_empresa, container, false);
+        student = view.findViewById(R.id.studentTerminada);
+
+        Intent i = getActivity().getIntent();
+        if (i != null) {
+            empresa = (Empresa) i.getSerializableExtra("empresa");
+            if (empresa != null)
+            {
+                String nomEmpresa= empresa.getNombre();
+                student.setText(estudiante.getNom());
+                getActivity().setTitle(nomEmpresa);
+                /*String studentEmpresa = estudiante.getEmpresa();
+
+                if(nomEmpresa==studentEmpresa)
+                {
+                    student.setText(estudiante.getNom());
+                }*/
+            }
+        }
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -79,7 +105,7 @@ public class SendFormularioEmpresa extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } 
+        }
     }
 
     @Override
