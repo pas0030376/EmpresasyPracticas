@@ -72,7 +72,7 @@ public class addEmpresaActivityFragment extends Fragment{
         EditText correo = view.findViewById(R.id.etCorreo);
         String fcorreo = correo.getText().toString();
         EditText telefono = view.findViewById(R.id.etTelefono);
-        String fteleono = telefono.getText().toString();
+        String ftelefono = telefono.getText().toString();
         EditText webpage = view.findViewById(R.id.etWebPage);
         String fwebpage = webpage.getText().toString();
         EditText personaDeContacto = view.findViewById(R.id.etPersonaDeContacto);
@@ -93,16 +93,27 @@ public class addEmpresaActivityFragment extends Fragment{
             fnameModificado=fnameModificado+c;
         }
         System.out.println(fnameModificado);
-        Empresa empresa = new Empresa(fnameModificado,ftipo,fteleono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
-        mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
-        String mId = fnameModificado;
-        mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
-        CharSequence text = "Emprese Afegit";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Intent Empresa = new Intent(view.getContext(), EmpresasActivity.class);
-        startActivityForResult(Empresa, 0);
+        //verificamos que no hayan campos vacíos
+        if(!fname.equals("")&&!ftipo.equals("")&&!fcorreo.equals("")&&!ftelefono.equals("")&&!fwebpage.equals("")&&!fpersonacontacto.equals("")){
+            Empresa empresa = new Empresa(fnameModificado,ftipo,ftelefono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
+            mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
+            String mId = fnameModificado;
+            mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);
+            CharSequence text = "Empresa añadida";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            Intent Empresa = new Intent(view.getContext(), EmpresasActivity.class);
+            startActivityForResult(Empresa, 0);
+        }else{
+            CharSequence text = "Rellene todos los campos por favor";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+        }
+
+
 
     }
 }
