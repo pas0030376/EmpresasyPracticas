@@ -78,7 +78,7 @@ public class ListAlumnos3 extends Fragment {
                 practica.setText("Practicas Terminadas");
                 // progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
-                photo = view.findViewById(R.id.stdphoto);
+                photo = view.findViewById(R.id.stdPhoto);
                 storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {

@@ -80,7 +80,7 @@ public class ListAlumnos2 extends Fragment {
                         practica.setTextColor(Color.parseColor("#0eae20"));
                 // progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
-                photo = view.findViewById(R.id.stdphoto);
+                photo = view.findViewById(R.id.stdPhoto);
                 storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {

@@ -7,7 +7,7 @@
 
 
     <com.jackandphantom.circularimageview.CircleImage
-        android:id="@+id/stdphoto"
+        android:id="@+id/stdPhoto"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginEnd="8dp"
@@ -32,7 +32,7 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stdphoto"
+        app:layout_constraintStart_toEndOf="@+id/stdPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stdphoto"
+        app:layout_constraintStart_toEndOf="@+id/stdPhoto"
         app:layout_constraintTop_toBottomOf="@+id/tvEmpresa" />
 
 </android.support.constraint.ConstraintLayout>

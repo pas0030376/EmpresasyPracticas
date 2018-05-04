@@ -42,10 +42,10 @@ public class DetailEstudentActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_detail_estudent, container, false);
 
-       nom = view.findViewById(R.id.tvnombreEF);
-       empresa = view.findViewById(R.id.tvempresaEF);
+       nom = view.findViewById(R.id.tvNameEstudent);
+       empresa = view.findViewById(R.id.tvEmpresa);
        inicio = view.findViewById(R.id.tvinicio);
-       photo = view.findViewById(R.id.stdphoto);
+       photo = view.findViewById(R.id.stdPhoto);
        nie = view.findViewById(R.id.tvsnie);
 
         ListView lvTareas = view.findViewById(R.id.lvtareas);

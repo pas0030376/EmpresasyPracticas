@@ -58,14 +58,14 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_detail_estudent2, container, false);
-        nom = view.findViewById(R.id.tvnombreEF);
-        empresa = view.findViewById(R.id.tvempresaEF);
-        inicio = view.findViewById(R.id.tvfechasEF);
-        sendEmail = view.findViewById(R.id.btnSendEmail);
+        nom = view.findViewById(R.id.tvNameEstudent);
+        empresa = view.findViewById(R.id.tvEmpresa);
+        inicio = view.findViewById(R.id.tvDateEmp);
+        sendEmail = view.findViewById(R.id.btnEnviarEmail);
         questionari = view.findViewById(R.id.tvIsnot);
-        photo = view.findViewById(R.id.stdphoto);
+        photo = view.findViewById(R.id.stdPhoto);
 
-        ListView lvcomments = view.findViewById(R.id.lvcomments);
+        ListView lvcomments = view.findViewById(R.id.lvComments);
 
         Intent i = getActivity().getIntent();
 
@@ -73,7 +73,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
             final Estudiante estudiante = (Estudiante) i.getSerializableExtra("estudiante");
             if (estudiante != null) {
                 MostrarEstudiante(estudiante);
-                lvcomments.findViewById(R.id.lvcomments);
+                lvcomments.findViewById(R.id.lvComments);
                 String email = estudiante.getCorreo();
 
                 query = FirebaseDatabase.getInstance()
