@@ -21,4 +21,22 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
+
+    <net.bohush.geometricprogressview.GeometricProgressView
+        android:id="@+id/pv2"
+        android:layout_width="110dp"
+        android:layout_height="94dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:gp_color="#88caea"
+        app:gp_duration="800"
+        app:gp_figure_padding="3dp"
+        app:gp_number_of_angles="7"
+        app:gp_type="triangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lv_alumnes2"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 </android.support.constraint.ConstraintLayout>

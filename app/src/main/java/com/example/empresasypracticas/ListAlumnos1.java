@@ -61,6 +61,8 @@ public class ListAlumnos1 extends Fragment {
         lvalumnes = (ListView) view.findViewById(R.id.lvalumnos1);
 
 
+        progressBar = view.findViewById(R.id.pv);
+        progressBar.setVisibility(View.VISIBLE);
         query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Estudiantes");
@@ -90,7 +92,7 @@ public class ListAlumnos1 extends Fragment {
                 } catch (ParseException e1) {
                     e1.printStackTrace();
                 }
-                // progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
                 photo = view.findViewById(R.id.stdphoto);
                 Glide.with(getContext())

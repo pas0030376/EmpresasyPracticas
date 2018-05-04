@@ -58,7 +58,10 @@ public class ListAlumnos2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.lv_alumnos2, container, false);
        lvalumnes = (ListView) view.findViewById(R.id.lv_alumnes2);
+        progressBar = view.findViewById(R.id.pv2);
+        progressBar.setVisibility(View.VISIBLE);
 
+        progressBar.setVisibility(View.VISIBLE);
         query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Estudiantes").orderByChild("estadoPracticas").equalTo(("En curs"));
@@ -71,6 +74,7 @@ public class ListAlumnos2 extends Fragment {
         adapter = new FirebaseListAdapter<Estudiante>(options){
             @Override
             protected void populateView(View view, Estudiante model, int position) {
+                progressBar.setVisibility(View.GONE);
                 TextView tvName = view.findViewById(R.id.tvname);
                 tvName.setText(model.getNom()+" "+model.getCognom());
                 TextView empresa = view.findViewById(R.id.tvEmpresa);
@@ -78,8 +82,6 @@ public class ListAlumnos2 extends Fragment {
                 TextView practica = view.findViewById(R.id.tvpracticas);
                         practica.setText("Practicas en curso");
                         practica.setTextColor(Color.parseColor("#0eae20"));
-                // progressBar.setVisibility(View.GONE);
-                //SetImageforStudent
                 photo = view.findViewById(R.id.stdphoto);
                 Glide.with(getContext())
                         .load(storageRef.child(model.getNIE()+".jpg"))
