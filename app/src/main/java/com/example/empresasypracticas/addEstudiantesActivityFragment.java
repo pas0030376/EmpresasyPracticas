@@ -221,7 +221,6 @@ public class addEstudiantesActivityFragment extends Fragment {
             String fcurso =spinnerCurso.getSelectedItem().toString().trim();
 
         if(filePath != null) {
-            //pd.show();
             String nameImage = nie+".jpg";
             StorageReference childRef = storageRef.child(nameImage);
             UploadTask uploadTask = childRef.putFile(filePath);

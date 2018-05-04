@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
@@ -79,18 +80,9 @@ public class ListAlumnos3 extends Fragment {
                 // progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
                 photo = view.findViewById(R.id.stdphoto);
-                storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Log.w("Storage", "uri: " + uri.toString());
-                        Glide.with(getContext()).load(uri).into(photo);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-
-                    }
-                });
+                Glide.with(getContext())
+                        .load(storageRef.child(model.getNIE()+".jpg"))
+                        .into(photo);
             }
         };
         lvalumnes.setAdapter(adapter);
