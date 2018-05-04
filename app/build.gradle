@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:3.2.1'
     implementation 'com.firebaseui:firebase-ui-database:3.2.1'
     implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -37,18 +38,20 @@ dependencies {
     compile 'com.firebaseui:firebase-ui:0.3.0'
     compile 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
     compile 'com.rilixtech:materialfancybuttons:1.8.7'
+    compile 'com.github.abdularis:CircularImageView:v1.1'
     implementation files('activation.jar')
     implementation files('additionnal.jar')
     implementation files('javax.mail.jar')
     compile 'com.github.mjn1369:prettydialog:1.0.2'
     compile 'com.github.shaz-tech:EasyRuntimePermission:1.0'
     compile 'me.spark:submitbutton:1.0.1'
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    compile 'com.firebaseui:firebase-ui-storage:3.0.0'
+    compile 'com.jackandphantom.android:circularimageview:1.2.0'
+
+
 }
-
-
-
-
-
 
 
 

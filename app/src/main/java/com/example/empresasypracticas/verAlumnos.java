@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -128,9 +129,22 @@ public class verAlumnos extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
-                intent.putExtra("estudiante", estudiante);
-                startActivity(intent);
+
+                try {
+                    Date fechafin = sdf.parse(estudiante.getFin_practicas());
+
+                    if (currentTime.after(fechafin)){
+                        Intent intent = new Intent(getContext(), DetailEmpresaActivity.class);
+                        intent.putExtra("estudiante", estudiante);
+                        startActivity(intent);}
+                    else if (fechafin.after(currentTime)){
+                        Intent intent = new Intent(getContext(), DetailEmpresa2Activity.class);
+                        intent.putExtra("estudiante", estudiante);
+                        startActivity(intent);
+                    }
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 

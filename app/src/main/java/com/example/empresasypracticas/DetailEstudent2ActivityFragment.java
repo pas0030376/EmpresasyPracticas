@@ -3,6 +3,7 @@ package com.example.empresasypracticas;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +15,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jackandphantom.circularimageview.CircleImage;
 
 
 public class DetailEstudent2ActivityFragment extends Fragment {
@@ -30,6 +37,9 @@ public class DetailEstudent2ActivityFragment extends Fragment {
     Button sendEmail;
     TextView questionari;
     View view;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    CircleImage photo;
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://empresasypracticas.appspot.com/");
 
     public DetailEstudent2ActivityFragment() {
     }
@@ -53,6 +63,7 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         inicio = view.findViewById(R.id.tvfechasEF);
         sendEmail = view.findViewById(R.id.btnSendEmail);
         questionari = view.findViewById(R.id.tvIsnot);
+        photo = view.findViewById(R.id.stdphoto);
 
         ListView lvcomments = view.findViewById(R.id.lvcomments);
 
@@ -138,6 +149,22 @@ public class DetailEstudent2ActivityFragment extends Fragment {
         String fullname = estudiante.getNom().concat(" "+estudiante.getCognom());
         getActivity().setTitle("");
         String fechas = "Inicio: "+estudiante.getInicio_practicas().concat("   Fin: "+estudiante.getFin_practicas());
+
+
+        //SetImageforStudent
+        storageRef.child(estudiante.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Log.w("Storage", "uri: " + uri.toString());
+                Glide.with(getContext()).load(uri).into(photo);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+            }
+        });
+
 
         nom.setText(fullname);
 

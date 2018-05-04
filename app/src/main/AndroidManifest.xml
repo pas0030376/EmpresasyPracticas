@@ -81,7 +81,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.AlumnadoActivity" />
         </activity>
-        <activity android:name=".SendEmailActivity" />
         <activity
             android:name=".DetallesEmpresaBottomNavigation"
             android:label="@string/title_activity_detalles_empresa_bottom_navigation" />
@@ -99,6 +98,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.empresasypracticas.AlumnadoActivity" />
         </activity>
+        <activity
+            android:name=".DetailEmpresaActivity"
+            android:label="@string/title_activity_detail_empresa"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailEmpresa2Activity"
+            android:label="@string/title_activity_detail_empresa2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

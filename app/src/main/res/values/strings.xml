@@ -37,12 +37,16 @@
     </string-array>
 
     <string-array name="empresa_list">
-        <item>Accenture</item>
-        <item>Nintendo</item>
-        <item>Everis</item>
         <item>Sigma</item>
-        <item>Apple</item>
-        <item>Google</item>
+        <item>Altran</item>
+    </string-array>
+
+    <string-array name="curs_list">
+        <item>GM Activitats comercials </item>
+        <item>GM Sistemes microinformàtics i xarxes</item>
+        <item>GS Agències de viatges i Gestió d'esdeveniments</item>
+        <item>GS Gestió d'allotjaments turístics</item>
+        <item>GS Guia, informació i assistència turístiques</item>
     </string-array>
 
     <string-array name="tipo_practicas">
@@ -54,5 +58,6 @@
         <item>Comerç i màrqueting</item>
         <item>Hoteleria i turisme</item>
     </string-array>
+    <string name="title_activity_detail_empresa2">DetailEmpresa2Activity</string>
 </resources>
 

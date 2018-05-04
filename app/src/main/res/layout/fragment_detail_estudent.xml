@@ -9,21 +9,36 @@
     tools:layout_editor_absoluteY="137dp"
     tools:showIn="@layout/activity_detail_estudent">
 
+    <com.jackandphantom.circularimageview.CircleImage
+        android:id="@+id/stdphoto"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:add_shadow="true"
+        app:border_color="#88caea"
+        app:border_width="3dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shadow_color="#9fb9bd"
+        app:shadow_radius="20" />
+
     <TextView
         android:id="@+id/tvnombreEF"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/comfortaa"
         android:gravity="start"
         android:text="TextView"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stdphoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -43,23 +58,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/tvsnie" />
 
     <TextView
         android:id="@+id/tvempresaEF"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="48dp"
         android:fontFamily="@font/comfortaa"
         android:gravity="start"
         android:text="Empresa"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stdphoto"
         app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
 
     <android.support.constraint.Guideline
@@ -96,21 +109,20 @@
         app:layout_constraintTop_toBottomOf="@+id/tvinicio" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvsnie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/comfortaa"
         android:text="DNI/NIE"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvinicio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvempresaEF"
+        app:layout_constraintStart_toStartOf="@+id/tvempresaEF"
         app:layout_constraintTop_toBottomOf="@+id/tvempresaEF" />
 
     <Button

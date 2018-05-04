@@ -16,6 +16,7 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 /**
  * Created by Vicky on 16/04/2018.
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FamComercio extends Fragment {
     FirebaseListAdapter<Empresa> adapter;
     FirebaseListOptions<Empresa> options;
+    Query query;
 
     @Override
     public void onStart() {
@@ -46,10 +48,9 @@ public class FamComercio extends Fragment {
 
         ListView lvempreses = view.findViewById(R.id.lv_comercio);
 
-
-        DatabaseReference query = FirebaseDatabase.getInstance()
+        query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Empresas");
+                .child("Empresas").orderByChild("sectorEscolar").equalTo("Comerç i màrqueting");
 
 
         options = new FirebaseListOptions.Builder<Empresa>()

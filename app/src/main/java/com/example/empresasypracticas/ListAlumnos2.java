@@ -2,8 +2,11 @@ package com.example.empresasypracticas;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +14,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
-import com.google.firebase.database.DatabaseReference;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jackandphantom.circularimageview.CircleImage;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +38,9 @@ public class ListAlumnos2 extends Fragment {
     net.bohush.geometricprogressview.GeometricProgressView progressBar;
     DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Date currentTime = Calendar.getInstance().getTime();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    CircleImage photo;
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://empresasypracticas.appspot.com/");
 
     @Override
     public void onStart() {
@@ -68,6 +79,11 @@ public class ListAlumnos2 extends Fragment {
                         practica.setText("Practicas en curso");
                         practica.setTextColor(Color.parseColor("#0eae20"));
                 // progressBar.setVisibility(View.GONE);
+                //SetImageforStudent
+                photo = view.findViewById(R.id.stdphoto);
+                Glide.with(getContext())
+                        .load(storageRef.child(model.getNIE()+".jpg"))
+                        .into(photo);
             }
         };
         lvalumnes.setAdapter(adapter);
