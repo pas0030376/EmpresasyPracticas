@@ -18,5 +18,9 @@
         android:icon="@android:drawable/ic_menu_recent_history"
         android:title="Ver llamadas" />
 
+    <item
+        android:id="@+id/navigation_sendEmail"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="Enviar email" />
 
 </menu>

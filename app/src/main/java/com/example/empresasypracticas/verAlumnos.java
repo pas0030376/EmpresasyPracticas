@@ -134,12 +134,12 @@ public class verAlumnos extends Fragment {
                     Date fechafin = sdf.parse(estudiante.getFin_practicas());
 
                     if (currentTime.after(fechafin)){
-                        Intent intent = new Intent(getContext(), DetailEmpresaActivity.class);
-                        intent.putExtra("estudiante", estudiante);
+                        Intent intent = new Intent(getContext(), DetailEstudent2Activity.class);
+                        intent.putExtra("empresa", estudiante);
                         startActivity(intent);}
                     else if (fechafin.after(currentTime)){
-                        Intent intent = new Intent(getContext(), DetailEmpresa2Activity.class);
-                        intent.putExtra("estudiante", estudiante);
+                        Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
+                        intent.putExtra("empresa", estudiante);
                         startActivity(intent);
                     }
                 } catch (ParseException e1) {

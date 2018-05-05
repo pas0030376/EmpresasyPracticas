@@ -11,7 +11,7 @@
 
 
     <com.jackandphantom.circularimageview.CircleImage
-        android:id="@+id/stdphoto"
+        android:id="@+id/stdPhoto"
         android:layout_width="126dp"
         android:layout_height="118dp"
         android:layout_marginEnd="8dp"
@@ -26,7 +26,7 @@
         app:shadow_radius="20" />
 
     <TextView
-        android:id="@+id/tvnombreEF"
+        android:id="@+id/tvNameEstudent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -37,11 +37,11 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stdphoto"
+        app:layout_constraintStart_toEndOf="@+id/stdPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvfechasEF"
+        android:id="@+id/tvDateEmp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -52,10 +52,10 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stdphoto" />
+        app:layout_constraintTop_toBottomOf="@+id/stdPhoto" />
 
     <TextView
-        android:id="@+id/tvempresaEF"
+        android:id="@+id/tvEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa"
@@ -64,13 +64,13 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvnombreEF"
+        app:layout_constraintEnd_toEndOf="@+id/tvNameEstudent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvnombreEF"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
+        app:layout_constraintStart_toStartOf="@+id/tvNameEstudent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameEstudent" />
 
     <Button
-        android:id="@+id/btnSendEmail"
+        android:id="@+id/btnEnviarEmail"
         android:layout_width="197dp"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
@@ -84,14 +84,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
-        android:id="@+id/lvcomments"
+        android:id="@+id/lvComments"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnviarEmail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvfechasEF"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateEmp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -104,10 +104,10 @@
         android:text="Encara no s'ha respòs aquest qüestionari"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lvcomments"
+        app:layout_constraintBottom_toBottomOf="@+id/lvComments"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lvcomments" />
+        app:layout_constraintTop_toTopOf="@+id/lvComments" />
 
 </android.support.constraint.ConstraintLayout>

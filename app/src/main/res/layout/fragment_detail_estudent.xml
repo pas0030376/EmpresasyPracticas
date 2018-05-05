@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_detail_estudent">
 
     <com.jackandphantom.circularimageview.CircleImage
-        android:id="@+id/stdphoto"
+        android:id="@+id/stdPhoto"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginEnd="8dp"
@@ -25,7 +25,7 @@
         app:shadow_radius="20" />
 
     <TextView
-        android:id="@+id/tvnombreEF"
+        android:id="@+id/tvNameEstudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -38,7 +38,7 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stdphoto"
+        app:layout_constraintStart_toEndOf="@+id/stdPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvsnie" />
 
     <TextView
-        android:id="@+id/tvempresaEF"
+        android:id="@+id/tvEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -72,8 +72,8 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stdphoto"
-        app:layout_constraintTop_toBottomOf="@+id/tvnombreEF" />
+        app:layout_constraintStart_toEndOf="@+id/stdPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameEstudent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -121,9 +121,9 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvinicio"
-        app:layout_constraintEnd_toEndOf="@+id/tvempresaEF"
-        app:layout_constraintStart_toStartOf="@+id/tvempresaEF"
-        app:layout_constraintTop_toBottomOf="@+id/tvempresaEF" />
+        app:layout_constraintEnd_toEndOf="@+id/tvEmpresa"
+        app:layout_constraintStart_toStartOf="@+id/tvEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmpresa" />
 
     <Button
         android:id="@+id/btnContact"
