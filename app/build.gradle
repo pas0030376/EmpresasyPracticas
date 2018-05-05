@@ -49,8 +49,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     compile 'com.firebaseui:firebase-ui-storage:3.0.0'
     compile 'com.jackandphantom.android:circularimageview:1.2.0'
-
-
 }
 
 
