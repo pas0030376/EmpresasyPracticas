@@ -82,19 +82,6 @@ public class ListAlumnos3 extends Fragment {
                 practica.setText("Practicas Terminadas");
                 //SetImageforStudent
                 photo = view.findViewById(R.id.stdPhoto);
-                storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Log.w("Storage", "uri: " + uri.toString());
-                        Glide.with(getContext()).load(uri).into(photo);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-
-                    }
-                });
-                photo = view.findViewById(R.id.stdphoto);
                 Glide.with(getContext())
                         .load(storageRef.child(model.getNIE()+".jpg"))
                         .into(photo);
