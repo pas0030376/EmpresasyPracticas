@@ -18,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shadow_color="#9fb9bd"
-        app:shadow_radius="20" />
+        app:shadow_radius="20"
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:id="@+id/tvname"

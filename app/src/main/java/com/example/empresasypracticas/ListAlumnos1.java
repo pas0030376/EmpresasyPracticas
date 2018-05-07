@@ -94,7 +94,6 @@ public class ListAlumnos1 extends Fragment {
                 }
                 progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
-<<<<<<< HEAD
                 photo = view.findViewById(R.id.stdPhoto);
                 storageRef.child(model.getNIE()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
@@ -108,12 +107,11 @@ public class ListAlumnos1 extends Fragment {
 
                     }
                 });
-=======
                 photo = view.findViewById(R.id.stdphoto);
                 Glide.with(getContext())
                         .load(storageRef.child(model.getNIE()+".jpg"))
                         .into(photo);
->>>>>>> 8c46eb9cb9b852dfac3e8b7f568edfaf57ee810b
+
             }
         };
         lvalumnes.setAdapter(adapter);

@@ -82,7 +82,6 @@ public class ListAlumnos2 extends Fragment {
                 TextView practica = view.findViewById(R.id.tvpracticas);
                         practica.setText("Practicas en curso");
                         practica.setTextColor(Color.parseColor("#0eae20"));
-<<<<<<< HEAD
                 // progressBar.setVisibility(View.GONE);
                 //SetImageforStudent
                 photo = view.findViewById(R.id.stdPhoto);
@@ -98,12 +97,10 @@ public class ListAlumnos2 extends Fragment {
 
                     }
                 });
-=======
                 photo = view.findViewById(R.id.stdphoto);
                 Glide.with(getContext())
                         .load(storageRef.child(model.getNIE()+".jpg"))
                         .into(photo);
->>>>>>> 8c46eb9cb9b852dfac3e8b7f568edfaf57ee810b
             }
         };
         lvalumnes.setAdapter(adapter);
