@@ -2,6 +2,7 @@ package com.example.empresasypracticas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,11 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jackandphantom.circularimageview.CircleImage;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,6 +51,10 @@ public class verAlumnos extends Fragment {
     net.bohush.geometricprogressview.GeometricProgressView progressBar;
     DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Date currentTime = Calendar.getInstance().getTime();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    CircleImage photo;
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://empresasypracticas.appspot.com/");
+
 
     @Override
     public void onStart() {
@@ -107,7 +116,8 @@ public class verAlumnos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ver_alumnos, container, false);
         getActivity().setTitle("Alumnos en "+empresa.getNombre());
         lvAlumnosEmpresa = (ListView) view.findViewById(R.id.lv_alumnes_empresa);
-
+        progressBar = view.findViewById(R.id.pv);
+        progressBar.setVisibility(View.VISIBLE);
         query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Estudiantes").orderByChild("empresa").equalTo((empresa.getNombre()));
@@ -117,15 +127,39 @@ public class verAlumnos extends Fragment {
                 .setLayout(R.layout.lv_alumnos_en_cada_empresa)
                 .build();
 
+
         adapter = new FirebaseListAdapter<Estudiante>(options){
             @Override
             protected void populateView(View view, Estudiante model, int position) {
                 TextView tvName = view.findViewById(R.id.tvNombreYApellidos);
                 tvName.setText(model.getNom()+" "+model.getCognom());
+                TextView tvpracticas = view.findViewById(R.id.tvpracticas);
+
+                try {
+                    Date fechafin = sdf.parse(model.getFin_practicas());
+                    if (currentTime.after(fechafin)){
+                        tvpracticas.setText("Practicas terminadas");
+                        tvpracticas.setTextColor(Color.parseColor("#000000"));
+
+                    }
+                    else if (fechafin.after(currentTime)){
+                        tvpracticas.setText("Practicas en curso");
+                        tvpracticas.setTextColor(Color.parseColor("#0eae20"));
+                    }
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+                progressBar.setVisibility(View.GONE);
+                //SetImageforStudent
+                photo = view.findViewById(R.id.stdPhoto);
+                Glide.with(getContext())
+                        .load(storageRef.child(model.getNIE()+".jpg"))
+                        .into(photo);
+
             }
         };
         lvAlumnosEmpresa.setAdapter(adapter);
-        lvAlumnosEmpresa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*lvAlumnosEmpresa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
@@ -146,7 +180,7 @@ public class verAlumnos extends Fragment {
                     e1.printStackTrace();
                 }
             }
-        });
+        });*/
 
 
         return view;
