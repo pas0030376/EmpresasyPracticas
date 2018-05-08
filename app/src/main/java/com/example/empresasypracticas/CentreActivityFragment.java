@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ModificarStudentActivityFragment extends Fragment {
+public class CentreActivityFragment extends Fragment {
 
-    public ModificarStudentActivityFragment() {
+    public CentreActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_modificar_student, container, false);
+       View view = inflater.inflate(R.layout.fragment_centre, container, false);
+       getActivity().setTitle("Institut Mediterrànea");
 
-
-        return view;
+       return view;
     }
 }

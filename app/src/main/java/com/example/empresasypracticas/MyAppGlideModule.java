@@ -11,10 +11,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
 
-/**
- * Created by Vicky on 04/05/2018.
- */
-
 @GlideModule
 public class MyAppGlideModule extends AppGlideModule {
 
