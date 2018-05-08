@@ -51,10 +51,12 @@ public class MainActivityFragment extends Fragment {
 
         Button alumnado = view.findViewById(R.id.alumnado);
         Button empresas = view.findViewById(R.id.empresas);
+        Button centre = view.findViewById(R.id.btncentre);
         out = view.findViewById(R.id.lvout);
 
         alumnado.setOnClickListener(listener);
         empresas.setOnClickListener(listener);
+        centre.setOnClickListener(listener);
         out.setOnClickListener(listener);
 
 
@@ -73,6 +75,10 @@ public class MainActivityFragment extends Fragment {
                 case R.id.empresas:
                     Intent empresas = new Intent(view.getContext(), EmpresasActivity.class);
                     startActivityForResult(empresas, 0);
+                    break;
+                case R.id.btncentre:
+                    Intent centre = new Intent(view.getContext(), CentreActivity.class);
+                    startActivityForResult(centre, 0);
                     break;
                 case R.id.lvout:
                     signOut();

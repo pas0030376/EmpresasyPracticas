@@ -192,7 +192,7 @@ public class llamarFragment extends Fragment {
 
             Intent intent = new Intent(Intent.ACTION_CALL);
 
-            intent.setData(Uri.parse("tel:" + empresa.getTelefono()));
+            intent.setData(Uri.parse("tel:" + empresa.getTelefon()));
             startActivity(intent);
         }
         catch (Exception ex)

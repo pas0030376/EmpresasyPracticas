@@ -105,7 +105,16 @@
         <activity
             android:name=".DetailEmpresa2Activity"
             android:label="@string/title_activity_detail_empresa2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CentreActivity"
+            android:label="@string/title_activity_centre"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.empresasypracticas.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

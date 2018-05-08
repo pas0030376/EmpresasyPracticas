@@ -63,8 +63,7 @@ public class FamComercio extends Fragment {
             protected void populateView(View view, Empresa model, int position) {
                 TextView tvName = view.findViewById(R.id.tvempresas);
                 tvName.setText(model.getNombre());
-                TextView tvTipo = view.findViewById(R.id.tvTipo);
-                tvTipo.setText(model.getTipo());
+
             }
         };
         lvempreses.setAdapter(adapter);
