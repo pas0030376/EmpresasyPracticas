@@ -95,7 +95,7 @@ public class MainActivityFragment extends Fragment {
     //sign out user
     private void signOut() {
        auth.signOut();
-        CharSequence text = "Already signed out.";
+        CharSequence text = "Signed out.";
         int duration = Toast.LENGTH_SHORT;
         Context context = getContext();
         Toast toast = Toast.makeText(context, text, duration);
