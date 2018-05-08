@@ -30,7 +30,7 @@ public class editarFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    TextView nombreEmpresa,tipoEmpresa,telfEmpresa,personaDeContacto,correoEmpresa,webEmpresa;
+    TextView nombreEmpresa,cif,adreca,municipi,cp,telefon,responsable,dniResponsable,cargoResponsable,telfResponsable,emailResponsable,nomTutor,dniTutor,carrecTutor,telefonTutor,emailTutor;
     Empresa empresa;
 
 
@@ -69,13 +69,39 @@ public class editarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        /*private String adreca;
+        private String municipi;
+        private String cp;
+        private String telefon;
+        private String nombrepersonaDeContacto;
+        private String dnipersonaDeContacto;
+        private String cargopersonaDeContacto;
+        private String telefonPersonaDeContacto;
+        private String emailPersonaDeContacto;*/
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_editar, container, false);
         nombreEmpresa = view.findViewById(R.id.tvNombre);
-        tipoEmpresa=view.findViewById(R.id.tvTipo);
-        telfEmpresa=view.findViewById(R.id.tvTelefono);
-        personaDeContacto=view.findViewById(R.id.tvPersonaDeContacto);
-        correoEmpresa=view.findViewById(R.id.tvCorreo);
+        cif=view.findViewById(R.id.tvCIF);
+        adreca=view.findViewById(R.id.tvAdreca);
+        cp=view.findViewById(R.id.tvCP);
+        municipi=view.findViewById(R.id.tvMunicipi);
+        telefon=view.findViewById(R.id.tvTelefon);
+        responsable=view.findViewById(R.id.tvResponsable);
+        dniResponsable=view.findViewById(R.id.tvDniResponsable);
+        cargoResponsable=view.findViewById(R.id.tvCarrecResponsable);
+        telfResponsable=view.findViewById(R.id.tvTelefonResponsable);
+        emailResponsable=view.findViewById(R.id.tvEmailResponsable);
+        nomTutor=view.findViewById(R.id.tvNomTutor);
+        dniTutor=view.findViewById(R.id.tvDniTutor);
+        carrecTutor=view.findViewById(R.id.tvCarrecTutor);
+        telefonTutor=view.findViewById(R.id.tvTelefonTutor);
+        emailTutor=view.findViewById(R.id.tvEmailTutor);
+
+
+
+
+
 
 
         //recogemos el objecto empresa desde la actividad anterior
@@ -86,10 +112,26 @@ public class editarFragment extends Fragment {
                 String nomEmpresa= empresa.getNombre();
                 getActivity().setTitle(nomEmpresa);
                 nombreEmpresa.setText(empresa.getNombre());
-                tipoEmpresa.setText(empresa.getTipo());
-                telfEmpresa.setText(empresa.getTelefono());
+                cif.setText(empresa.getCif());
+                adreca.setText(empresa.getAdreca());
+                municipi.setText(empresa.getMunicipi());
+                cp.setText(empresa.getCp());
+                telefon.setText(empresa.getTelefon());
+                responsable.setText(empresa.getNombrepersonaDeContacto());
+                dniResponsable.setText(empresa.getDnipersonaDeContacto());
+                cargoResponsable.setText(empresa.getCargopersonaDeContacto());
+                telfResponsable.setText(empresa.getTelefonPersonaDeContacto());
+                emailResponsable.setText(empresa.getEmailPersonaDeContacto());
+                nomTutor.setText(empresa.getNombreTutor());
+                dniTutor.setText(empresa.getDniTutor());
+                carrecTutor.setText(empresa.getCargoTutor());
+                telefonTutor.setText(empresa.getTelefonTutor());
+                emailTutor.setText(empresa.getEmailTutor());
+
+
+               /* telfEmpresa.setText(empresa.getTelefono());
                 personaDeContacto.setText(empresa.getPersonaDeContacto());
-                correoEmpresa.setText(empresa.getCorreoElectronico());
+                correoEmpresa.setText(empresa.getCorreoElectronico());*/
 
 
             }

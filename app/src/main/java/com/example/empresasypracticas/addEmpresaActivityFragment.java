@@ -67,16 +67,42 @@ public class addEmpresaActivityFragment extends Fragment{
         Context context = getContext();
         EditText nom =  view.findViewById(R.id.etnomempresa);
         String fname = nom.getText().toString();
-        EditText tipo = view.findViewById(R.id.etTipoempresa);
-        String ftipo = tipo.getText().toString();
-        EditText correo = view.findViewById(R.id.etCorreo);
-        String fcorreo = correo.getText().toString();
-        EditText telefono = view.findViewById(R.id.etTelefono);
-        String ftelefono = telefono.getText().toString();
-        EditText webpage = view.findViewById(R.id.etWebPage);
-        String fwebpage = webpage.getText().toString();
+        EditText CIF = view.findViewById(R.id.etCIF);
+        String fCIF = CIF.getText().toString();
+        EditText adreca = view.findViewById(R.id.etAdreca);
+        String fadreca = adreca.getText().toString();
+        EditText municipi = view.findViewById(R.id.etMunicipi);
+        String fmunicipi = municipi.getText().toString();
+        EditText CP = view.findViewById(R.id.etCP);
+        String fCP = CP.getText().toString();
+        EditText telefon = view.findViewById(R.id.etTelefono);
+        String ftelefon = telefon.getText().toString();
         EditText personaDeContacto = view.findViewById(R.id.etPersonaDeContacto);
         String fpersonacontacto = personaDeContacto.getText().toString();
+        EditText dniPersonaDeContacto = view.findViewById(R.id.etDNIPersonaDeContacto);
+        String fdniPersonaDeContacto = dniPersonaDeContacto.getText().toString();
+        EditText cargoPersonaDeContacto = view.findViewById(R.id.cargoPersonaDeContacto);
+        String fcargoPersonaDeContacto = cargoPersonaDeContacto.getText().toString();
+        EditText telefonPersonaDeContacto = view.findViewById(R.id.etTelefonoPersonaDeContacto);
+        String ftelefonPersonaDeContacto = telefonPersonaDeContacto.getText().toString();
+        EditText emailPersonaDeContacto = view.findViewById(R.id.emailPersonaDeContacto);
+        String femailPersonaDeContacto = emailPersonaDeContacto.getText().toString();
+
+        EditText etNomTutor = view.findViewById(R.id.etTutor);
+        String nomTutor = etNomTutor.getText().toString();
+        EditText etDniTutor = view.findViewById(R.id.etDNITutor);
+        String dniTutor = etDniTutor.getText().toString();
+        EditText etCargoTutor = view.findViewById(R.id.cargoTutor);
+        String cargoTutor = etCargoTutor.getText().toString();
+        EditText etTelefonoTutor = view.findViewById(R.id.etTelefonoTutor);
+        String telefonoTutor = etTelefonoTutor.getText().toString();
+        EditText etEmailTutor = view.findViewById(R.id.emailTutor);
+        String emailTutor = etEmailTutor.getText().toString();
+
+
+
+
+
         String fsectorEscolar = spinner.getSelectedItem().toString().trim() ;
 
         //Controlo que el nombre de la empresa sea la primera letra mayúscula y las siguientes minúsculas
@@ -94,8 +120,8 @@ public class addEmpresaActivityFragment extends Fragment{
         }
         System.out.println(fnameModificado);
         //verificamos que no hayan campos vacíos
-        if(!fname.equals("")&&!ftipo.equals("")&&!fcorreo.equals("")&&!ftelefono.equals("")&&!fwebpage.equals("")&&!fpersonacontacto.equals("")){
-            Empresa empresa = new Empresa(fnameModificado,ftipo,ftelefono,fpersonacontacto,fcorreo,fwebpage,fsectorEscolar);
+        if(!fname.equals("")&&!fCIF.equals("")&&!fadreca.equals("")&&!fmunicipi.equals("")&&!fCP.equals("")&&!ftelefon.equals("")&&!fpersonacontacto.equals("")&&!fdniPersonaDeContacto.equals("")&&!fcargoPersonaDeContacto.equals("")&&!ftelefonPersonaDeContacto.equals("")&&!femailPersonaDeContacto.equals("")&&!nomTutor.equals("")&&!dniTutor.equals("")&&!cargoTutor.equals("")&&!telefonoTutor.equals("")&&!emailTutor.equals("")){
+            Empresa empresa = new Empresa(fnameModificado,fCIF,fadreca,fmunicipi,fCP,ftelefon,fpersonacontacto,fdniPersonaDeContacto,fcargoPersonaDeContacto,ftelefonPersonaDeContacto,femailPersonaDeContacto,nomTutor,dniTutor,cargoTutor,telefonoTutor,emailTutor,fsectorEscolar);
             mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
             String mId = fnameModificado;
             mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);

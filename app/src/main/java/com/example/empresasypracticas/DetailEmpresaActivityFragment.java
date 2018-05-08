@@ -128,15 +128,15 @@ public class DetailEmpresaActivityFragment extends Fragment {
     @SuppressLint("LongLogTag")
     private void sendEmailToStudent(Empresa empresa) {
         Log.i("Send email", "");
-        String[] TO = {empresa.getCorreoElectronico()};
-        //String[] CC = {"proyectopoblenou@gmail.com"};
+        String[] TO = {empresa.getNombrepersonaDeContacto()};
+        String[] CC = {"proyectopoblenou@gmail.com"};
         String link="https://empresasypracticas.firebaseapp.com/formularioEmpresa.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n "+empresa.getNombre()+" recentment acabat la pràctica. Si us plau omple aquesta enquesta.\nLink: "+link+"\n\n"
                 +"Moltes gràcies.");
