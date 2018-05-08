@@ -50,11 +50,29 @@
             tools:layout_editor_absoluteY="94dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/etTipoempresa"
+                android:id="@+id/etCIF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tipus empresa" />
+                android:hint="CIF" />
         </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etAdreca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Adreça" />
+            </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout3"
@@ -68,13 +86,41 @@
             tools:layout_editor_absoluteY="275dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/etCorreo"
+                android:id="@+id/etMunicipi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Correu" />
+                android:hint="Municipi" />
         </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
 
-        <android.support.design.widget.TextInputLayout
+                <!--<android.support.design.widget.TextInputEditText
+                     android:id="@+id/etTelefono"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Telefon" />-->
+                <EditText
+                    android:id="@+id/etCP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="CP"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+            <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,23 +146,7 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="0dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            tools:layout_editor_absoluteY="275dp">
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/etWebPage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Pàgina Web" />
-        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout6"
@@ -133,20 +163,192 @@
                 android:id="@+id/etPersonaDeContacto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Persones de contacte" />
+                android:hint="Nom i cognoms persona de contacte" />
         </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etDNIPersonaDeContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DNI persona de contacte" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/cargoPersonaDeContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Càrrec persona de contacte" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <!--<android.support.design.widget.TextInputEditText
+                     android:id="@+id/etTelefono"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Telefon" />-->
+                <EditText
+                    android:id="@+id/etTelefonoPersonaDeContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="Telefon de la persona de contacte" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/emailPersonaDeContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email persona de contacte" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nom i cognoms tutor" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etDNITutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DNI tutor" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/cargoTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Càrrec tutor" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <!--<android.support.design.widget.TextInputEditText
+                     android:id="@+id/etTelefono"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Telefon" />-->
+                <EditText
+                    android:id="@+id/etTelefonoTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="Telefon tutor" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteY="275dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/emailTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email tutor" />
+            </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="26dp"
+                android:layout_height="50dp"
+                android:paddingTop="15dp"
                 android:text=" Sector escolar"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/famempresa_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="50dp" />
 
 
 

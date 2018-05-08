@@ -19,7 +19,7 @@
         app:add_shadow="true"
         app:border_color="#88caea"
         app:border_width="3dp"
-        app:layout_constraintEnd_toStartOf="@+id/tvname"
+        app:layout_constraintEnd_toStartOf="@+id/tvNombreYApellidos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shadow_color="#9fb9bd"
