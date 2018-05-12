@@ -1,12 +1,40 @@
 package com.example.empresasypracticas;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.jackandphantom.circularimageview.CircleImage;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 
 /**
@@ -29,8 +57,32 @@ public class SendEmailFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    Empresa empresa=new Empresa();
+    FirebaseListAdapter<Estudiante> adapter;
+    FirebaseListOptions<Estudiante> options;
+    Query query;
+    ListView lvEnquesta;
+    net.bohush.geometricprogressview.GeometricProgressView progressBar;
+    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    Date currentTime = Calendar.getInstance().getTime();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    CircleImage photo;
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://empresasypracticas.appspot.com/");
+
     public SendEmailFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     /**
@@ -64,7 +116,110 @@ public class SendEmailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_send_email, container, false);
+        View view = inflater.inflate(R.layout.fragment_send_email, container, false);
+
+        Intent i = getActivity().getIntent();
+        empresa = (Empresa) i.getSerializableExtra("empresa");
+
+        lvEnquesta = view.findViewById(R.id.lvEnquesta);
+
+        progressBar = view.findViewById(R.id.progressBarSendEmail);
+        progressBar.setVisibility(View.VISIBLE);
+
+        query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Estudiantes").orderByChild("estadoPracticas").equalTo("Acabades");
+
+        options = new FirebaseListOptions.Builder<Estudiante>()
+                .setQuery(query,Estudiante.class)
+                .setLayout(R.layout.lv_alumnos_en_cada_empresa)
+                .build();
+
+        adapter = new FirebaseListAdapter<Estudiante>(options){
+            @Override
+            protected void populateView(View view, Estudiante model, int position) {
+                progressBar.setVisibility(View.GONE);
+                TextView tvName = view.findViewById(R.id.tvNombreYApellidos);
+                tvName.setText(model.getNom()+" "+model.getCognom());
+                TextView practica = view.findViewById(R.id.tvpracticas);
+                practica.setText("Practicas Terminadas");
+                //SetImageforStudent
+                photo = view.findViewById(R.id.stdPhoto);
+                Glide.with(getContext())
+                        .load(storageRef.child(model.getNIE()+".jpg"))
+                        .into(photo);
+
+
+
+            }
+        };
+        lvEnquesta.setAdapter(adapter);
+        lvEnquesta.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialogoConfirmar();
+
+            }
+        });
+        return view;
+    }
+
+
+    private void dialogoConfirmar() {
+
+        final PrettyDialog dialog = new PrettyDialog(getContext());
+        dialog.setTitle("Atención")
+                .setMessage("Voleu enviar un correu electrònic d'enquesta a " + empresa.getNombreTutor() + " ?")
+                .addButton(
+                        "Enviar",     // button text
+                        R.color.pdlg_color_white,  // button text color
+                        R.color.pdlg_color_blue,  // button background color
+                        new PrettyDialogCallback() {  // button OnClick listener
+                            @Override
+                            public void onClick() {
+                                sendEmail(empresa);
+                            }
+                        }
+                )
+                .addButton(
+                        "Cancelar",
+                        R.color.pdlg_color_white,
+                        R.color.pdlg_color_red,
+                        new PrettyDialogCallback() {
+                            @Override
+                            public void onClick() {
+                                dialog.dismiss();
+                            }
+                        }
+                );
+        dialog.show();
+    }
+
+    @SuppressLint("LongLogTag")
+    private void sendEmail(Empresa empresa) {
+        Log.i("Send email", "");
+        String[] TO = {empresa.getEmailTutor()};
+        //String[] CC = {"proyectopoblenou@gmail.com"};
+        String link="https://empresasypracticas.firebaseapp.com/formularioEmpresa.html";
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+empresa.getNombre()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link+"\n\n"
+                +"Moltes gràcies.");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+
+            Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Toast.makeText(DetailEstudent2Activity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(getContext(), "Email no enviat.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

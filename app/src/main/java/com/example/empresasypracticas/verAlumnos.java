@@ -159,30 +159,6 @@ public class verAlumnos extends Fragment {
             }
         };
         lvAlumnosEmpresa.setAdapter(adapter);
-        /*lvAlumnosEmpresa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Estudiante estudiante = (Estudiante) adapterView.getItemAtPosition(i);
-
-                try {
-                    Date fechafin = sdf.parse(estudiante.getFin_practicas());
-
-                    if (currentTime.after(fechafin)){
-                        Intent intent = new Intent(getContext(), DetailEstudent2Activity.class);
-                        intent.putExtra("empresa", estudiante);
-                        startActivity(intent);}
-                    else if (fechafin.after(currentTime)){
-                        Intent intent = new Intent(getContext(), DetailEstudentActivity.class);
-                        intent.putExtra("empresa", estudiante);
-                        startActivity(intent);
-                    }
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });*/
-
-
         return view;
     }
 
