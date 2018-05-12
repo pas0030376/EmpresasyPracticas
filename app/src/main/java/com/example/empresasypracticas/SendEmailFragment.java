@@ -157,7 +157,8 @@ public class SendEmailFragment extends Fragment {
         lvEnquesta.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dialogoConfirmar();
+                Estudiante estudiante = (Estudiante) parent.getItemAtPosition(position);
+                dialogoConfirmar(estudiante);
 
             }
         });
@@ -165,7 +166,7 @@ public class SendEmailFragment extends Fragment {
     }
 
 
-    private void dialogoConfirmar() {
+    private void dialogoConfirmar(final Estudiante estudiante) {
 
         final PrettyDialog dialog = new PrettyDialog(getContext());
         dialog.setTitle("Atención")
@@ -177,7 +178,7 @@ public class SendEmailFragment extends Fragment {
                         new PrettyDialogCallback() {  // button OnClick listener
                             @Override
                             public void onClick() {
-                                sendEmail(empresa);
+                                sendEmail(empresa, estudiante);
                             }
                         }
                 )
@@ -196,19 +197,21 @@ public class SendEmailFragment extends Fragment {
     }
 
     @SuppressLint("LongLogTag")
-    private void sendEmail(Empresa empresa) {
+    private void sendEmail(Empresa empresa, Estudiante estudiante) {
         Log.i("Send email", "");
         String[] TO = {empresa.getEmailTutor()};
         //String[] CC = {"proyectopoblenou@gmail.com"};
         String link="https://empresasypracticas.firebaseapp.com/formularioEmpresa.html";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
+        String studentName = estudiante.getNom()+" "+estudiante.getCognom();
+
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         //emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulari");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n Felicitats acabant les teves pràctiques a l'empresa "+empresa.getNombre()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link+"\n\n"
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Salutacions.\n L'alumne "+studentName+" ja ha acabat la seva pràctica a l'empresa "+estudiante.getEmpresa()+". Si us plau omple aquesta enquesta sobre aquestes pràctiques.\nLink: "+link+"\n\n"
                 +"Moltes gràcies.");
 
         try {
