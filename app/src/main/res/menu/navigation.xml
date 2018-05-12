@@ -21,6 +21,6 @@
     <item
         android:id="@+id/navigation_sendEmail"
         android:icon="@android:drawable/ic_menu_send"
-        android:title="Enviar email" />
+        android:title="Enviar enquesta" />
 
 </menu>
