@@ -170,7 +170,7 @@ public class SendEmailFragment extends Fragment {
 
         final PrettyDialog dialog = new PrettyDialog(getContext());
         dialog.setTitle("Atención")
-                .setMessage("Voleu enviar un correu electrònic d'enquesta a " + empresa.getNombreTutor() + " ?")
+                .setMessage("Voleu enviar un correu electrònic d'enquesta a " + empresa.getNombreTutor() + "?")
                 .addButton(
                         "Enviar",     // button text
                         R.color.pdlg_color_white,  // button text color
