@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 
@@ -30,8 +31,9 @@ public class editarFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    TextView nombreEmpresa,cif,adreca,municipi,cp,telefon,responsable,dniResponsable,cargoResponsable,telfResponsable,emailResponsable,nomTutor,dniTutor,carrecTutor,telefonTutor,emailTutor;
+    TextView nombreEmpresa,cif,adreca,municipi,cp,telefon,responsable,dniResponsable,cargoResponsable,telfResponsable,emailResponsable,nomTutor,dniTutor,carrecTutor,telefonTutor,emailTutor,tvHomologada;
     Empresa empresa;
+    CheckBox homologada;
 
 
 
@@ -81,7 +83,7 @@ public class editarFragment extends Fragment {
         private String emailPersonaDeContacto;*/
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_editar, container, false);
-        nombreEmpresa = view.findViewById(R.id.tvNombre);
+
         cif=view.findViewById(R.id.tvCIF);
         adreca=view.findViewById(R.id.tvAdreca);
         cp=view.findViewById(R.id.tvCP);
@@ -97,6 +99,8 @@ public class editarFragment extends Fragment {
         carrecTutor=view.findViewById(R.id.tvCarrecTutor);
         telefonTutor=view.findViewById(R.id.tvTelefonTutor);
         emailTutor=view.findViewById(R.id.tvEmailTutor);
+        tvHomologada=view.findViewById(R.id.tvHomologada);
+        homologada=view.findViewById(R.id.checkBoxHomolo);
 
 
 
@@ -111,7 +115,7 @@ public class editarFragment extends Fragment {
             if (empresa != null) {
                 String nomEmpresa= empresa.getNombre();
                 getActivity().setTitle(nomEmpresa);
-                nombreEmpresa.setText(empresa.getNombre());
+                //nombreEmpresa.setText(empresa.getNombre());
                 cif.setText(empresa.getCif());
                 adreca.setText(empresa.getAdreca());
                 municipi.setText(empresa.getMunicipi());
@@ -127,6 +131,16 @@ public class editarFragment extends Fragment {
                 carrecTutor.setText(empresa.getCargoTutor());
                 telefonTutor.setText(empresa.getTelefonTutor());
                 emailTutor.setText(empresa.getEmailTutor());
+
+                String isHomologada=empresa.getHomologada();
+                if(empresa.getHomologada()==null||empresa.getHomologada().equals("No")){
+                    homologada.setChecked(false);
+                    tvHomologada.setText("Empresa no homologada");
+                }else if(isHomologada.equals("Si")){
+                    homologada.setChecked(true);
+                    tvHomologada.setText("Empresa homologada");
+                }
+
 
 
                /* telfEmpresa.setText(empresa.getTelefono());

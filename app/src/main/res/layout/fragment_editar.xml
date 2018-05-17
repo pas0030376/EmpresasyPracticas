@@ -17,28 +17,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                android:layout_height="40dp"
+                android:background="#189DF5"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
 
-                <TextView
-                    android:id="@+id/tvNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textSize="30sp" />
+                <LinearLayout
+                    android:layout_width="258dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHomologada"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Empresa homologada:"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxHomolo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoText="false"
+                        android:checked="false"
+                        android:clickable="false"
+                        android:text=""
+                        android:textColorHighlight="@android:color/holo_green_dark"
+                        android:textColorHint="@android:color/holo_green_dark"
+                        android:textColorLink="@android:color/holo_green_dark" />
+
+                </LinearLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:paddingTop="10dp">
+                android:paddingLeft="16dp">
 
                 <LinearLayout
                     android:layout_width="150dp"
@@ -71,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -82,7 +111,7 @@
                         android:id="@+id/tv2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Adreça::"
+                        android:text="Adreça:"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -104,6 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -137,6 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -170,6 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -204,6 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -237,6 +270,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="10dp">
 
                 <LinearLayout
@@ -270,6 +304,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -282,7 +317,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Càrrec responsable:"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -295,7 +330,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -303,6 +338,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="10dp">
 
                 <LinearLayout
@@ -336,6 +372,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="10dp">
 
                 <LinearLayout
@@ -369,6 +406,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="10dp">
 
                 <LinearLayout
@@ -402,6 +440,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -414,7 +453,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Dni tutor:"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -427,7 +466,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -435,6 +474,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -447,7 +487,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Càrrec tutor:"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -460,7 +500,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -468,6 +508,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -480,7 +521,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Telèfon tutor:"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -493,7 +534,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -501,6 +542,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:paddingLeft="16dp"
                 android:paddingTop="2dp">
 
                 <LinearLayout
@@ -513,7 +555,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Email tutor:"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -526,9 +568,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

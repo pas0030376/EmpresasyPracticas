@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -87,6 +88,9 @@ public class addEmpresaActivityFragment extends Fragment{
         String ftelefonPersonaDeContacto = telefonPersonaDeContacto.getText().toString();
         EditText emailPersonaDeContacto = view.findViewById(R.id.emailPersonaDeContacto);
         String femailPersonaDeContacto = emailPersonaDeContacto.getText().toString();
+        CheckBox checkBoxHomologada=view.findViewById(R.id.checkBoxHomologada);
+        String homologada = (checkBoxHomologada.isChecked() ? "Si" : "No");
+
 
         EditText etNomTutor = view.findViewById(R.id.etTutor);
         String nomTutor = etNomTutor.getText().toString();
@@ -121,7 +125,7 @@ public class addEmpresaActivityFragment extends Fragment{
         System.out.println(fnameModificado);
         //verificamos que no hayan campos vacíos
         if(!fname.equals("")&&!fCIF.equals("")&&!fadreca.equals("")&&!fmunicipi.equals("")&&!fCP.equals("")&&!ftelefon.equals("")&&!fpersonacontacto.equals("")&&!fdniPersonaDeContacto.equals("")&&!fcargoPersonaDeContacto.equals("")&&!ftelefonPersonaDeContacto.equals("")&&!femailPersonaDeContacto.equals("")&&!nomTutor.equals("")&&!dniTutor.equals("")&&!cargoTutor.equals("")&&!telefonoTutor.equals("")&&!emailTutor.equals("")){
-            Empresa empresa = new Empresa(fnameModificado,fCIF,fadreca,fmunicipi,fCP,ftelefon,fpersonacontacto,fdniPersonaDeContacto,fcargoPersonaDeContacto,ftelefonPersonaDeContacto,femailPersonaDeContacto,nomTutor,dniTutor,cargoTutor,telefonoTutor,emailTutor,fsectorEscolar);
+            Empresa empresa = new Empresa(fnameModificado,fCIF,fadreca,fmunicipi,fCP,ftelefon,fpersonacontacto,fdniPersonaDeContacto,fcargoPersonaDeContacto,ftelefonPersonaDeContacto,femailPersonaDeContacto,nomTutor,dniTutor,cargoTutor,telefonoTutor,emailTutor,fsectorEscolar,homologada);
             mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://empresasypracticas.firebaseio.com/");
             String mId = fnameModificado;
             mDatabase = mRef.child("Empresas").child(mId).setValue(empresa);

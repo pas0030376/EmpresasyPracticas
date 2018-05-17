@@ -25,12 +25,12 @@ public class Empresa implements Serializable {
     private String cargoTutor;
     private String telefonTutor;
     private String emailTutor;
-
     private String SectorEscolar;
+    private String homologada;
 
     public Empresa(){}
 
-    public Empresa(String nombre, String cif, String adreca, String municipi, String cp, String telefon, String nombrepersonaDeContacto, String dnipersonaDeContacto, String cargopersonaDeContacto, String telefonPersonaDeContacto, String emailPersonaDeContacto, String nombreTutor, String dniTutor, String cargoTutor, String telefonTutor, String emailTutor, String sectorEscolar) {
+    public Empresa(String nombre, String cif, String adreca, String municipi, String cp, String telefon, String nombrepersonaDeContacto, String dnipersonaDeContacto, String cargopersonaDeContacto, String telefonPersonaDeContacto, String emailPersonaDeContacto, String nombreTutor, String dniTutor, String cargoTutor, String telefonTutor, String emailTutor, String sectorEscolar, String homologada) {
         this.nombre = nombre;
         this.cif = cif;
         this.adreca = adreca;
@@ -48,6 +48,7 @@ public class Empresa implements Serializable {
         this.telefonTutor = telefonTutor;
         this.emailTutor = emailTutor;
         SectorEscolar = sectorEscolar;
+        this.homologada = homologada;
     }
 
     public String getNombre() {
@@ -184,6 +185,14 @@ public class Empresa implements Serializable {
 
     public void setSectorEscolar(String sectorEscolar) {
         SectorEscolar = sectorEscolar;
+    }
+
+    public String getHomologada() {
+        return homologada;
+    }
+
+    public void setHomologada(String homologada) {
+        this.homologada = homologada;
     }
 }
 
