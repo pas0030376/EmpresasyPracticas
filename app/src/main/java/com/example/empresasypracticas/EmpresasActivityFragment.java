@@ -44,6 +44,7 @@ public class EmpresasActivityFragment extends Fragment {
         tabs = view.findViewById(R.id.tabsEmpresas);
 
         //Adding the tabs using addTab() method
+        //Adding the tabs using addTab() method
         tabs.addTab(tabs.newTab());
         tabs.addTab(tabs.newTab());
         tabs.addTab(tabs.newTab());
